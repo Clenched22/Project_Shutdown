@@ -74,7 +74,7 @@ public class PlayerScript : MonoBehaviour
                 }
             if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
                 {
-                    
+                    FindObjectOfType<Boss>().DecreaseHealth();
                 }
         }
     }
