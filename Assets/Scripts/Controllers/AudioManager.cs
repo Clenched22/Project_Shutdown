@@ -37,4 +37,6 @@ public class AudioManager : MonoBehaviour
         Debug.Log(Name);
         s.Source.Play();
     }
+
+    //FindObjectOfType<AudioManager>().Play("SOUNDNAME");
 }
