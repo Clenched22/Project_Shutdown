@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b36be81cad930498fa8ee24f2eed13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  MoveSpeed: 6
   Firepoint: {fileID: 8204335594995057874}
   RotationPoint: {fileID: 6928232753328915192}
   RefRigidbody: {fileID: 8760847476884905074}
@@ -197,7 +197,7 @@ MonoBehaviour:
   BlockRay:
     serializedVersion: 2
     m_Bits: 8
-  PistolFireate: 2.5
+  PistolFireate: 1
   PistolLaser: {fileID: 5363305474462391687, guid: 5ea2a801d4df9b64aa952b5b9de5c374, type: 3}
   SpawnPosition: {fileID: 8467479714296868104}
   Item1Tag: Item1
