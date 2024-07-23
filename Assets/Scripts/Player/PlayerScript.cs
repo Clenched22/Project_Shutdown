@@ -11,8 +11,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] Rigidbody2D RotationPoint;
     [SerializeField] Rigidbody2D RefRigidbody;
     [SerializeField] KeyCode ShootKey;
-    [SerializeField] string LevelForwardTag;
-    [SerializeField] string LevelBackwardTag;
+    [SerializeField] string LevelChangeTag;
     [SerializeField] float FlashDelay;
     [SerializeField] string EnemyTag;
     [SerializeField] float ShotDistance;
@@ -20,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float PistolFireate;
     [SerializeField] GameObject PistolLaser;
     [SerializeField] GameObject SpawnPosition;
+    [SerializeField] string Item1Tag;
+    public bool Item1Equipped;
     private float FirerateTime;
     private bool ReadyToFire;
     private bool Damageable;
@@ -33,6 +34,7 @@ public class PlayerScript : MonoBehaviour
     {
         //CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
         Cursor.lockState = CursorLockMode.Confined;
+        Item1Equipped = FindObjectOfType<LevelController>().Item1Acquired;
     }
 
     // Update is called once per frame
@@ -98,6 +100,12 @@ public class PlayerScript : MonoBehaviour
         Vector2 movement;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; Destroy(collision.gameObject); }
+        if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
     }
 }
 
