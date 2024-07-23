@@ -47,6 +47,7 @@ public class LevelController : MonoBehaviour
         Tutorial = false;
         HealthPanel.SetActive(true);
         Pauseable = true;
+        SpawnLevel1Enemies();
     }
 
     // Update is called once per frame
@@ -106,6 +107,7 @@ public class LevelController : MonoBehaviour
         LevelChangerPanel.SetActive(false);
         SceneManager.LoadScene(1);
         FindObjectOfType<AudioManager>().Play("Elevator");
+        SceneManager.LoadScene(0);
     }
 
     public void LoadLevel2()
@@ -114,7 +116,7 @@ public class LevelController : MonoBehaviour
         {
             GetItem1Text.enabled = false;
             LevelChangerPanel.SetActive(false);
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
         else { GetItem1Text.enabled = true; }
     }
