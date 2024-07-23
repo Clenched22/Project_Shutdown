@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static UnityEngine.GraphicsBuffer;
 
 public class Regular : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Transform TrackingTarget;
+    [SerializeField] float ChaseDistance;
+    [SerializeField] float MoveSpeed;
+    [SerializeField] bool IsChasing;
+
+
     void Start()
     {
-        
+        if (TrackingTarget == null)
+        {
+            TrackingTarget = FindObjectOfType<PlayerScript>().gameObject.transform;
+        }
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+
+        if (TrackingTarget != null)
+        {
+
+        }
+    }
+
+    void FixedUpdate()
+    {
+
     }
 }

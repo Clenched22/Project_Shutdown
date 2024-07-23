@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] float MoveSpeed;
+    public float MoveSpeed;
     [SerializeField] GameObject Firepoint;
     [SerializeField] Rigidbody2D RotationPoint;
     [SerializeField] Rigidbody2D RefRigidbody;
@@ -59,6 +59,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(ShootKey) && ReadyToFire == true)
         {
             Vector3 spawnPosition = SpawnPosition.transform.position;
+            spawnPosition.z = 2;
             Instantiate(PistolLaser, spawnPosition, RotationPoint.transform.rotation);
             FirerateTime = PistolFireate;
             ReadyToFire = false;
@@ -80,8 +81,8 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        RotationPoint.position = RefRigidbody.position;
         RefRigidbody.velocity = MoveDirection;
-        RotationPoint.velocity = MoveDirection;
         Vector2 lookDirection = MousePosition - RefRigidbody.position;
         float aimAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         RotationPoint.rotation = aimAngle;
