@@ -162,8 +162,8 @@ public class LevelController : MonoBehaviour
     }
     public void TutorialTab()
     {
-        if (Tutorial) { Tutorial = false; TutorialPanel.SetActive(false); }
-        else { Tutorial = true; TutorialPanel.SetActive(true); }
+        if (Tutorial) { Tutorial = false; TutorialPanel.SetActive(false); PausePanel.SetActive(true); }
+        else { Tutorial = true; TutorialPanel.SetActive(true); PausePanel.SetActive(false); }
     }
 
     public void MainMenu()
