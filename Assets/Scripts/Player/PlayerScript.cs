@@ -17,6 +17,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] string EnemyTag;
     [SerializeField] float ShotDistance;
     [SerializeField] LayerMask BlockRay;
+    [SerializeField] float PistolFireate;
+    [SerializeField] GameObject PistolLaser;
+    [SerializeField] GameObject SpawnPosition;
+    private float FirerateTime;
+    private bool ReadyToFire;
     private bool Damageable;
     private int CurrentHealth;
     private Vector2 MoveDirection;
@@ -35,12 +40,25 @@ public class PlayerScript : MonoBehaviour
     {
         PlayerControl();
         ShootWeapon();
+        Debug.Log(FirerateTime);
+        if (FirerateTime <= 0)
+        {
+            ReadyToFire = true;
+        }
+        else
+        {
+            FirerateTime -= Time.deltaTime;
+        }
     }
 
     private void ShootWeapon()
     {
-        if (Input.GetKeyDown(ShootKey))
+        if (Input.GetKey(ShootKey) && ReadyToFire == true)
         {
+            Vector3 spawnPosition = SpawnPosition.transform.position;
+            Instantiate(PistolLaser, spawnPosition, RotationPoint.transform.rotation);
+            FirerateTime = PistolFireate;
+            ReadyToFire = false;
             Debug.Log("Fire");
             Ray2D ray = new Ray2D();
             ray.origin = Firepoint.transform.position;
