@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - LevelChanger
   - Item1
+  - Boss
   layers:
   - Default
   - TransparentFX

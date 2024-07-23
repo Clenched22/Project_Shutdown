@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject PistolLaser;
     [SerializeField] GameObject SpawnPosition;
     [SerializeField] string Item1Tag;
+    [SerializeField] string BossTag;
     public bool Item1Equipped;
     private float FirerateTime;
     private bool ReadyToFire;
@@ -66,9 +67,13 @@ public class PlayerScript : MonoBehaviour
             ray.origin = Firepoint.transform.position;
             ray.direction = MousePosition - ray.origin;
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
-                if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
+            if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
                     Destroy(castResult.transform.gameObject);
+                }
+            if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
+                {
+                    
                 }
         }
     }
@@ -106,6 +111,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; Destroy(collision.gameObject); }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        FindObjectOfType<LevelController>().LevelChangerInActive();
     }
 }
 

@@ -14,6 +14,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject HealthPanel;
     [SerializeField] TMP_Text HealthText;
     [SerializeField] GameObject LevelChangerPanel;
+    [SerializeField] TMP_Text GetItem1Text;
     private bool LevelChanger;
     public bool Item1Acquired;
     public int MaxHealth;
@@ -106,8 +107,13 @@ public class LevelController : MonoBehaviour
 
     public void LoadLevel2()
     {
-        LevelChangerPanel.SetActive(false);
-        SceneManager.LoadScene(2);
+        if (Item1Acquired == true)
+        {
+            GetItem1Text.enabled = false;
+            LevelChangerPanel.SetActive(false);
+            SceneManager.LoadScene(2);
+        }
+        else { GetItem1Text.enabled = true; }
     }
 
     public void EnemyDeath(int Level, int Index)
@@ -124,8 +130,15 @@ public class LevelController : MonoBehaviour
 
     public void LevelChangerActive()
     {
-        LevelChangerPanel.SetActive(true);
+            LevelChangerPanel.SetActive(true);
+            GetItem1Text.enabled = false;
     }    
+
+    public void LevelChangerInActive()
+    {
+        GetItem1Text.enabled = false;
+        LevelChangerPanel.SetActive(false);
+    }
 
     public void Pause()
     {

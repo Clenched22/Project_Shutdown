@@ -189,8 +189,7 @@ MonoBehaviour:
   RotationPoint: {fileID: 6928232753328915192}
   RefRigidbody: {fileID: 8760847476884905074}
   ShootKey: 323
-  LevelForwardTag: 
-  LevelBackwardTag: 
+  LevelChangeTag: LevelChange
   FlashDelay: 1
   EnemyTag: Enemy
   ShotDistance: 3
@@ -200,6 +199,9 @@ MonoBehaviour:
   PistolFireate: 2.5
   PistolLaser: {fileID: 5363305474462391687, guid: 5ea2a801d4df9b64aa952b5b9de5c374, type: 3}
   SpawnPosition: {fileID: 8467479714296868104}
+  Item1Tag: Item1
+  BossTag: Boss
+  Item1Equipped: 0
 --- !u!50 &8760847476884905074
 Rigidbody2D:
   serializedVersion: 4
