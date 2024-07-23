@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Ethan Scene.unity
-    guid: e37bf8a4ae4406f438e15ddefc419097
+    path: Assets/Scenes/Bridge.unity
+    guid: 216905297f8c83c498b1e4c453e102e6
   - enabled: 1
     path: Assets/Scenes/Cargo Hold.unity
     guid: a8dab73a09e9fa64d97dc355235576ce
