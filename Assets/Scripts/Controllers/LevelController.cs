@@ -45,6 +45,8 @@ public class LevelController : MonoBehaviour
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
         Paused = false;
         Tutorial = false;
+        HealthPanel.SetActive(true);
+        Pauseable = true;
     }
 
     // Update is called once per frame
@@ -53,10 +55,10 @@ public class LevelController : MonoBehaviour
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerRef = FindObjectOfType<PlayerScript>().gameObject;
         Item1Acquired = PlayerRef.GetComponent<PlayerScript>().Item1Equipped;
-        if (SceneIndex == 0 | SceneIndex == 4) { Pauseable = false; }
-        else { Pauseable = true; }
-        if (SceneIndex == 0 | SceneIndex == 4 | Paused == true) { HealthPanel.SetActive(false); }
-        else { HealthPanel.SetActive(true); }
+        //if (SceneIndex == 0 | SceneIndex == 4) { Pauseable = false; }
+       // else { Pauseable = true; }
+        //if (SceneIndex == 0 | SceneIndex == 4 | Paused == true) { HealthPanel.SetActive(false); }
+        //else { HealthPanel.SetActive(true); }
         if (Input.GetKeyDown(KeyCode.Escape) && Pauseable == true)
         {
             if (Paused == true)

@@ -10,7 +10,7 @@ public class Boss : MonoBehaviour
     [SerializeField] bool IsChasing;
     [SerializeField] float ChaseDistance;
     [SerializeField] int Health;
-
+    public EnemySpawnInformation EnemySpawnInformation;
 
     void Start()
     {

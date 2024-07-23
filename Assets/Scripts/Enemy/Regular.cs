@@ -8,7 +8,7 @@ public class Regular : MonoBehaviour
     [SerializeField] float MoveSpeed;
     [SerializeField] bool IsChasing;
     [SerializeField] float ChaseDistance;
-
+    public EnemySpawnInformation EnemySpawnInformation;
 
     void Start()
     {
