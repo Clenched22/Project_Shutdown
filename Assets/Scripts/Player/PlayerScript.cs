@@ -68,13 +68,16 @@ public class PlayerScript : MonoBehaviour
             ray.origin = Firepoint.transform.position;
             ray.direction = MousePosition - ray.origin;
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
+            FindObjectOfType<AudioManager>().Play("Laser Blast");
             if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
                     Destroy(castResult.transform.gameObject);
+                    FindObjectOfType<AudioManager>().Play("Death");
                 }
             if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
                 {
                     FindObjectOfType<Boss>().DecreaseHealth();
+                    FindObjectOfType<AudioManager>().Play("Death");
                 }
         }
     }

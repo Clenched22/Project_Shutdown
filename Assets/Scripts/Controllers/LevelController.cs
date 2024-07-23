@@ -105,6 +105,7 @@ public class LevelController : MonoBehaviour
     {
         LevelChangerPanel.SetActive(false);
         SceneManager.LoadScene(1);
+        FindObjectOfType<AudioManager>().Play("Elevator");
     }
 
     public void LoadLevel2()

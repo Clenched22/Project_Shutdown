@@ -458,10 +458,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sounds:
-  - Name: 
-    Clip: {fileID: 0}
-    Volume: 0
-    Pitch: 0
+  - Name: Laser Blast
+    Clip: {fileID: 8300000, guid: 0818ccb5e375e3044b80e593e487ca29, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+  - Name: Death
+    Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+  - Name: Background
+    Clip: {fileID: 8300000, guid: 576ce85bd89aa944e9e8fcdfe9bc6066, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+  - Name: Elevator
+    Clip: {fileID: 8300000, guid: dd66066cde9cb0646804b760b140e6a8, type: 3}
+    Volume: 1
+    Pitch: 1
     Source: {fileID: 0}
 --- !u!4 &319428552
 Transform:
