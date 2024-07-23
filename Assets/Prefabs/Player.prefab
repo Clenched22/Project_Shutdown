@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b36be81cad930498fa8ee24f2eed13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
+  MoveSpeed: 10
   Firepoint: {fileID: 8204335594995057874}
   RotationPoint: {fileID: 6928232753328915192}
   RefRigidbody: {fileID: 8760847476884905074}
@@ -193,7 +193,7 @@ MonoBehaviour:
   LevelChangeTag: LevelChanger
   FlashDelay: 1
   EnemyTag: Enemy
-  ShotDistance: 2
+  ShotDistance: 4
   BlockRay:
     serializedVersion: 2
     m_Bits: 8
