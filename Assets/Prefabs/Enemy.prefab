@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrackingTarget: {fileID: 0}
-  MoveSpeed: 5
+  MoveSpeed: 4
   IsChasing: 0
-  ChaseDistance: 5
+  ChaseDistance: 10
   EnemySpawnInformation:
     LevelIndex: 0
     SpawnIndex: 0
