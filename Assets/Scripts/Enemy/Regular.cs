@@ -70,7 +70,7 @@ public class Regular : MonoBehaviour
 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelController>().Level1Enemies.Remove(EnemySpawnInformation);
+        FindObjectOfType<LevelController>().Level1Enemies.RemoveAt(EnemySpawnInformation.SpawnIndex);
         EnemySpawnInformation.Death = true;
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2149196951331902613}
   - component: {fileID: 5278572528772388145}
   - component: {fileID: 8399638593179511287}
+  - component: {fileID: 9061948005410616517}
   m_Layer: 0
   m_Name: ItemToPickUp
   m_TagString: Item1
@@ -133,3 +134,22 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
+--- !u!114 &9061948005410616517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940796310471264908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886374b53a3e4f842bcae2d4eaec3d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySpawnInformation:
+    LevelIndex: 0
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 0}
+    SpawnPosition: {x: 0, y: 0, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0

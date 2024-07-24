@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     public bool Item1Equipped;
     private float FirerateTime;
     private bool ReadyToFire;
-    private bool Damageable;
+    public bool Damageable;
     private int CurrentHealth;
     private Vector2 MoveDirection;
     private Vector2 MousePosition;

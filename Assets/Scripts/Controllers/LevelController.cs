@@ -215,5 +215,6 @@ public class LevelController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
         if (Level == 0) { SpawnLevel1Enemies(); } else if (Level == 1) { SpawnLevel2Enemies(); }
+        FindObjectOfType<PlayerScript>().Damageable = true;
     }
 }
