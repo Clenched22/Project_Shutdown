@@ -174,3 +174,4 @@ MonoBehaviour:
     Death: 0
   RB: {fileID: 0}
   PushbackForce: 2
+  PushbackForce: 0
