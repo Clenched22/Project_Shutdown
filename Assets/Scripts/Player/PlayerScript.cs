@@ -114,7 +114,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; Destroy(collision.gameObject); }
+        if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; Destroy(collision.gameObject); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
     }
     private void OnTriggerExit2D(Collider2D collision)
