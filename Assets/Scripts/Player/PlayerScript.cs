@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
 {
     public float MoveSpeed;
     [SerializeField] GameObject Firepoint;
-    [SerializeField] Rigidbody2D RotationPoint;
+    [SerializeField] GameObject RotationPoint;
     [SerializeField] Rigidbody2D RefRigidbody;
     [SerializeField] KeyCode ShootKey;
     [SerializeField] string LevelChangeTag;
@@ -33,7 +33,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
+        Damageable = true;
+        CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
         Cursor.lockState = CursorLockMode.Confined;
         Item1Equipped = FindObjectOfType<LevelController>().Item1Acquired;
     }
@@ -84,11 +85,11 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RotationPoint.position = RefRigidbody.position;
+       
         RefRigidbody.velocity = MoveDirection;
         Vector2 lookDirection = MousePosition - RefRigidbody.position;
         float aimAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-        RotationPoint.rotation = aimAngle;
+        RotationPoint.transform.rotation = Quaternion.Euler(0, 0, aimAngle);
     }
 
     private void PlayerControl()
@@ -119,6 +120,27 @@ public class PlayerScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         FindObjectOfType<LevelController>().LevelChangerInActive();
+    }
+
+    public void DecreaseHealth(int healthDecrease)
+    {
+        if (Damageable)
+        {
+            Damageable = false;
+            CurrentHealth -= healthDecrease;
+            FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
+            StartCoroutine(HealthDelay());
+        }
+    }
+
+    IEnumerator HealthDelay()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(1);
+        Damageable = true;
+        GetComponent<SpriteRenderer>().color = Color.white;
+        Time.timeScale = 1;
     }
 }
 

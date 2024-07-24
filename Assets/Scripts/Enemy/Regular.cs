@@ -50,4 +50,12 @@ public class Regular : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            FindObjectOfType<PlayerScript>().DecreaseHealth(1);
+        }
+    }
 }

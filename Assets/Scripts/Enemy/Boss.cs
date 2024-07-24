@@ -61,4 +61,12 @@ public class Boss : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            FindObjectOfType<PlayerScript>().DecreaseHealth(2);
+        }
+    }
 }
