@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Objects : MonoBehaviour
 {
-    public EnemySpawnInformation EnemySpawnInformation;
+    public EnemySpawnInformation ESI;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class Objects : MonoBehaviour
 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelController>().Level1Enemies.RemoveAt(EnemySpawnInformation.SpawnIndex);
-        EnemySpawnInformation.Death = true;
+        ESI.Death = true;
+        FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
     }
 }

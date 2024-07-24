@@ -8,7 +8,7 @@ public class Regular : MonoBehaviour
     [SerializeField] float MoveSpeed;
     [SerializeField] bool IsChasing;
     [SerializeField] float ChaseDistance;
-    public EnemySpawnInformation EnemySpawnInformation;
+    public EnemySpawnInformation ESI;
     [SerializeField] Rigidbody2D RB;
     [SerializeField] float PushbackForce;
 
@@ -25,6 +25,8 @@ public class Regular : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log($"I am + { ESI.SpawnIndex}");
+
         if (IsChasing)
         {
             if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
@@ -70,7 +72,7 @@ public class Regular : MonoBehaviour
 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelController>().Level1Enemies.RemoveAt(EnemySpawnInformation.SpawnIndex);
-        EnemySpawnInformation.Death = true;
+        ESI.Death = true;
+        FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
     }
 }

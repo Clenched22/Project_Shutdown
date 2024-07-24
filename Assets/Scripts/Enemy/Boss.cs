@@ -10,7 +10,9 @@ public class Boss : MonoBehaviour
     [SerializeField] bool IsChasing;
     [SerializeField] float ChaseDistance;
     [SerializeField] int Health;
-    public EnemySpawnInformation EnemySpawnInformation;
+    public EnemySpawnInformation ESI;
+    [SerializeField] Rigidbody2D RB;
+    [SerializeField] float PushbackForce;
 
     void Start()
     {
@@ -67,12 +69,15 @@ public class Boss : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             FindObjectOfType<PlayerScript>().DecreaseHealth(2);
+            Vector2 difference = (transform.position - collision.transform.position).normalized;
+            Vector2 force = difference * PushbackForce;
+            RB.AddForce(force, ForceMode2D.Impulse);
         }
     }
 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelController>().Level1Enemies.RemoveAt(EnemySpawnInformation.SpawnIndex);
-        EnemySpawnInformation.Death = true;
+        ESI.Death = true;
+        FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
     }
 }

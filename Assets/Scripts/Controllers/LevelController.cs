@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class LevelController : MonoBehaviour
 {
     public List<EnemySpawnInformation> Level1Enemies;
-    public List<EnemySpawnInformation> Level2Enemies;
+    public List<EnemySpawnInformation> Level2Enemies;    
+    public List<EnemySpawnInformation> Level1EnemiesRestart;
+    public List<EnemySpawnInformation> Level2EnemiesRestart;
     [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject TutorialPanel;
     [SerializeField] GameObject PlayerRef;
@@ -17,11 +21,11 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject LevelChangerPanel;
     [SerializeField] TMP_Text GetItem1Text;
     [SerializeField] float PushbackForce;
-    [SerializeField] float TimerAmount;
     [SerializeField] String TimerPrefix;
     [SerializeField] TMP_Text TimerText;
     private bool TimerActive;
-    private float CurrentTime;
+    public float TimerAmount;
+    public float CurrentTime;
     private bool LevelChanger;
     public bool Item1Acquired;
     public int MaxHealth;
@@ -43,6 +47,15 @@ public class LevelController : MonoBehaviour
         HealthCarriedBetweenLevels = MaxHealth;
 
         DontDestroyOnLoad(gameObject);
+
+        for (int i = 0; i < Level1Enemies.Count; i++)
+        {
+            Level1EnemiesRestart.Add(Level1Enemies[i]);
+        }
+        for (int i = 0; i < Level2Enemies.Count; i++)
+        {
+            Level2EnemiesRestart.Add(Level2Enemies[i]);
+        }
     }
 
 
@@ -50,6 +63,7 @@ public class LevelController : MonoBehaviour
     void Start()
     {
         CurrentTime = TimerAmount;
+        TimerActive = true;
         LevelChangerPanel.SetActive(false);
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
         Paused = false;
@@ -57,7 +71,6 @@ public class LevelController : MonoBehaviour
         HealthPanel.SetActive(true);
         Pauseable = true;
         SpawnLevel1Enemies();
-        TimerActive = true;
     }
 
     // Update is called once per frame
@@ -65,9 +78,12 @@ public class LevelController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) { SpawnLevel2Enemies(); }
 
-        if (TimerActive) { CurrentTime -= Time.deltaTime; }
-        TimeSpan time = TimeSpan.FromSeconds(CurrentTime);
-        TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString();
+        if (TimerActive)
+        {
+            CurrentTime -= Time.deltaTime;
+            TimeSpan time = TimeSpan.FromSeconds(CurrentTime);
+            TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString();
+        }
         if (CurrentTime <= 0) { GameOver(false); }
 
 
@@ -93,15 +109,22 @@ public class LevelController : MonoBehaviour
     }
 
     public void SpawnLevel1Enemies()
-    {
+    {//HELP Attemping to make it so Each Enemy Type understands the info it should have on hand. So it can set itself to -
+     //be marked as dead upon destruction, without removing itself from the List for spawning. 
+     //Currently It fails to know if any of the componets are null or not. And seems to maybe pass over the Death if statement.
+     //But Info does appear to be pushed correctly into the Enemy, just not backwards on death.
+     //Biggest problem is within the spawn and respawn when reloading the level.
         for (int i = 0; i < Level1Enemies.Count; i++)
         {
             if (Level1Enemies[i].Death == false)
-            { 
-                Instantiate(Level1Enemies[i].EnemyPrefab, Level1Enemies[i].SpawnPosition, Level1Enemies[i].SpawnRotation);
+            {
+                GameObject enemy = Instantiate(Level1Enemies[i].EnemyPrefab, Level1Enemies[i].SpawnPosition, Level1Enemies[i].SpawnRotation);
                 Level1Enemies[i].SpawnIndex = i;
                 Level1Enemies[i].LevelIndex = 1;
                 Level1Enemies[i].Death = false;
+                if (enemy.GetComponent<Regular>().ESI != null) { enemy.GetComponent<Regular>().ESI = Level1Enemies[i]; continue; }
+                if (enemy.GetComponent<Boss>().ESI != null) { enemy.GetComponent<Boss>().ESI = Level1Enemies[i]; }
+                if (enemy.GetComponent<Objects>().ESI != null) { enemy.GetComponent<Objects>().ESI = Level1Enemies[i]; } 
             }
         }
     }
@@ -112,12 +135,24 @@ public class LevelController : MonoBehaviour
         {
             if (Level2Enemies[i].Death == false)
             {
-                Instantiate(Level2Enemies[i].EnemyPrefab, Level2Enemies[i].SpawnPosition, Level2Enemies[i].SpawnRotation);
+                GameObject enemy = Instantiate(Level2Enemies[i].EnemyPrefab, Level2Enemies[i].SpawnPosition, Level2Enemies[i].SpawnRotation);
+                enemy.GetComponent<Regular>().ESI = Level2Enemies[i];
+                enemy.GetComponent<Boss>().ESI = Level2Enemies[i];
+                enemy.GetComponent<Objects>().ESI = Level2Enemies[i];
                 Level2Enemies[i].SpawnIndex = i;
                 Level2Enemies[i].LevelIndex = 2;
                 Level2Enemies[i].Death = false;
             }
         }
+    }
+
+    public void EnemyDeathIndexReset(int Level, int Index)
+    {
+        if (Level == 1)
+        {
+            Level1Enemies[Index].Death = true;
+        }
+        else if (Level == 2) { Level2Enemies[Index].Death = true; }
     }
 
     public void LoadLevel1()
@@ -127,6 +162,7 @@ public class LevelController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Elevator");
         SceneManager.LoadScene(0);
         StartCoroutine(SpawnDelay(0));
+        TimerActive = true;
     }
 
     public void LoadLevel2()
@@ -137,6 +173,7 @@ public class LevelController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Elevator");
             SceneManager.LoadScene(1);
             StartCoroutine(SpawnDelay(1));
+            TimerActive = true;
         }
         else { GetItem1Text.enabled = true; }
     }
@@ -158,12 +195,28 @@ public class LevelController : MonoBehaviour
         Debug.Log(Win);
         if (Win == true)
         {
-            //EndScreen Win
+            SceneManager.LoadScene(2);
         }
         else 
-        { 
-            //EndScreen Lose
+        {
+            SceneManager.LoadScene(2);
         }
+        TimerActive = false;
+        TimerText.text = "";
+        ResetEnemyLists();
+    }
+
+    private void ResetEnemyLists()
+    {
+        for (int i = 0; i < Level1EnemiesRestart.Count; i++)
+        {
+            Level1Enemies.Add(Level1EnemiesRestart[i]);
+        }        
+        for (int i = 0; i < Level2EnemiesRestart.Count; i++)
+        {
+            Level2Enemies.Add(Level2EnemiesRestart[i]);
+        }
+
     }
 
     public void LevelChangerActive()
