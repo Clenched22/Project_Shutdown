@@ -116,6 +116,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; Destroy(collision.gameObject); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
+        if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().GameOver(true); }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -124,13 +125,17 @@ public class PlayerScript : MonoBehaviour
 
     public void DecreaseHealth(int healthDecrease)
     {
-        if (Damageable)
+        if (CurrentHealth > 0)
         {
-            Damageable = false;
-            CurrentHealth -= healthDecrease;
-            FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
-            StartCoroutine(HealthDelay());
+            if (Damageable)
+            {
+                Damageable = false;
+                CurrentHealth -= healthDecrease;
+                FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
+                StartCoroutine(HealthDelay());
+            }
         }
+        else if (CurrentHealth <= 0) { FindObjectOfType<LevelController>().GameOver(false); }
     }
 
     IEnumerator HealthDelay()

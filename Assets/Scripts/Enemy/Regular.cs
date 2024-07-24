@@ -67,4 +67,10 @@ public class Regular : MonoBehaviour
             RB.AddForce(force, ForceMode2D.Impulse);
         }
     }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<LevelController>().Level1Enemies.Remove(EnemySpawnInformation);
+        EnemySpawnInformation.Death = true;
+    }
 }

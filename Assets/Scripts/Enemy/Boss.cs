@@ -69,4 +69,9 @@ public class Boss : MonoBehaviour
             FindObjectOfType<PlayerScript>().DecreaseHealth(2);
         }
     }
+
+    private void OnDestroy()
+    {
+        EnemySpawnInformation.Death = true;
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,6 +17,11 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject LevelChangerPanel;
     [SerializeField] TMP_Text GetItem1Text;
     [SerializeField] float PushbackForce;
+    [SerializeField] float TimerAmount;
+    [SerializeField] String TimerPrefix;
+    [SerializeField] TMP_Text TimerText;
+    private bool TimerActive;
+    private float CurrentTime;
     private bool LevelChanger;
     public bool Item1Acquired;
     public int MaxHealth;
@@ -24,6 +30,7 @@ public class LevelController : MonoBehaviour
     private bool Tutorial;
     private int SceneIndex;
     private bool Pauseable;
+
 
     private void Awake()
     {
@@ -42,6 +49,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CurrentTime = TimerAmount;
         LevelChangerPanel.SetActive(false);
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
         Paused = false;
@@ -49,11 +57,20 @@ public class LevelController : MonoBehaviour
         HealthPanel.SetActive(true);
         Pauseable = true;
         SpawnLevel1Enemies();
+        TimerActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space)) { SpawnLevel2Enemies(); }
+
+        if (TimerActive) { CurrentTime -= Time.deltaTime; }
+        TimeSpan time = TimeSpan.FromSeconds(CurrentTime);
+        TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString();
+        if (CurrentTime <= 0) { GameOver(false); }
+
+
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerRef = FindObjectOfType<PlayerScript>().gameObject;
         Item1Acquired = PlayerRef.GetComponent<PlayerScript>().Item1Equipped;
@@ -105,19 +122,21 @@ public class LevelController : MonoBehaviour
 
     public void LoadLevel1()
     {
+
         LevelChangerPanel.SetActive(false);
-        SceneManager.LoadScene(1);
         FindObjectOfType<AudioManager>().Play("Elevator");
         SceneManager.LoadScene(0);
+        StartCoroutine(SpawnDelay(0));
     }
 
     public void LoadLevel2()
     {
         if (Item1Acquired == true)
         {
-            GetItem1Text.enabled = false;
             LevelChangerPanel.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("Elevator");
             SceneManager.LoadScene(1);
+            StartCoroutine(SpawnDelay(1));
         }
         else { GetItem1Text.enabled = true; }
     }
@@ -131,6 +150,19 @@ public class LevelController : MonoBehaviour
         else if (Level == 2)
         {
             Level2Enemies[Index].Death= true;
+        }
+    }
+
+    public void GameOver(bool Win)
+    {
+        Debug.Log(Win);
+        if (Win == true)
+        {
+            //EndScreen Win
+        }
+        else 
+        { 
+            //EndScreen Lose
         }
     }
 
@@ -177,5 +209,11 @@ public class LevelController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator SpawnDelay(int Level)
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (Level == 0) { SpawnLevel1Enemies(); } else if (Level == 1) { SpawnLevel2Enemies(); }
     }
 }
