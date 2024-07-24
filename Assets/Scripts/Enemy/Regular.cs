@@ -9,9 +9,15 @@ public class Regular : MonoBehaviour
     [SerializeField] bool IsChasing;
     [SerializeField] float ChaseDistance;
     public EnemySpawnInformation EnemySpawnInformation;
+    [SerializeField] Rigidbody2D RB;
+    [SerializeField] float PushbackForce;
 
     void Start()
     {
+        if (RB == null)
+        {
+            RB = GetComponent<Rigidbody2D>();
+        }
         if (TrackingTarget == null)
         {
             TrackingTarget = FindObjectOfType<PlayerScript>().gameObject.transform;
@@ -56,6 +62,9 @@ public class Regular : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             FindObjectOfType<PlayerScript>().DecreaseHealth(1);
+            Vector2 difference = (transform.position - collision.transform.position).normalized;
+            Vector2 force = difference * PushbackForce;
+            RB.AddForce(force, ForceMode2D.Impulse);
         }
     }
 }

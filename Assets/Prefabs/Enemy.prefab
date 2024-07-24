@@ -172,3 +172,5 @@ MonoBehaviour:
     SpawnPosition: {x: 0, y: 0, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+  RB: {fileID: 0}
+  PushbackForce: 10

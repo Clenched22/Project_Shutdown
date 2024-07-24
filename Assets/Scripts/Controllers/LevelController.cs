@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] TMP_Text HealthText;
     [SerializeField] GameObject LevelChangerPanel;
     [SerializeField] TMP_Text GetItem1Text;
+    [SerializeField] float PushbackForce;
     private bool LevelChanger;
     public bool Item1Acquired;
     public int MaxHealth;
