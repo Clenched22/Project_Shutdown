@@ -59,8 +59,8 @@ public class Boss : MonoBehaviour
     {
         Health--;
         if (Health <= 0)
-        { 
-            Destroy(gameObject);
+        {
+            Death();
         }
     }
 
@@ -75,9 +75,9 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void Death()
     {
-        ESI.Death = true;
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
+        Destroy(gameObject);
     }
 }

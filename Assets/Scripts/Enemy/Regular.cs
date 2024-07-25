@@ -70,9 +70,9 @@ public class Regular : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void Death()
     {
-        ESI.Death = true;
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
+        Destroy(gameObject);
     }
 }

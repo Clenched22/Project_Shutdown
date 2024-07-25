@@ -124,7 +124,7 @@ public class LevelController : MonoBehaviour
                 Level1Enemies[i].Death = false;
                 if (enemy.GetComponent<Regular>().ESI != null) { enemy.GetComponent<Regular>().ESI = Level1Enemies[i]; continue; }
                 if (enemy.GetComponent<Boss>().ESI != null) { enemy.GetComponent<Boss>().ESI = Level1Enemies[i]; }
-                if (enemy.GetComponent<Objects>().ESI != null) { enemy.GetComponent<Objects>().ESI = Level1Enemies[i]; } 
+                if (enemy.GetComponent<Objects>().ESI != null) { enemy.GetComponent<Objects>().ESI = Level1Enemies[i]; }
             }
         }
     }

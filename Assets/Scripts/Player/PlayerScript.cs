@@ -72,7 +72,7 @@ public class PlayerScript : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Laser Blast");
             if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
-                    Destroy(castResult.transform.gameObject);
+                    castResult.transform.GetComponent<Regular>().Death();
                     FindObjectOfType<AudioManager>().Play("Death");
                 }
             if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
@@ -114,7 +114,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; Destroy(collision.gameObject); FindObjectOfType<AudioManager>().Play("Pickup"); }
+        if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
         if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().GameOver(true); }
     }
