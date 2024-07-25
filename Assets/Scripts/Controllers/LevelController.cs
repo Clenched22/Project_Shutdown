@@ -56,11 +56,6 @@ public class LevelController : MonoBehaviour
         {
             Level2EnemiesRestart.Add(Level2Enemies[i]);
         }
-        SceneIndex = SceneManager.GetActiveScene().buildIndex;
-        Paused = false;
-        Tutorial = false;
-        HealthPanel.SetActive(true);
-        Pauseable = true;
     }
 
 
@@ -70,6 +65,11 @@ public class LevelController : MonoBehaviour
         CurrentTime = TimerAmount;
         TimerActive = true;
         LevelChangerPanel.SetActive(false);
+        SceneIndex = SceneManager.GetActiveScene().buildIndex;
+        Paused = false;
+        Tutorial = false;
+        HealthPanel.SetActive(true);
+        Pauseable = true;
         SpawnLevel1Enemies();
     }
 
