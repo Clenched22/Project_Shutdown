@@ -74,9 +74,6 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TutorialActive = true;
-        WhichStringToShow = 1;
-        TutorialStringSelector();
         CurrentTime = TimerAmount;
         TimerActive = false;
         LevelChangerPanel.SetActive(false);
@@ -84,14 +81,17 @@ public class LevelController : MonoBehaviour
         Paused = false;
         Tutorial = false;
         HealthPanel.SetActive(false);
-        Pauseable = true;
+        Pauseable = false;
         SpawnLevel1Enemies();
+        TutorialActive = true;
+        WhichStringToShow = 1;
+        TutorialStringSelector();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) { WhichStringToShow++; TutorialStringSelector(); }
+        if (Input.GetKeyDown(KeyCode.E) && TutorialActive) { WhichStringToShow++; TutorialStringSelector(); }
 
         if (Input.GetKeyDown(KeyCode.Space)) { SpawnLevel2Enemies(); }
 
@@ -278,10 +278,12 @@ public class LevelController : MonoBehaviour
                 TutorialTextRef.text = TutorialText8;
                 break;
             case 9:
-                TutorialTextPanel.SetActive(false);
-                TimerActive = false;
-                HealthPanel.SetActive(true);
                 Time.timeScale = 1;
+                TutorialActive = false;
+                TutorialTextPanel.SetActive(false);
+                TimerActive = true;
+                HealthPanel.SetActive(true);
+                Pauseable = true;
                 break;
         }
     }
