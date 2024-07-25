@@ -337,7 +337,7 @@ MonoBehaviour:
     m_Bits: 8
   PistolFireate: 1
   PistolLaser: {fileID: 5363305474462391687, guid: 5ea2a801d4df9b64aa952b5b9de5c374, type: 3}
-  PistolLaserEndLocation: {fileID: 0}
+  PistolLaserEndLocation: {fileID: 8467479714296868104}
   Item1Tag: Item1
   BossTag: Boss
   LaserLine: {fileID: 4718024872356456664}
@@ -434,7 +434,7 @@ MonoBehaviour:
   - {x: 0.2515074, y: -0.43303013, z: 0}
   m_ShapePathHash: -1859900773
   m_Mesh: {fileID: 0}
-  m_InstanceId: 38324
+  m_InstanceId: 30916
   m_LocalBounds:
     m_Center: {x: 0.0034536123, y: 0.0027918816, z: 0}
     m_Extent: {x: 0.5053617, y: 0.44419813, z: 0}
