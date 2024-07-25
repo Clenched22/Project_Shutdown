@@ -82,9 +82,22 @@ public class LevelController : MonoBehaviour
         Tutorial = false;
         HealthPanel.SetActive(false);
         Pauseable = false;
-        SpawnLevel1Enemies();
+        TutorialTextPanel.SetActive(false);
+        TutorialActive = false;
+    }
+
+    public void ActualStart()
+    {
+        StartCoroutine(ActualStartDelay());
+    }
+
+    IEnumerator ActualStartDelay()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
+        TutorialTextPanel.SetActive(true);
         TutorialActive = true;
         WhichStringToShow = 1;
+        SpawnLevel1Enemies();
         TutorialStringSelector();
     }
 
