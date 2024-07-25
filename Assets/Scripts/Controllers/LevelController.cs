@@ -251,11 +251,11 @@ public class LevelController : MonoBehaviour
     {
         for (int i = 0; i < Level1EnemiesRestart.Count; i++)
         {
-            Level1Enemies.Add(Level1EnemiesRestart[i]);
+            Level1Enemies[i].Death = false;
         }        
         for (int i = 0; i < Level2EnemiesRestart.Count; i++)
         {
-            Level2Enemies.Add(Level2EnemiesRestart[i]);
+            Level2Enemies[i].Death = false;
         }
 
     }
