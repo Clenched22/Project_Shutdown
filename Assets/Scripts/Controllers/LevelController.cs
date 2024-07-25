@@ -23,6 +23,18 @@ public class LevelController : MonoBehaviour
     [SerializeField] float PushbackForce;
     [SerializeField] String TimerPrefix;
     [SerializeField] TMP_Text TimerText;
+    [SerializeField] GameObject TutorialTextPanel;
+    [SerializeField] TMP_Text TutorialTextRef;
+    [SerializeField] string TutorialText1;
+    [SerializeField] string TutorialText2;
+    [SerializeField] string TutorialText3;
+    [SerializeField] string TutorialText4;
+    [SerializeField] string TutorialText5;
+    [SerializeField] string TutorialText6;
+    [SerializeField] string TutorialText7;
+    [SerializeField] string TutorialText8;
+    private float WhichStringToShow;
+    private bool TutorialActive;
     private bool TimerActive;
     public float TimerAmount;
     public float CurrentTime;
@@ -62,13 +74,16 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TutorialActive = true;
+        WhichStringToShow = 1;
+        TutorialStringSelector();
         CurrentTime = TimerAmount;
-        TimerActive = true;
+        TimerActive = false;
         LevelChangerPanel.SetActive(false);
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
         Paused = false;
         Tutorial = false;
-        HealthPanel.SetActive(true);
+        HealthPanel.SetActive(false);
         Pauseable = true;
         SpawnLevel1Enemies();
     }
@@ -76,13 +91,15 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E)) { WhichStringToShow++; TutorialStringSelector(); }
+
         if (Input.GetKeyDown(KeyCode.Space)) { SpawnLevel2Enemies(); }
 
         if (TimerActive)
         {
             CurrentTime -= Time.deltaTime;
             TimeSpan time = TimeSpan.FromSeconds(CurrentTime);
-            TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString();
+            TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         }
         if (CurrentTime <= 0) { GameOver(false); }
 
@@ -228,6 +245,44 @@ public class LevelController : MonoBehaviour
         else if (Level == 2)
         {
             Level2Enemies[Index].Death= true;
+        }
+    }
+
+    protected void TutorialStringSelector()
+    {
+        Time.timeScale = 0;
+        switch (WhichStringToShow)
+        {
+            case 1:
+                TutorialTextRef.text = TutorialText1;
+                break;
+            case 2:
+                TutorialTextRef.text = TutorialText2;
+                break;
+            case 3:
+                TutorialTextRef.text = TutorialText3;
+                break;
+            case 4:
+                TutorialTextRef.text = TutorialText4;
+                break;
+            case 5:
+                TutorialTextRef.text = TutorialText5;
+                break;
+            case 6:
+                TutorialTextRef.text = TutorialText6;
+                break;
+            case 7:
+                TutorialTextRef.text = TutorialText7;
+                break;
+            case 8:
+                TutorialTextRef.text = TutorialText8;
+                break;
+            case 9:
+                TutorialTextPanel.SetActive(false);
+                TimerActive = false;
+                HealthPanel.SetActive(true);
+                Time.timeScale = 1;
+                break;
         }
     }
 
