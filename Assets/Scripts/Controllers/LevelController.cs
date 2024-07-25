@@ -56,6 +56,11 @@ public class LevelController : MonoBehaviour
         {
             Level2EnemiesRestart.Add(Level2Enemies[i]);
         }
+        SceneIndex = SceneManager.GetActiveScene().buildIndex;
+        Paused = false;
+        Tutorial = false;
+        HealthPanel.SetActive(true);
+        Pauseable = true;
     }
 
 
@@ -65,11 +70,6 @@ public class LevelController : MonoBehaviour
         CurrentTime = TimerAmount;
         TimerActive = true;
         LevelChangerPanel.SetActive(false);
-        SceneIndex = SceneManager.GetActiveScene().buildIndex;
-        Paused = false;
-        Tutorial = false;
-        HealthPanel.SetActive(true);
-        Pauseable = true;
         SpawnLevel1Enemies();
     }
 
@@ -122,9 +122,27 @@ public class LevelController : MonoBehaviour
                 Level1Enemies[i].SpawnIndex = i;
                 Level1Enemies[i].LevelIndex = 1;
                 Level1Enemies[i].Death = false;
-                if (enemy.GetComponent<Regular>().ESI != null) { enemy.GetComponent<Regular>().ESI = Level1Enemies[i]; continue; }
-                if (enemy.GetComponent<Boss>().ESI != null) { enemy.GetComponent<Boss>().ESI = Level1Enemies[i]; }
-                if (enemy.GetComponent<Objects>().ESI != null) { enemy.GetComponent<Objects>().ESI = Level1Enemies[i]; }
+
+                Regular regularComp = enemy.GetComponent<Regular>();
+                if ( regularComp != null) 
+                {
+                    enemy.GetComponent<Regular>().ESI = Level1Enemies[i];
+                    continue;
+                }
+
+                Boss bossComp = enemy.GetComponent<Boss>();
+                if (bossComp != null) 
+                { 
+                    enemy.GetComponent<Boss>().ESI = Level1Enemies[i];
+                    continue;
+                }
+
+                Objects objectComp = enemy.GetComponent<Objects>();
+                if ( objectComp != null) 
+                { 
+                    enemy.GetComponent<Objects>().ESI = Level1Enemies[i];
+                    continue;
+                }
             }
         }
     }
@@ -136,23 +154,46 @@ public class LevelController : MonoBehaviour
             if (Level2Enemies[i].Death == false)
             {
                 GameObject enemy = Instantiate(Level2Enemies[i].EnemyPrefab, Level2Enemies[i].SpawnPosition, Level2Enemies[i].SpawnRotation);
-                enemy.GetComponent<Regular>().ESI = Level2Enemies[i];
-                enemy.GetComponent<Boss>().ESI = Level2Enemies[i];
-                enemy.GetComponent<Objects>().ESI = Level2Enemies[i];
                 Level2Enemies[i].SpawnIndex = i;
                 Level2Enemies[i].LevelIndex = 2;
                 Level2Enemies[i].Death = false;
+
+                Regular regularComp = enemy.GetComponent<Regular>();
+                if (regularComp != null)
+                {
+                    enemy.GetComponent<Regular>().ESI = Level2Enemies[i];
+                    continue;
+                }
+
+                Boss bossComp = enemy.GetComponent<Boss>();
+                if (bossComp != null)
+                {
+                    enemy.GetComponent<Boss>().ESI = Level2Enemies[i];
+                    continue;
+                }
+
+                Objects objectComp = enemy.GetComponent<Objects>();
+                if (objectComp != null)
+                {
+                    enemy.GetComponent<Objects>().ESI = Level2Enemies[i];
+                    continue;
+                }
             }
         }
     }
 
     public void EnemyDeathIndexReset(int Level, int Index)
     {
-        if (Level == 1)
+        switch (Level)
         {
-            Level1Enemies[Index].Death = true;
+            case 1:
+                Level1Enemies[Index].Death = true;
+                break;
+
+            case 2:
+                Level2Enemies[Index].Death = true;
+                break;
         }
-        else if (Level == 2) { Level2Enemies[Index].Death = true; }
     }
 
     public void LoadLevel1()

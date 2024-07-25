@@ -120,7 +120,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        FindObjectOfType<LevelController>().LevelChangerInActive();
+        FindObjectOfType<LevelController>()?.LevelChangerInActive();
     }
 
     public void DecreaseHealth(int healthDecrease)
