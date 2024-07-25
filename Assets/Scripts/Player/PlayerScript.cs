@@ -18,9 +18,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] LayerMask BlockRay;
     [SerializeField] float PistolFireate;
     [SerializeField] GameObject PistolLaser;
-    [SerializeField] GameObject SpawnPosition;
+    [SerializeField] GameObject PistolLaserEndLocation;
     [SerializeField] string Item1Tag;
     [SerializeField] string BossTag;
+    [SerializeField] LineRenderer LaserLine;
+    [SerializeField] float LaserShowTime;
     public bool Item1Equipped;
     private float FirerateTime;
     private bool ReadyToFire;
@@ -37,13 +39,16 @@ public class PlayerScript : MonoBehaviour
         CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
         Cursor.lockState = CursorLockMode.Confined;
         Item1Equipped = FindObjectOfType<LevelController>().Item1Acquired;
+        LaserLine.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        LaserLine.SetPosition(0, Firepoint.transform.position);
+        LaserLine.SetPosition(1, PistolLaserEndLocation.transform.position);
         PlayerControl();
-        ShootWeapon();
+        ShootPistolLaser();
         Debug.Log(FirerateTime);
         if (FirerateTime <= 0)
         {
@@ -55,13 +60,16 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void ShootWeapon()
+    private void ShootPistolLaser()
     {
         if (Input.GetKey(ShootKey) && ReadyToFire == true)
         {
-            Vector3 spawnPosition = SpawnPosition.transform.position;
-            spawnPosition.z = 2;
-            Instantiate(PistolLaser, spawnPosition, RotationPoint.transform.rotation);
+            /* Vector3 spawnPosition = SpawnPosition.transform.position;
+             spawnPosition.z = 2;
+             Instantiate(PistolLaser, spawnPosition, RotationPoint.transform.rotation); */
+
+            LaserLine.enabled = true;
+
             FirerateTime = PistolFireate;
             ReadyToFire = false;
             Debug.Log("Fire");
@@ -70,6 +78,7 @@ public class PlayerScript : MonoBehaviour
             ray.direction = MousePosition - ray.origin;
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
             FindObjectOfType<AudioManager>().Play("Laser Blast");
+            StartCoroutine(DisableLaser());
             if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
                     castResult.transform.GetComponent<Regular>().Death();
@@ -146,6 +155,12 @@ public class PlayerScript : MonoBehaviour
         Damageable = true;
         GetComponent<SpriteRenderer>().color = Color.white;
         Time.timeScale = 1;
+    }
+
+    IEnumerator DisableLaser()
+    {
+        yield return new WaitForSeconds(LaserShowTime);
+        LaserLine.enabled = false;
     }
 }
 
