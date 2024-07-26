@@ -11,7 +11,7 @@ public class EndScreen : MonoBehaviour
     {
         FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = FindObjectOfType<LevelController>().MaxHealth;
         FindObjectOfType<LevelController>().CurrentTime = FindObjectOfType<LevelController>().TimerAmount;
-        FindObjectOfType<LevelController>().LoadLevel1();
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
