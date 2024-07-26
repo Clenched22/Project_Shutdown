@@ -13,4 +13,5 @@ public class EnemySpawnInformation
     public bool Death;
     public float Health;
     public float DamageDealt;
+    public float MaxHealth;
 }

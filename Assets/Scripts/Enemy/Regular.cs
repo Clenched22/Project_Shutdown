@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Regular : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Regular : MonoBehaviour
     public EnemySpawnInformation ESI;
     [SerializeField] Rigidbody2D RB;
     [SerializeField] float PushbackForce;
+    [SerializeField] Slider HealthSlider;
 
     void Start()
     {
@@ -22,9 +24,11 @@ public class Regular : MonoBehaviour
         {
             TrackingTarget = FindObjectOfType<PlayerScript>().gameObject.transform;
         }
+        ESI.Health = ESI.MaxHealth;
     }
     void Update()
     {
+        HealthSlider.value = ESI.Health / ESI.MaxHealth;
 
         if (IsChasing)
         {

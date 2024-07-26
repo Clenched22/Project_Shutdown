@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UI;
 
 public class Projectile : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] float FirerateTime;
     private bool AbleToShoot;
     private float FireRateTimeCountdown;
+    [SerializeField] Slider HealthSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +35,13 @@ public class Projectile : MonoBehaviour
         }
         AbleToShoot = false;
         FireRateTimeCountdown = FirerateTime;
+        ESI.Health = ESI.MaxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        HealthSlider.value = ESI.Health / ESI.MaxHealth;
         Vector2 directionToTarget = TrackingTarget.position - transform.position;
         transform.up = directionToTarget;
         if (IsChasing)

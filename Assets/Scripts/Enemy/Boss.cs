@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Boss : MonoBehaviour
@@ -12,6 +13,7 @@ public class Boss : MonoBehaviour
     public EnemySpawnInformation ESI;
     [SerializeField] Rigidbody2D RB;
     [SerializeField] float PushbackForce;
+    [SerializeField] Slider HealthSlider;
 
     void Start()
     {
@@ -19,9 +21,11 @@ public class Boss : MonoBehaviour
         {
             TrackingTarget = FindObjectOfType<PlayerScript>().gameObject.transform;
         }
+        ESI.Health = ESI.MaxHealth;
     }
     void Update()
     {
+        HealthSlider.value = ESI.Health/ESI.MaxHealth;
         if (IsChasing)
         {
             if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
