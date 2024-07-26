@@ -7,7 +7,9 @@ using UnityEngine.EventSystems;
 public class PlayerScript : MonoBehaviour
 {
     public float MoveSpeed;
-    [SerializeField] GameObject Firepoint;
+    [SerializeField] GameObject PistolFirepoint;
+    [SerializeField] GameObject ARFirepoint;
+    [SerializeField] GameObject SniperFirepoint;
     [SerializeField] GameObject RotationPoint;
     [SerializeField] Rigidbody2D RefRigidbody;
     [SerializeField] KeyCode ShootKey;
@@ -30,7 +32,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] string ARTag;
     [SerializeField] string SniperTag;
     [SerializeField] string BossTag;
-    [SerializeField] LineRenderer LaserLine;
+    [SerializeField] LineRenderer PistolLaserLine;
+    [SerializeField] LineRenderer ARLaserLine;
+    [SerializeField] LineRenderer SniperLaserLine;
+    private LineRenderer ActiveLine;
     [SerializeField] float LaserShowTime;
     [SerializeField] GameObject PistolSprite;
     [SerializeField] GameObject ARSprite;
@@ -54,6 +59,7 @@ public class PlayerScript : MonoBehaviour
     private int EquippedWeapon;
     private Vector3 LaserEndPosition;
     private float ActualDamageDealt;
+    private Vector2 LaserStartPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +68,7 @@ public class PlayerScript : MonoBehaviour
         CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
         Cursor.lockState = CursorLockMode.Confined;
         ScrewDriver = FindObjectOfType<LevelController>().ScrewDriverAcquired;
-        LaserLine.enabled = false;
+        ActiveLine.enabled = false;
         EquippedWeapon = 1;
         PistolAccquired = true;
         ARAccquired = FindObjectOfType<LevelController>().ARAcquired;
@@ -78,11 +84,11 @@ public class PlayerScript : MonoBehaviour
         switch (EquippedWeapon)
         {
             case 1:
-                LaserEndPosition = PistolLaserEndLocation.transform.position; break;
+                ARLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = PistolLaserLine;  LaserStartPosition = PistolFirepoint.transform.position;  LaserEndPosition = PistolLaserEndLocation.transform.position; break;
             case 2:
-                LaserEndPosition = ARLaserEndLocation.transform.position; break;
+                PistolLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = ARLaserLine; LaserStartPosition = ARFirepoint.transform.position; LaserEndPosition = ARLaserEndLocation.transform.position; break;
             case 3:
-                LaserEndPosition = SniperLaserEndLocation.transform.position; break;
+                ARLaserLine.enabled = false; PistolLaserLine.enabled = false; ActiveLine = SniperLaserLine; LaserStartPosition = SniperFirepoint.transform.position; LaserEndPosition = SniperLaserEndLocation.transform.position; break;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && PistolAccquired && EquippedWeapon != 1)
@@ -113,8 +119,8 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        LaserLine.SetPosition(0, Firepoint.transform.position);
-        LaserLine.SetPosition(1, LaserEndPosition);
+        ActiveLine.SetPosition(0, LaserStartPosition);
+        ActiveLine.SetPosition(1, LaserEndPosition);
         PlayerControl();
         ShootPistolLaser();
         if (FirerateTime <= 0)
@@ -144,10 +150,10 @@ public class PlayerScript : MonoBehaviour
 
 
 
-            LaserLine.enabled = true;
+            ActiveLine.enabled = true;
             ReadyToFire = false;
             Ray2D ray = new Ray2D();
-            ray.origin = Firepoint.transform.position;
+            ray.origin = LaserStartPosition;
             ray.direction = MousePosition - ray.origin;
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
             FindObjectOfType<AudioManager>().Play(AudioName);
@@ -251,7 +257,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator DisableLaser()
     {
         yield return new WaitForSeconds(LaserShowTime);
-        LaserLine.enabled = false;
+        ActiveLine.enabled = false;
     }
 }
 

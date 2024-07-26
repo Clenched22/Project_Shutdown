@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7301183999799751557
 Transform:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7949928442396572063
 Transform:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &849682994828849950
 Transform:
   m_ObjectHideFlags: 0
@@ -835,7 +835,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 10
-  Firepoint: {fileID: 8204335594995057874}
+  PistolFirepoint: {fileID: 8204335594995057874}
+  ARFirepoint: {fileID: 2299493008289755323}
+  SniperFirepoint: {fileID: 8103932466009921307}
   RotationPoint: {fileID: 8806953550020289787}
   RefRigidbody: {fileID: 8760847476884905074}
   ShootKey: 323
@@ -860,7 +862,9 @@ MonoBehaviour:
   ARTag: AR
   SniperTag: Sniper
   BossTag: Boss
-  LaserLine: {fileID: 4718024872356456664}
+  PistolLaserLine: {fileID: 4718024872356456664}
+  ARLaserLine: {fileID: 2113806837890178667}
+  SniperLaserLine: {fileID: 4021261278999243056}
   LaserShowTime: 0.25
   PistolSprite: {fileID: 1724177131937874143}
   ARSprite: {fileID: 1345942883307829917}
@@ -965,7 +969,7 @@ MonoBehaviour:
   - {x: 0.2515074, y: -0.43303013, z: 0}
   m_ShapePathHash: -1859900773
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32090
+  m_InstanceId: 29880
   m_LocalBounds:
     m_Center: {x: 0.0034536123, y: 0.0027918816, z: 0}
     m_Extent: {x: 0.5053617, y: 0.44419813, z: 0}
@@ -1069,7 +1073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7959291567469926064
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,7 +1158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7247157849926199086
 Transform:
   m_ObjectHideFlags: 0
