@@ -642,6 +642,9 @@ MonoBehaviour:
   PistolSprite: {fileID: 1724177131937874143}
   ARSprite: {fileID: 1345942883307829917}
   SniperSprite: {fileID: 2073662717789719482}
+  PistolDamage: 1
+  ARDamage: 0.5
+  SniperDamage: 5
   PistolAccquired: 1
   ARAccquired: 0
   SniperAccquired: 0
@@ -739,7 +742,7 @@ MonoBehaviour:
   - {x: 0.2515074, y: -0.43303013, z: 0}
   m_ShapePathHash: -1859900773
   m_Mesh: {fileID: 0}
-  m_InstanceId: 29754
+  m_InstanceId: 32814
   m_LocalBounds:
     m_Center: {x: 0.0034536123, y: 0.0027918816, z: 0}
     m_Extent: {x: 0.5053617, y: 0.44419813, z: 0}

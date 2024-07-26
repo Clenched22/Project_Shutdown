@@ -908,6 +908,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c389dd912acb048b45e3df9be20269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Win: 0
+  TimeTookText: 
+  WinLoseText: {fileID: 720719476}
+  TimerText: {fileID: 1531065126}
+  WinText: You saved the ship. Now, go faster!
+  LoseText: You failed to save the ship. You've got it this time!
 --- !u!1 &1363279678
 GameObject:
   m_ObjectHideFlags: 0

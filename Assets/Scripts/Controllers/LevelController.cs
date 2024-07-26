@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -413,13 +414,12 @@ public class LevelController : MonoBehaviour
 
     public void GameOver(bool Win)
     {
+        TimerActive = false;
         Debug.Log(Win);
         if (Win == true)
         {
             SceneManager.LoadScene("End screen");
             FindObjectOfType<EndScreen>().Win = true;
-            TimeSpan time = TimeSpan.FromSeconds(TimerAmount - CurrentTime);
-            FindObjectOfType<EndScreen>().TimeTookText = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         }
         else 
         {
@@ -427,7 +427,10 @@ public class LevelController : MonoBehaviour
             FindObjectOfType<EndScreen>().Win = false;
             FindObjectOfType<EndScreen>().TimeTookText = null;
         }
-        TimerActive = false;
+        float timeToShow = TimerAmount;
+        timeToShow -= CurrentTime;
+        TimeSpan time = TimeSpan.FromSeconds(timeToShow);
+        FindObjectOfType<EndScreen>().TimeTookText = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         TimerText.text = "";
         ResetEnemyLists();
     }

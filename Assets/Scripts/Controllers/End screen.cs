@@ -26,6 +26,19 @@ public class EndScreen : MonoBehaviour
         TimerText.text = TimeTookText;
     }
 
+    void Update()
+    {
+        TimerText.text = TimeTookText;
+        if (Win)
+        {
+            WinLoseText.text = WinText;
+        }
+        else
+        {
+            WinLoseText.text = LoseText;
+        }
+    }
+
     public void Mainmenu()
     {
         FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = FindObjectOfType<LevelController>().MaxHealth;
