@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2149196951331902613}
   - component: {fileID: 5278572528772388145}
   - component: {fileID: 9061948005410616517}
-  - component: {fileID: 882755624712812213}
+  - component: {fileID: 4169650411414255778}
   m_Layer: 0
-  m_Name: ScrewDriver
-  m_TagString: ScrewDriver
+  m_Name: WireCutter
+  m_TagString: WireCutter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 70c47846669e464418c21ddfc27ad679, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 91b8711047aafd848b86c4b2efa9b634, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
     Health: 0
     DamageDealt: 0
     MaxHealth: 0
---- !u!61 &882755624712812213
+--- !u!61 &4169650411414255778
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0063684434, y: 0.014859557}
+  m_Offset: {x: -0.013681352, y: 0.011726916}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -151,5 +151,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3709809, y: 1.2279634}
+  m_Size: {x: 0.6461048, y: 1.1147527}
   m_EdgeRadius: 0

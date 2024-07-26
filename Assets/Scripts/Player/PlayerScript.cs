@@ -131,14 +131,15 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKey(ShootKey) && ReadyToFire == true)
         {
+            string AudioName = null;
             switch (EquippedWeapon)
             {
                 case 1:
-                    FirerateTime = PistolFirerate; ShotDistance = PistolShotDistance; ActualDamageDealt = PistolDamage; break;
+                    FirerateTime = PistolFirerate; ShotDistance = PistolShotDistance; ActualDamageDealt = PistolDamage; AudioName = "PistolLaser"; break;
                 case 2:
-                    FirerateTime = ARFirerate; ShotDistance = ARShotDistance; ActualDamageDealt = ARDamage; break;
+                    FirerateTime = ARFirerate; ShotDistance = ARShotDistance; ActualDamageDealt = ARDamage; AudioName = "ARLaser"; break;
                 case 3:
-                    FirerateTime = SniperFirerate; ShotDistance = SniperShotDistance; ActualDamageDealt = SniperDamage; break;
+                    FirerateTime = SniperFirerate; ShotDistance = SniperShotDistance; ActualDamageDealt = SniperDamage; AudioName = "SniperLaser"; break;
             }
 
 
@@ -149,7 +150,7 @@ public class PlayerScript : MonoBehaviour
             ray.origin = Firepoint.transform.position;
             ray.direction = MousePosition - ray.origin;
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
-            FindObjectOfType<AudioManager>().Play("Laser Blast");
+            FindObjectOfType<AudioManager>().Play(AudioName);
             StartCoroutine(DisableLaser());
             if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
