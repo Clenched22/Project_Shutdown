@@ -10,9 +10,13 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class LevelController : MonoBehaviour
 {
     public List<EnemySpawnInformation> Level1Enemies;
-    public List<EnemySpawnInformation> Level2Enemies;    
+    public List<EnemySpawnInformation> Level2Enemies;
+    public List<EnemySpawnInformation> Level3Enemies;
+    public List<EnemySpawnInformation> Level4Enemies;
     public List<EnemySpawnInformation> Level1EnemiesRestart;
     public List<EnemySpawnInformation> Level2EnemiesRestart;
+    public List<EnemySpawnInformation> Level3EnemiesRestart;
+    public List<EnemySpawnInformation> Level4EnemiesRestart;
     [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject TutorialPanel;
     [SerializeField] GameObject PlayerRef;
@@ -144,11 +148,7 @@ public class LevelController : MonoBehaviour
     }
 
     public void SpawnLevel1Enemies()
-    {//HELP Attemping to make it so Each Enemy Type understands the info it should have on hand. So it can set itself to -
-     //be marked as dead upon destruction, without removing itself from the List for spawning. 
-     //Currently It fails to know if any of the componets are null or not. And seems to maybe pass over the Death if statement.
-     //But Info does appear to be pushed correctly into the Enemy, just not backwards on death.
-     //Biggest problem is within the spawn and respawn when reloading the level.
+    {
         for (int i = 0; i < Level1Enemies.Count; i++)
         {
             if (Level1Enemies[i].Death == false)
@@ -211,6 +211,76 @@ public class LevelController : MonoBehaviour
                 if (objectComp != null)
                 {
                     enemy.GetComponent<Objects>().ESI = Level2Enemies[i];
+                    continue;
+                }
+            }
+        }
+    }
+
+    public void SpawnLevel3Enemies()
+    {
+        for (int i = 0; i < Level3Enemies.Count; i++)
+        {
+            if (Level3Enemies[i].Death == false)
+            {
+                GameObject enemy = Instantiate(Level3Enemies[i].EnemyPrefab, Level3Enemies[i].SpawnPosition, Level3Enemies[i].SpawnRotation);
+                Level3Enemies[i].SpawnIndex = i;
+                Level3Enemies[i].LevelIndex = 1;
+                Level3Enemies[i].Death = false;
+
+                Regular regularComp = enemy.GetComponent<Regular>();
+                if (regularComp != null)
+                {
+                    enemy.GetComponent<Regular>().ESI = Level3Enemies[i];
+                    continue;
+                }
+
+                Boss bossComp = enemy.GetComponent<Boss>();
+                if (bossComp != null)
+                {
+                    enemy.GetComponent<Boss>().ESI = Level3Enemies[i];
+                    continue;
+                }
+
+                Objects objectComp = enemy.GetComponent<Objects>();
+                if (objectComp != null)
+                {
+                    enemy.GetComponent<Objects>().ESI = Level3Enemies[i];
+                    continue;
+                }
+            }
+        }
+    }
+
+    public void SpawnLevel4Enemies()
+    {
+        for (int i = 0; i < Level1Enemies.Count; i++)
+        {
+            if (Level1Enemies[i].Death == false)
+            {
+                GameObject enemy = Instantiate(Level4Enemies[i].EnemyPrefab, Level4Enemies[i].SpawnPosition, Level4Enemies[i].SpawnRotation);
+                Level4Enemies[i].SpawnIndex = i;
+                Level4Enemies[i].LevelIndex = 1;
+                Level4Enemies[i].Death = false;
+
+                Regular regularComp = enemy.GetComponent<Regular>();
+                if (regularComp != null)
+                {
+                    enemy.GetComponent<Regular>().ESI = Level4Enemies[i];
+                    continue;
+                }
+
+                Boss bossComp = enemy.GetComponent<Boss>();
+                if (bossComp != null)
+                {
+                    enemy.GetComponent<Boss>().ESI = Level4Enemies[i];
+                    continue;
+                }
+
+                Objects objectComp = enemy.GetComponent<Objects>();
+                if (objectComp != null)
+                {
+                    enemy.GetComponent<Objects>().ESI = Level4Enemies[i];
                     continue;
                 }
             }
@@ -332,7 +402,14 @@ public class LevelController : MonoBehaviour
         {
             Level2Enemies[i].Death = false;
         }
-
+        for (int i = 0; i < Level3EnemiesRestart.Count; i++)
+        {
+            Level3Enemies[i].Death = false;
+        }
+        for (int i = 0; i < Level4EnemiesRestart.Count; i++)
+        {
+            Level4Enemies[i].Death = false;
+        }
     }
 
     public void LevelChangerActive()
@@ -380,10 +457,24 @@ public class LevelController : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator SpawnDelay(int Level)
+    IEnumerator SpawnDelay(int level)
     {
         yield return new WaitForSeconds(0.25f);
-        if (Level == 0) { SpawnLevel1Enemies(); } else if (Level == 1) { SpawnLevel2Enemies(); }
+        switch (level)
+            {
+                case 1:
+                    SpawnLevel1Enemies();
+                    break;
+                case 2:
+                    SpawnLevel2Enemies();
+                    break;
+                case 3:
+                    SpawnLevel3Enemies();
+                    break;
+                case 4:
+                    SpawnLevel4Enemies();
+                    break;
+            }
         FindObjectOfType<PlayerScript>().Damageable = true;
     }
 }
