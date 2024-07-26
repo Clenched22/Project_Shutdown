@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour
     private int EquippedWeapon;
     private Vector3 LaserEndPosition;
     private float ActualDamageDealt;
-    private Vector2 LaserStartPosition;
+    private Vector3 LaserStartPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +68,6 @@ public class PlayerScript : MonoBehaviour
         CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
         Cursor.lockState = CursorLockMode.Confined;
         ScrewDriver = FindObjectOfType<LevelController>().ScrewDriverAcquired;
-        ActiveLine.enabled = false;
         EquippedWeapon = 1;
         PistolAccquired = true;
         ARAccquired = FindObjectOfType<LevelController>().ARAcquired;
@@ -76,20 +75,14 @@ public class PlayerScript : MonoBehaviour
         PistolSprite.SetActive(true);
         ARSprite.SetActive(false);
         SniperSprite.SetActive(false);
+        LaserStartPosition = PistolFirepoint.transform.position;
+        PistolLaserLine.enabled = true;
+        ActiveLine = PistolLaserLine;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (EquippedWeapon)
-        {
-            case 1:
-                ARLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = PistolLaserLine;  LaserStartPosition = PistolFirepoint.transform.position;  LaserEndPosition = PistolLaserEndLocation.transform.position; break;
-            case 2:
-                PistolLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = ARLaserLine; LaserStartPosition = ARFirepoint.transform.position; LaserEndPosition = ARLaserEndLocation.transform.position; break;
-            case 3:
-                ARLaserLine.enabled = false; PistolLaserLine.enabled = false; ActiveLine = SniperLaserLine; LaserStartPosition = SniperFirepoint.transform.position; LaserEndPosition = SniperLaserEndLocation.transform.position; break;
-        }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && PistolAccquired && EquippedWeapon != 1)
         {
@@ -117,10 +110,23 @@ public class PlayerScript : MonoBehaviour
             ARSprite.SetActive(false);
             SniperSprite.SetActive(true);
         }
-
+        switch (EquippedWeapon)
+        {
+            case 0:
+                Debug.LogError("HELP");
+                break;
+            case 1:
+                ARLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = PistolLaserLine; LaserStartPosition = PistolFirepoint.transform.position; LaserEndPosition = PistolLaserEndLocation.transform.position; break;
+            case 2:
+                PistolLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = ARLaserLine; LaserStartPosition = ARFirepoint.transform.position; LaserEndPosition = ARLaserEndLocation.transform.position; break;
+            case 3:
+                ARLaserLine.enabled = false; PistolLaserLine.enabled = false; ActiveLine = SniperLaserLine; LaserStartPosition = SniperFirepoint.transform.position; LaserEndPosition = SniperLaserEndLocation.transform.position; break;
+        }
 
         ActiveLine.SetPosition(0, LaserStartPosition);
         ActiveLine.SetPosition(1, LaserEndPosition);
+        //ActiveLine.SetPosition(0, LaserStartPosition);
+        //ActiveLine.SetPosition(1, LaserEndPosition);
         PlayerControl();
         ShootPistolLaser();
         if (FirerateTime <= 0)
@@ -181,6 +187,7 @@ public class PlayerScript : MonoBehaviour
             PistolSprite.GetComponent<SpriteRenderer>().flipY = true;
             ARSprite.transform.localPosition = new Vector3(-0.11f, 0.22f, 0);
             ARSprite.GetComponent<SpriteRenderer>().flipY = true;
+            SniperSprite.transform.localPosition = new Vector3(-0.25f, 0.05f, 0);
             SniperSprite.GetComponent<SpriteRenderer>().flipY = true;
         }
         else
@@ -189,6 +196,7 @@ public class PlayerScript : MonoBehaviour
             PistolSprite.GetComponent<SpriteRenderer>().flipY = false;
             ARSprite.transform.localPosition = new Vector3(0.988f, 0.22f, 0);
             ARSprite.GetComponent<SpriteRenderer>().flipY = false;
+            SniperSprite.transform.localPosition = new Vector3(1.08f, 0.05f, 0);
             SniperSprite.GetComponent<SpriteRenderer>().flipY = false;
         }
 

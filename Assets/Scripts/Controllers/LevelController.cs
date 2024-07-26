@@ -131,8 +131,7 @@ public class LevelController : MonoBehaviour
 
 
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
-        PlayerRef = FindObjectOfType<PlayerScript>().gameObject;
-        ScrewDriverAcquired = PlayerRef.GetComponent<PlayerScript>().ScrewDriver;
+        ScrewDriverAcquired = FindObjectOfType<PlayerScript>().ScrewDriverAcquired; 
         //if (SceneIndex == 0 | SceneIndex == 4) { Pauseable = false; }
        // else { Pauseable = true; }
         //if (SceneIndex == 0 | SceneIndex == 4 | Paused == true) { HealthPanel.SetActive(false); }
