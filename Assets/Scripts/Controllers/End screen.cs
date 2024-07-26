@@ -23,7 +23,7 @@ public class EndScreen : MonoBehaviour
         {
             WinLoseText.text = LoseText;
         }
-        TimeTookText = 
+        TimerText.text = TimeTookText;
     }
 
     public void Mainmenu()
