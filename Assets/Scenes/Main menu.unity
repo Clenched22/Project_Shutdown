@@ -5397,17 +5397,17 @@ MonoBehaviour:
   TimerText: {fileID: 1880815642}
   TutorialTextPanel: {fileID: 1513942353}
   TutorialTextRef: {fileID: 718096141}
-  TutorialText1: "You\u2019re ship has been invaded by aliens!"
+  TutorialText1: Your ship has been invaded by aliens!
   TutorialText2: You must disarm the bomb in the next (TIME) minutes to save the
     ship.
-  TutorialText3: "You need you\u2019re screwdriver on the Bridge to get the elevator
-    working again."
+  TutorialText3: You need your screwdriver on the Bridge to get the elevator working
+    again.
   TutorialText4: Then you need a keycard from the Command Center to access the armory.
   TutorialText5: Finally, you need wire cutters from the armory to disarm the bomb.
   TutorialText6: You already have a pistol and will find an Assault Rifle in the
     command center and a Sniper Rifle in the Armory.
-  TutorialText7: "To access these weapons you will need to press the \u2018#1\u2019
-    key for the Pistol, \u2018#2\u2019 key for the Assault Rifle, and \u2018#3\u2019
+  TutorialText7: "To access these weapons, you must press the \u2018#1\u2019 key
+    for the Pistol, \u2018#2\u2019 key for the Assault Rifle, and \u2018#3\u2019
     key for the Sniper Rifle."
   TutorialText8: Good luck out there solider. Make sure to save the ship!
   TimerAmount: 300
