@@ -39,7 +39,12 @@ public class LevelController : MonoBehaviour
     public float TimerAmount;
     public float CurrentTime;
     private bool LevelChanger;
-    public bool Item1Acquired;
+    public bool ScrewDriverAcquired;
+    public bool KeyCardAcquired;
+    public bool WireCutterAcquired;
+    public bool PistolAcquired;
+    public bool ARAcquired;
+    public bool SniperAcquired;
     public int MaxHealth;
     public int HealthCarriedBetweenLevels;
     private bool Paused;
@@ -119,7 +124,7 @@ public class LevelController : MonoBehaviour
 
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerRef = FindObjectOfType<PlayerScript>().gameObject;
-        Item1Acquired = PlayerRef.GetComponent<PlayerScript>().Item1Equipped;
+        ScrewDriverAcquired = PlayerRef.GetComponent<PlayerScript>().ScrewDriver;
         //if (SceneIndex == 0 | SceneIndex == 4) { Pauseable = false; }
        // else { Pauseable = true; }
         //if (SceneIndex == 0 | SceneIndex == 4 | Paused == true) { HealthPanel.SetActive(false); }
@@ -238,7 +243,7 @@ public class LevelController : MonoBehaviour
 
     public void LoadLevel2()
     {
-        if (Item1Acquired == true)
+        if (ScrewDriverAcquired == true)
         {
             LevelChangerPanel.SetActive(false);
             FindObjectOfType<AudioManager>().Play("Elevator");

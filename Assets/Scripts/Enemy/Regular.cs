@@ -25,7 +25,6 @@ public class Regular : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log($"I am + { ESI.SpawnIndex}");
 
         if (IsChasing)
         {

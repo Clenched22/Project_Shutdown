@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8399638593179511287}
   - component: {fileID: 9061948005410616517}
   m_Layer: 0
-  m_Name: ItemToPickUp
-  m_TagString: Item1
+  m_Name: DUP for ITems
+  m_TagString: ScrewDriver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886374b53a3e4f842bcae2d4eaec3d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpawnInformation:
+  ESI:
     LevelIndex: 0
     SpawnIndex: 0
     EnemyPrefab: {fileID: 0}

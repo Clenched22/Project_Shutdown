@@ -14,23 +14,42 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] string LevelChangeTag;
     [SerializeField] float FlashDelay;
     [SerializeField] string EnemyTag;
-    [SerializeField] float ShotDistance;
     [SerializeField] LayerMask BlockRay;
-    [SerializeField] float PistolFireate;
-    [SerializeField] GameObject PistolLaser;
+    [SerializeField] float PistolShotDistance;
+    [SerializeField] float ARShotDistance;
+    [SerializeField] float SniperShotDistance;
+    [SerializeField] float PistolFirerate;
+    [SerializeField] float ARFirerate;
+    [SerializeField] float SniperFirerate;
     [SerializeField] GameObject PistolLaserEndLocation;
-    [SerializeField] string Item1Tag;
+    [SerializeField] GameObject ARLaserEndLocation;
+    [SerializeField] GameObject SniperLaserEndLocation;
+    [SerializeField] string ScrewDriverTag;
+    [SerializeField] string KeyCardTag;
+    [SerializeField] string WireCutterTag;
+    [SerializeField] string ARTag;
+    [SerializeField] string SniperTag;
     [SerializeField] string BossTag;
     [SerializeField] LineRenderer LaserLine;
     [SerializeField] float LaserShowTime;
-    public bool Item1Equipped;
+    [SerializeField] GameObject PistolSprite;
+    [SerializeField] GameObject ARSprite;
+    [SerializeField] GameObject SniperSprite;
+    public bool PistolAccquired;
+    public bool ARAccquired;
+    public bool SniperAccquired;
+    public bool ScrewDriver;
+    public bool KeyCard;
+    public bool WireCutter;
+    private float ShotDistance;
     private float FirerateTime;
     private bool ReadyToFire;
     public bool Damageable;
     private int CurrentHealth;
     private Vector2 MoveDirection;
     private Vector2 MousePosition;
-
+    private int EquippedWeapon;
+    private Vector3 LaserEndPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -38,18 +57,62 @@ public class PlayerScript : MonoBehaviour
         Damageable = true;
         CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
         Cursor.lockState = CursorLockMode.Confined;
-        Item1Equipped = FindObjectOfType<LevelController>().Item1Acquired;
+        ScrewDriver = FindObjectOfType<LevelController>().ScrewDriverAcquired;
         LaserLine.enabled = false;
+        EquippedWeapon = 1;
+        PistolAccquired = true;
+        ARAccquired = FindObjectOfType<LevelController>().ARAcquired;
+        SniperAccquired = FindObjectOfType<LevelController>().SniperAcquired;
+        PistolSprite.SetActive(true);
+        ARSprite.SetActive(false);
+        SniperSprite.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        switch (EquippedWeapon)
+        {
+            case 1:
+                LaserEndPosition = PistolLaserEndLocation.transform.position; break;
+            case 2:
+                LaserEndPosition = ARLaserEndLocation.transform.position; break;
+            case 3:
+                LaserEndPosition = SniperLaserEndLocation.transform.position; break;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && PistolAccquired && EquippedWeapon != 1)
+        {
+            EquippedWeapon = 1;
+            FirerateTime = 0.5f;
+            PistolSprite.SetActive(true);
+            ARSprite.SetActive(false);
+            SniperSprite.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && ARAccquired && EquippedWeapon != 2)
+        {
+            EquippedWeapon = 2;
+            FirerateTime = 0.5f;
+            PistolSprite.SetActive(false);
+            ARSprite.SetActive(true);
+            SniperSprite.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && SniperAccquired && EquippedWeapon != 3)
+        {
+            EquippedWeapon = 3;
+            FirerateTime = 0.5f;
+            PistolSprite.SetActive(false);
+            ARSprite.SetActive(false);
+            SniperSprite.SetActive(true);
+        }
+
+
         LaserLine.SetPosition(0, Firepoint.transform.position);
-        LaserLine.SetPosition(1, PistolLaserEndLocation.transform.position);
+        LaserLine.SetPosition(1, LaserEndPosition);
         PlayerControl();
         ShootPistolLaser();
-        Debug.Log(FirerateTime);
         if (FirerateTime <= 0)
         {
             ReadyToFire = true;
@@ -64,15 +127,20 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKey(ShootKey) && ReadyToFire == true)
         {
-            /* Vector3 spawnPosition = SpawnPosition.transform.position;
-             spawnPosition.z = 2;
-             Instantiate(PistolLaser, spawnPosition, RotationPoint.transform.rotation); */
+            switch (EquippedWeapon)
+            {
+                case 1:
+                    FirerateTime = PistolFirerate; ShotDistance = PistolShotDistance; break;
+                case 2:
+                    FirerateTime = ARFirerate; ShotDistance = ARShotDistance; break;
+                case 3:
+                    FirerateTime = SniperFirerate; ShotDistance = SniperShotDistance; break;
+            }
+
+
 
             LaserLine.enabled = true;
-
-            FirerateTime = PistolFireate;
             ReadyToFire = false;
-            Debug.Log("Fire");
             Ray2D ray = new Ray2D();
             ray.origin = Firepoint.transform.position;
             ray.direction = MousePosition - ray.origin;
@@ -94,11 +162,27 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
         RefRigidbody.velocity = MoveDirection;
         Vector2 lookDirection = MousePosition - RefRigidbody.position;
         float aimAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         RotationPoint.transform.rotation = Quaternion.Euler(0, 0, aimAngle);
+        if (aimAngle < -180 || aimAngle > 0)
+        {
+            PistolSprite.transform.localPosition = new Vector3(0.05f, 0.57f, 0);
+            PistolSprite.GetComponent<SpriteRenderer>().flipY = true;
+            ARSprite.transform.localPosition = new Vector3(-0.11f, 0.22f, 0);
+            ARSprite.GetComponent<SpriteRenderer>().flipY = true;
+            SniperSprite.GetComponent<SpriteRenderer>().flipY = true;
+        }
+        else
+        {
+            PistolSprite.transform.localPosition = new Vector3(0.86f, 0.57f, 0);
+            PistolSprite.GetComponent<SpriteRenderer>().flipY = false;
+            ARSprite.transform.localPosition = new Vector3(0.988f, 0.22f, 0);
+            ARSprite.GetComponent<SpriteRenderer>().flipY = false;
+            SniperSprite.GetComponent<SpriteRenderer>().flipY = false;
+        }
+
     }
 
     private void PlayerControl()
@@ -123,7 +207,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Item1Tag)) { Item1Equipped = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
+        if (collision.CompareTag(ScrewDriverTag)) { ScrewDriver = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
+        if (collision.CompareTag(KeyCardTag)) { KeyCard = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
+        if (collision.CompareTag(WireCutterTag)) { WireCutter = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
+        if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
+        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
         if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().GameOver(true); }
     }

@@ -6,9 +6,13 @@ TagManager:
   tags:
   - Enemy
   - LevelChanger
-  - Item1
-  - Boss
   - Bomb
+  - ScrewDriver
+  - Boss
+  - KeyCard
+  - WireCutter
+  - AR
+  - Sniper
   layers:
   - Default
   - TransparentFX

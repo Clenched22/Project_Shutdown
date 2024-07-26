@@ -5361,7 +5361,7 @@ MonoBehaviour:
   - LevelIndex: 1
     SpawnIndex: 6
     EnemyPrefab: {fileID: 4940796310471264908, guid: 831c4f3a789f9814ca7d9bf859ddac5c, type: 3}
-    SpawnPosition: {x: 0, y: -9, z: 0}
+    SpawnPosition: {x: 0, y: -14, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
   Level2Enemies:
@@ -5412,7 +5412,12 @@ MonoBehaviour:
   TutorialText8: Good luck out there solider. Make sure to save the ship!
   TimerAmount: 300
   CurrentTime: 0
-  Item1Acquired: 0
+  ScrewDriverAcquired: 0
+  KeyCardAcquired: 0
+  WireCutterAcquired: 0
+  PistolAcquired: 0
+  ARAcquired: 0
+  SniperAcquired: 0
   MaxHealth: 5
   HealthCarriedBetweenLevels: 5
 --- !u!4 &1879292175
