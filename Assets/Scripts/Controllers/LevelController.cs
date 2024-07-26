@@ -417,10 +417,15 @@ public class LevelController : MonoBehaviour
         if (Win == true)
         {
             SceneManager.LoadScene("End screen");
+            FindObjectOfType<EndScreen>().Win = true;
+            TimeSpan time = TimeSpan.FromSeconds(TimerAmount - CurrentTime);
+            FindObjectOfType<EndScreen>().TimeTookText = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         }
         else 
         {
             SceneManager.LoadScene("End screen");
+            FindObjectOfType<EndScreen>().Win = false;
+            FindObjectOfType<EndScreen>().TimeTookText = null;
         }
         TimerActive = false;
         TimerText.text = "";
