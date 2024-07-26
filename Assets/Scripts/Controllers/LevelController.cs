@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
+using Unity.PlasticSCM.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -97,6 +98,9 @@ public class LevelController : MonoBehaviour
         Pauseable = false;
         TutorialTextPanel.SetActive(false);
         TutorialActive = false;
+        PistolAcquired = true;
+        ARAcquired = false;
+        SniperAcquired = false;
     }
 
     public void ActualStart()
@@ -131,9 +135,13 @@ public class LevelController : MonoBehaviour
 
 
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
-        ScrewDriverAcquired = FindObjectOfType<PlayerScript>().ScrewDriverAcquired; 
+        ScrewDriverAcquired = FindObjectOfType<PlayerScript>().ScrewDriver;
+        KeyCardAcquired = FindObjectOfType<PlayerScript>().KeyCard;
+        WireCutterAcquired = FindObjectOfType<PlayerScript>().WireCutter;
+        ARAcquired = FindObjectOfType<PlayerScript>().ARAccquired;
+        SniperAcquired = FindObjectOfType<PlayerScript>().SniperAccquired;
         //if (SceneIndex == 0 | SceneIndex == 4) { Pauseable = false; }
-       // else { Pauseable = true; }
+        // else { Pauseable = true; }
         //if (SceneIndex == 0 | SceneIndex == 4 | Paused == true) { HealthPanel.SetActive(false); }
         //else { HealthPanel.SetActive(true); }
         if (Input.GetKeyDown(KeyCode.Escape) && Pauseable == true)
