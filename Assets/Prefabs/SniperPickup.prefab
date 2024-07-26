@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8399638593179511287}
   - component: {fileID: 9061948005410616517}
   m_Layer: 0
-  m_Name: DUP for ITems
+  m_Name: SniperPickup
   m_TagString: ScrewDriver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

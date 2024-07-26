@@ -4532,7 +4532,7 @@ MonoBehaviour:
     Technical
     Lead: Ethan Driscoll
 
-    Art Lead: (PLACERHOLDER)
+    Art Lead: Olivia Duester
 
     Audio Lead: Joel Luna
 
@@ -7134,36 +7134,55 @@ MonoBehaviour:
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
+    Loop: 0
   - Name: BasicEnemyDeath
     Clip: {fileID: 8300000, guid: 65b2023bd9f0de74690e4f7abc5aa8e9, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
+    Loop: 0
   - Name: Background
     Clip: {fileID: 8300000, guid: 576ce85bd89aa944e9e8fcdfe9bc6066, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
+    Loop: 0
   - Name: Elevator
     Clip: {fileID: 8300000, guid: dd66066cde9cb0646804b760b140e6a8, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
+    Loop: 0
   - Name: Pickup
     Clip: {fileID: 8300000, guid: 40e054806379d354682b29c5c9d923f0, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
+    Loop: 0
   - Name: BossDeath
     Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
+    Loop: 0
   - Name: PlayerDeath
     Clip: {fileID: 8300000, guid: 5cce5a5c0d410264bb76f754df075fee, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
+    Loop: 0
+  - Name: MainBG
+    Clip: {fileID: 8300000, guid: 576ce85bd89aa944e9e8fcdfe9bc6066, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: BossBG
+    Clip: {fileID: 8300000, guid: ccf2712890a7fcd4d9282e026fcd3d93, type: 3}
+    Volume: 0.6
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
 --- !u!4 &1970217903
 Transform:
   m_ObjectHideFlags: 0
