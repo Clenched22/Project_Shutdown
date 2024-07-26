@@ -625,7 +625,7 @@ MonoBehaviour:
   PistolShotDistance: 2
   ARShotDistance: 1
   SniperShotDistance: 10
-  PistolFirerate: 1
+  PistolFirerate: 0.5
   ARFirerate: 0.5
   SniperFirerate: 3
   PistolLaserEndLocation: {fileID: 8467479714296868104}
@@ -635,7 +635,7 @@ MonoBehaviour:
   KeyCardTag: KeyCard
   WireCutterTag: WireCutter
   ARTag: AR
-  SniperTag: Snipper
+  SniperTag: Sniper
   BossTag: Boss
   LaserLine: {fileID: 4718024872356456664}
   LaserShowTime: 0.25
@@ -646,7 +646,7 @@ MonoBehaviour:
   ARDamage: 0.5
   SniperDamage: 5
   PistolAccquired: 1
-  ARAccquired: 0
+  ARAccquired: 1
   SniperAccquired: 0
   ScrewDriver: 0
   KeyCard: 0
