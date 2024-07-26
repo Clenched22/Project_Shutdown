@@ -5328,42 +5328,56 @@ MonoBehaviour:
     SpawnPosition: {x: 0, y: 5.4997573, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 1
     SpawnIndex: 0
     EnemyPrefab: {fileID: 5036699126018304820, guid: ed014ba57d7d0d943868fd8fe7338a45, type: 3}
     SpawnPosition: {x: -6.59, y: -0.67, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 1
     SpawnIndex: 0
     EnemyPrefab: {fileID: 5036699126018304820, guid: ed014ba57d7d0d943868fd8fe7338a45, type: 3}
     SpawnPosition: {x: 7.28, y: -0.67, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 1
     SpawnIndex: 0
     EnemyPrefab: {fileID: 5036699126018304820, guid: ed014ba57d7d0d943868fd8fe7338a45, type: 3}
     SpawnPosition: {x: 5.23, y: -13.59, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 1
     SpawnIndex: 0
     EnemyPrefab: {fileID: 5036699126018304820, guid: ed014ba57d7d0d943868fd8fe7338a45, type: 3}
     SpawnPosition: {x: 0, y: -12.55, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 1
     SpawnIndex: 0
     EnemyPrefab: {fileID: 5036699126018304820, guid: ed014ba57d7d0d943868fd8fe7338a45, type: 3}
     SpawnPosition: {x: -5.23, y: -13.59, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 1
     SpawnIndex: 6
     EnemyPrefab: {fileID: 4940796310471264908, guid: 831c4f3a789f9814ca7d9bf859ddac5c, type: 3}
     SpawnPosition: {x: 0, y: -14, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   Level2Enemies:
   - LevelIndex: 2
     SpawnIndex: 0
@@ -5371,18 +5385,24 @@ MonoBehaviour:
     SpawnPosition: {x: 0, y: 10, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 2
     SpawnIndex: 0
     EnemyPrefab: {fileID: 5036699126018304820, guid: ed014ba57d7d0d943868fd8fe7338a45, type: 3}
     SpawnPosition: {x: -4.08, y: 8.16, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   - LevelIndex: 2
     SpawnIndex: 0
     EnemyPrefab: {fileID: 5036699126018304820, guid: ed014ba57d7d0d943868fd8fe7338a45, type: 3}
     SpawnPosition: {x: 4.08, y: 8.16, z: 0}
     SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
     Death: 0
+    Health: 0
+    DamageDealt: 0
   Level1EnemiesRestart: []
   Level2EnemiesRestart: []
   PausePanel: {fileID: 1559876489}
@@ -6004,8 +6024,8 @@ MonoBehaviour:
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
-  - Name: Death
-    Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
+  - Name: BasicEnemyDeath
+    Clip: {fileID: 8300000, guid: 65b2023bd9f0de74690e4f7abc5aa8e9, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
@@ -6021,6 +6041,16 @@ MonoBehaviour:
     Source: {fileID: 0}
   - Name: Pickup
     Clip: {fileID: 8300000, guid: 40e054806379d354682b29c5c9d923f0, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+  - Name: BossDeath
+    Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+  - Name: PlayerDeath
+    Clip: {fileID: 8300000, guid: 5cce5a5c0d410264bb76f754df075fee, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}

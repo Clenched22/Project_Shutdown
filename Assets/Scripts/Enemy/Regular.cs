@@ -62,16 +62,23 @@ public class Regular : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            FindObjectOfType<PlayerScript>().DecreaseHealth(1);
+            FindObjectOfType<PlayerScript>().DecreaseHealth(ESI.DamageDealt);
             Vector2 difference = (transform.position - collision.transform.position).normalized;
             Vector2 force = difference * PushbackForce;
             RB.AddForce(force, ForceMode2D.Impulse);
         }
     }
 
-    public void Death()
+    public void HealthDecrease(float damageTaken)
+    {
+        ESI.Health -= damageTaken;
+        if (ESI.Health <= 0) { Death(); }
+    }
+
+    private void Death()
     {
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
+        FindObjectOfType<AudioManager>().Play("BasicEnemyDeath");
         Destroy(gameObject);
     }
 }

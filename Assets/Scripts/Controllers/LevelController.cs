@@ -45,8 +45,8 @@ public class LevelController : MonoBehaviour
     public bool PistolAcquired;
     public bool ARAcquired;
     public bool SniperAcquired;
-    public int MaxHealth;
-    public int HealthCarriedBetweenLevels;
+    public float MaxHealth;
+    public float HealthCarriedBetweenLevels;
     private bool Paused;
     private bool Tutorial;
     private int SceneIndex;

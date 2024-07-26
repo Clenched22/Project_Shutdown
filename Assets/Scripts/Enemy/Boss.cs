@@ -9,7 +9,6 @@ public class Boss : MonoBehaviour
     [SerializeField] float MoveSpeed;
     [SerializeField] bool IsChasing;
     [SerializeField] float ChaseDistance;
-    [SerializeField] int Health;
     public EnemySpawnInformation ESI;
     [SerializeField] Rigidbody2D RB;
     [SerializeField] float PushbackForce;
@@ -55,10 +54,10 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void DecreaseHealth()
+    public void DecreaseHealth(float damageDealt)
     {
-        Health--;
-        if (Health <= 0)
+        ESI.Health -= damageDealt;
+        if (ESI.Health <= 0)
         {
             Death();
         }
@@ -78,6 +77,7 @@ public class Boss : MonoBehaviour
     public void Death()
     {
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
+        FindObjectOfType<AudioManager>().Play("BossDeath");
         Destroy(gameObject);
     }
 }

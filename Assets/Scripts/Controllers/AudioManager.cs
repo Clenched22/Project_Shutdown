@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
-using Unity.VisualScripting;
 
 public class AudioManager : MonoBehaviour
 {
@@ -35,6 +32,7 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Null");
         }
         Debug.Log(Name);
+        s.Pitch = UnityEngine.Random.Range(s.Pitch - 0.2f, s.Pitch + 0.2f);
         s.Source.Play();
     }
 

@@ -11,4 +11,6 @@ public class EnemySpawnInformation
     public Vector3 SpawnPosition;
     public Quaternion SpawnRotation;
     public bool Death;
+    public float Health;
+    public float DamageDealt;
 }

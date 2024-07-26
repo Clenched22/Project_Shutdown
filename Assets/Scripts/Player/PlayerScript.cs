@@ -35,6 +35,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] GameObject PistolSprite;
     [SerializeField] GameObject ARSprite;
     [SerializeField] GameObject SniperSprite;
+    [SerializeField] float PistolDamage;
+    [SerializeField] float ARDamage;
+    [SerializeField] float SniperDamage;
     public bool PistolAccquired;
     public bool ARAccquired;
     public bool SniperAccquired;
@@ -45,11 +48,12 @@ public class PlayerScript : MonoBehaviour
     private float FirerateTime;
     private bool ReadyToFire;
     public bool Damageable;
-    private int CurrentHealth;
+    private float CurrentHealth;
     private Vector2 MoveDirection;
     private Vector2 MousePosition;
     private int EquippedWeapon;
     private Vector3 LaserEndPosition;
+    private float ActualDamageDealt;
 
     // Start is called before the first frame update
     void Start()
@@ -130,11 +134,11 @@ public class PlayerScript : MonoBehaviour
             switch (EquippedWeapon)
             {
                 case 1:
-                    FirerateTime = PistolFirerate; ShotDistance = PistolShotDistance; break;
+                    FirerateTime = PistolFirerate; ShotDistance = PistolShotDistance; ActualDamageDealt = PistolDamage; break;
                 case 2:
-                    FirerateTime = ARFirerate; ShotDistance = ARShotDistance; break;
+                    FirerateTime = ARFirerate; ShotDistance = ARShotDistance; ActualDamageDealt = ARDamage; break;
                 case 3:
-                    FirerateTime = SniperFirerate; ShotDistance = SniperShotDistance; break;
+                    FirerateTime = SniperFirerate; ShotDistance = SniperShotDistance; ActualDamageDealt = SniperDamage; break;
             }
 
 
@@ -149,13 +153,11 @@ public class PlayerScript : MonoBehaviour
             StartCoroutine(DisableLaser());
             if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
-                    castResult.transform.GetComponent<Regular>().Death();
-                    FindObjectOfType<AudioManager>().Play("Death");
+                    castResult.transform.GetComponent<Regular>().HealthDecrease(ActualDamageDealt);
                 }
             if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
                 {
-                    FindObjectOfType<Boss>().DecreaseHealth();
-                    FindObjectOfType<AudioManager>().Play("Death");
+                    FindObjectOfType<Boss>().DecreaseHealth(ActualDamageDealt);
                 }
         }
     }
@@ -197,7 +199,7 @@ public class PlayerScript : MonoBehaviour
         inputVector.Normalize();
         MoveDirection = inputVector * MoveSpeed;
         MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = currentHealth;
+        FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
 
 
         Vector2 movement;
@@ -220,7 +222,7 @@ public class PlayerScript : MonoBehaviour
         FindObjectOfType<LevelController>()?.LevelChangerInActive();
     }
 
-    public void DecreaseHealth(int healthDecrease)
+    public void DecreaseHealth(float healthDecrease)
     {
         if (CurrentHealth > 0)
         {
@@ -232,7 +234,7 @@ public class PlayerScript : MonoBehaviour
                 StartCoroutine(HealthDelay());
             }
         }
-        else if (CurrentHealth <= 0) { FindObjectOfType<LevelController>().GameOver(false); }
+        else if (CurrentHealth <= 0) { FindObjectOfType<LevelController>().GameOver(false); FindObjectOfType<AudioManager>().Play("PlayerDeath"); }
     }
 
     IEnumerator HealthDelay()
