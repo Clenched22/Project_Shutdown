@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1426188533971890414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.85, z: 0}
+  m_LocalPosition: {x: 0.44, y: 5.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -850,7 +850,7 @@ MonoBehaviour:
   PistolShotDistance: 2
   ARShotDistance: 1
   SniperShotDistance: 10
-  PistolFirerate: 0.5
+  PistolFirerate: 1
   ARFirerate: 0.5
   SniperFirerate: 3
   PistolLaserEndLocation: {fileID: 8467479714296868104}
@@ -969,7 +969,7 @@ MonoBehaviour:
   - {x: 0.2515074, y: -0.43303013, z: 0}
   m_ShapePathHash: -1859900773
   m_Mesh: {fileID: 0}
-  m_InstanceId: 37300
+  m_InstanceId: 43996
   m_LocalBounds:
     m_Center: {x: 0.0034536123, y: 0.0027918816, z: 0}
     m_Extent: {x: 0.5053617, y: 0.44419813, z: 0}
@@ -1253,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 8467479714296868104}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.85, z: 0}
+  m_LocalPosition: {x: 0.45, y: 9.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

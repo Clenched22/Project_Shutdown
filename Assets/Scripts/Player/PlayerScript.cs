@@ -76,7 +76,9 @@ public class PlayerScript : MonoBehaviour
         ARSprite.SetActive(false);
         SniperSprite.SetActive(false);
         LaserStartPosition = PistolFirepoint.transform.position;
-        PistolLaserLine.enabled = true;
+        PistolLaserLine.enabled = false;
+        ARLaserLine.enabled = false;
+        SniperLaserLine.enabled = false;
         ActiveLine = PistolLaserLine;
     }
 
@@ -123,10 +125,13 @@ public class PlayerScript : MonoBehaviour
                 ARLaserLine.enabled = false; PistolLaserLine.enabled = false; ActiveLine = SniperLaserLine; LaserStartPosition = SniperFirepoint.transform.position; LaserEndPosition = SniperLaserEndLocation.transform.position; break;
         }
 
-        ActiveLine.SetPosition(0, LaserStartPosition);
-        ActiveLine.SetPosition(1, LaserEndPosition);
-        //ActiveLine.SetPosition(0, LaserStartPosition);
-        //ActiveLine.SetPosition(1, LaserEndPosition);
+        PistolLaserLine.SetPosition(0, LaserStartPosition);
+        PistolLaserLine.SetPosition(1, LaserEndPosition);
+        ARLaserLine.SetPosition(0, LaserStartPosition);
+        ARLaserLine.SetPosition(1, LaserEndPosition);
+        SniperLaserLine.SetPosition(0, LaserStartPosition);
+        SniperLaserLine.SetPosition(1, LaserEndPosition);
+
         PlayerControl();
         ShootPistolLaser();
         if (FirerateTime <= 0)
@@ -146,23 +151,36 @@ public class PlayerScript : MonoBehaviour
             string AudioName = null;
             switch (EquippedWeapon)
             {
+                case 0: Debug.LogError("HELP"); break;
                 case 1:
-                    FirerateTime = PistolFirerate; ShotDistance = PistolShotDistance; ActualDamageDealt = PistolDamage; AudioName = "PistolLaser"; break;
+                    PistolLaserLine.enabled = true; 
+                    FirerateTime = PistolFirerate; 
+                    ShotDistance = PistolShotDistance; 
+                    ActualDamageDealt = PistolDamage; 
+                    AudioName = "PistolLaser"; 
+                    break;
                 case 2:
-                    FirerateTime = ARFirerate; ShotDistance = ARShotDistance; ActualDamageDealt = ARDamage; AudioName = "ARLaser"; break;
+                    ARLaserLine.enabled = true; 
+                    FirerateTime = ARFirerate; 
+                    ShotDistance = ARShotDistance; 
+                    ActualDamageDealt = ARDamage; 
+                    AudioName = "ARLaser"; 
+                    break;
                 case 3:
-                    FirerateTime = SniperFirerate; ShotDistance = SniperShotDistance; ActualDamageDealt = SniperDamage; AudioName = "SniperLaser"; break;
+                    SniperLaserLine.enabled = true; 
+                    FirerateTime = SniperFirerate; 
+                    ShotDistance = SniperShotDistance; 
+                    ActualDamageDealt = SniperDamage; 
+                    AudioName = "SniperLaser"; 
+                    break;
             }
 
-
-
-            ActiveLine.enabled = true;
             ReadyToFire = false;
             Ray2D ray = new Ray2D();
             ray.origin = LaserStartPosition;
             ray.direction = MousePosition - ray.origin;
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
-            FindObjectOfType<AudioManager>().Play(AudioName);
+            //FindObjectOfType<AudioManager>().Play(AudioName);
             StartCoroutine(DisableLaser());
             if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
@@ -265,7 +283,9 @@ public class PlayerScript : MonoBehaviour
     IEnumerator DisableLaser()
     {
         yield return new WaitForSeconds(LaserShowTime);
-        ActiveLine.enabled = false;
+        PistolLaserLine.enabled = false;
+        ARLaserLine.enabled = false; 
+        SniperLaserLine.enabled = false;
     }
 }
 

@@ -60,6 +60,7 @@ public class LevelController : MonoBehaviour
     private bool Tutorial;
     private int SceneIndex;
     private bool Pauseable;
+    public bool MainBGPlaying;
 
 
     private void Awake()
@@ -101,6 +102,8 @@ public class LevelController : MonoBehaviour
         PistolAcquired = true;
         ARAcquired = false;
         SniperAcquired = false;
+        FindObjectOfType<AudioManager>().Play("MainBG");
+        MainBGPlaying = true;
     }
 
     public void ActualStart()
@@ -326,6 +329,11 @@ public class LevelController : MonoBehaviour
         SceneManager.LoadScene(1);
         StartCoroutine(SpawnDelay(1));
         TimerActive = true;
+        if (MainBGPlaying != true)
+        {
+            FindObjectOfType<AudioManager>().Play("MainBG");
+            FindObjectOfType<AudioManager>().Stop("BossBG");
+        }
     }
 
     public void LoadLevel2()
@@ -337,6 +345,11 @@ public class LevelController : MonoBehaviour
             SceneManager.LoadScene(2);
             StartCoroutine(SpawnDelay(2));
             TimerActive = true;
+            if (MainBGPlaying != true)
+            {
+                FindObjectOfType<AudioManager>().Play("MainBG");
+                FindObjectOfType<AudioManager>().Stop("BossBG");
+            }
         }
         else { GetItemText.enabled = true; GetItemText.text = GetScrewDriverText; }
     }
@@ -350,6 +363,11 @@ public class LevelController : MonoBehaviour
             SceneManager.LoadScene(3);
             StartCoroutine(SpawnDelay(3));
             TimerActive = true;
+            if (MainBGPlaying != true)
+            {
+                FindObjectOfType<AudioManager>().Play("MainBG");
+                FindObjectOfType<AudioManager>().Stop("BossBG");
+            }
         }
         else { GetItemText.enabled = true; GetItemText.text = GetKeyCardText; }
     }
@@ -363,6 +381,8 @@ public class LevelController : MonoBehaviour
             SceneManager.LoadScene(4);
             StartCoroutine(SpawnDelay(4));
             TimerActive = true;
+            FindObjectOfType<AudioManager>().Stop(("MainBG"));
+            FindObjectOfType<AudioManager>().Play("BossBG");
         }
         else { GetItemText.enabled = true; GetItemText.text = GetWireCutterText; }
     }

@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
 
     public void ShowCredits()
     {
-        if (TutorialActive)
+        if (CreditsActive)
         {
             CreditsActive = false;
             MainMenuPanel.SetActive(true);

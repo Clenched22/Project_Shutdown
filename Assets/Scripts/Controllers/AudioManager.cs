@@ -27,28 +27,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        int Index = SceneManager.GetActiveScene().buildIndex;
-        if (Index == 4)
-        {
-            Stop("MainBG");
-            Play("BossBG");
-        }
-        else
-        {
-            Stop("BossBG");
-            Play("MainBG");
-        }
-
-    }
-
     public void Play(string Name)
     {
         Sound s = Array.Find(Sounds, Sound => Sound.Name == Name);
         if (s == null)
         {
-            Debug.Log("Null");
+            Debug.LogError($"AudioSource Null{Name}");
+            return;
         }
         Debug.Log(Name);
         s.Pitch = UnityEngine.Random.Range(s.Pitch - 0.2f, s.Pitch + 0.2f);
