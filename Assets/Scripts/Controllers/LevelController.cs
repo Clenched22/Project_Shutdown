@@ -23,9 +23,10 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject HealthPanel;
     [SerializeField] TMP_Text HealthText;
     [SerializeField] GameObject LevelChangerPanel;
-    [SerializeField] TMP_Text GetScrewDriverText;
-    [SerializeField] TMP_Text GetKeyCardText;
-    [SerializeField] TMP_Text GetWireCutterText;
+    [SerializeField] TMP_Text GetItemText;
+    [SerializeField] string GetScrewDriverText;
+    [SerializeField] string GetKeyCardText;
+    [SerializeField] string GetWireCutterText;
     [SerializeField] float PushbackForce;
     [SerializeField] String TimerPrefix;
     [SerializeField] TMP_Text TimerText;
@@ -300,6 +301,12 @@ public class LevelController : MonoBehaviour
             case 2:
                 Level2Enemies[Index].Death = true;
                 break;
+            case 3:
+                Level3Enemies[Index].Death = true;
+                break;
+            case 4:
+                Level4Enemies[Index].Death = true;
+                break;
         }
     }
 
@@ -323,7 +330,7 @@ public class LevelController : MonoBehaviour
             StartCoroutine(SpawnDelay(2));
             TimerActive = true;
         }
-        else { GetScrewDriverText.enabled = true; }
+        else { GetItemText.enabled = true; GetItemText.text = GetScrewDriverText; }
     }
 
     public void LoadLevel3()
@@ -336,7 +343,7 @@ public class LevelController : MonoBehaviour
             StartCoroutine(SpawnDelay(3));
             TimerActive = true;
         }
-        else { GetKeyCardText.enabled = true; }
+        else { GetItemText.enabled = true; GetItemText.text = GetKeyCardText; }
     }
 
     public void LoadLevel4()
@@ -349,7 +356,7 @@ public class LevelController : MonoBehaviour
             StartCoroutine(SpawnDelay(4));
             TimerActive = true;
         }
-        else { GetWireCutterText.enabled = true; }
+        else { GetItemText.enabled = true; GetItemText.text = GetWireCutterText; }
     }
 
     public void EnemyDeath(int Level, int Index)
@@ -409,11 +416,11 @@ public class LevelController : MonoBehaviour
         Debug.Log(Win);
         if (Win == true)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("End screen");
         }
         else 
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("End screen");
         }
         TimerActive = false;
         TimerText.text = "";
@@ -443,16 +450,12 @@ public class LevelController : MonoBehaviour
     public void LevelChangerActive()
     {
         LevelChangerPanel.SetActive(true);
-        GetScrewDriverText.enabled = false;
-        GetKeyCardText.enabled = false;
-        GetWireCutterText.enabled = false;
+        GetItemText.enabled = false;
     }    
 
     public void LevelChangerInActive()
     {
-        GetScrewDriverText.enabled = false;
-        GetKeyCardText.enabled = false;
-        GetWireCutterText.enabled = false;
+        GetItemText.enabled = false;
         LevelChangerPanel.SetActive(false);
     }
 
@@ -480,7 +483,8 @@ public class LevelController : MonoBehaviour
     public void MainMenu()
     {
         Resume();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main menu");
+        ResetEnemyLists();
         HealthCarriedBetweenLevels = MaxHealth;
     }
 
