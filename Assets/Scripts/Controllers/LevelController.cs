@@ -23,7 +23,9 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject HealthPanel;
     [SerializeField] TMP_Text HealthText;
     [SerializeField] GameObject LevelChangerPanel;
-    [SerializeField] TMP_Text GetItem1Text;
+    [SerializeField] TMP_Text GetScrewDriverText;
+    [SerializeField] TMP_Text GetKeyCardText;
+    [SerializeField] TMP_Text GetWireCutterText;
     [SerializeField] float PushbackForce;
     [SerializeField] String TimerPrefix;
     [SerializeField] TMP_Text TimerText;
@@ -306,8 +308,8 @@ public class LevelController : MonoBehaviour
 
         LevelChangerPanel.SetActive(false);
         FindObjectOfType<AudioManager>().Play("Elevator");
-        SceneManager.LoadScene(0);
-        StartCoroutine(SpawnDelay(0));
+        SceneManager.LoadScene(1);
+        StartCoroutine(SpawnDelay(1));
         TimerActive = true;
     }
 
@@ -317,11 +319,37 @@ public class LevelController : MonoBehaviour
         {
             LevelChangerPanel.SetActive(false);
             FindObjectOfType<AudioManager>().Play("Elevator");
-            SceneManager.LoadScene(1);
-            StartCoroutine(SpawnDelay(1));
+            SceneManager.LoadScene(2);
+            StartCoroutine(SpawnDelay(2));
             TimerActive = true;
         }
-        else { GetItem1Text.enabled = true; }
+        else { GetScrewDriverText.enabled = true; }
+    }
+
+    public void LoadLevel3()
+    {
+        if (KeyCardAcquired == true)
+        {
+            LevelChangerPanel.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("Elevator");
+            SceneManager.LoadScene(3);
+            StartCoroutine(SpawnDelay(3));
+            TimerActive = true;
+        }
+        else { GetKeyCardText.enabled = true; }
+    }
+
+    public void LoadLevel4()
+    {
+        if (WireCutterAcquired == true)
+        {
+            LevelChangerPanel.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("Elevator");
+            SceneManager.LoadScene(4);
+            StartCoroutine(SpawnDelay(4));
+            TimerActive = true;
+        }
+        else { GetWireCutterText.enabled = true; }
     }
 
     public void EnemyDeath(int Level, int Index)
@@ -414,13 +442,17 @@ public class LevelController : MonoBehaviour
 
     public void LevelChangerActive()
     {
-            LevelChangerPanel.SetActive(true);
-            GetItem1Text.enabled = false;
+        LevelChangerPanel.SetActive(true);
+        GetScrewDriverText.enabled = false;
+        GetKeyCardText.enabled = false;
+        GetWireCutterText.enabled = false;
     }    
 
     public void LevelChangerInActive()
     {
-        GetItem1Text.enabled = false;
+        GetScrewDriverText.enabled = false;
+        GetKeyCardText.enabled = false;
+        GetWireCutterText.enabled = false;
         LevelChangerPanel.SetActive(false);
     }
 
