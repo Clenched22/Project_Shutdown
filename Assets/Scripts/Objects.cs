@@ -20,6 +20,7 @@ public class Objects : MonoBehaviour
     public void Death()
     {
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
+        FindObjectOfType<AudioManager>().Play("ItemPickup");
         Destroy(gameObject);
     }
 }

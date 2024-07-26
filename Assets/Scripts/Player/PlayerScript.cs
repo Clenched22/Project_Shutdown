@@ -180,7 +180,7 @@ public class PlayerScript : MonoBehaviour
             ray.origin = LaserStartPosition;
             ray.direction = MousePosition - ray.origin;
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
-            //FindObjectOfType<AudioManager>().Play(AudioName);
+            FindObjectOfType<AudioManager>().Play(AudioName);
             StartCoroutine(DisableLaser());
             if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {

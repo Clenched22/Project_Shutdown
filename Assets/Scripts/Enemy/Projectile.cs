@@ -92,7 +92,7 @@ public class Projectile : MonoBehaviour
     {
         if (AbleToShoot)
         {
-            //Audio Spit Green goo like smth
+            FindObjectOfType<AudioManager>().Play("EnemyShoot");
             Vector2 spawnPosition = FirePoint.transform.position;
             Quaternion spawnRotation = FirePoint.transform.rotation;
             GameObject firedProjectile = Instantiate(EnemyProjectile, spawnPosition, spawnRotation);
@@ -136,7 +136,7 @@ public class Projectile : MonoBehaviour
     private void Death()
     {
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
-        FindObjectOfType<AudioManager>().Play("BasicEnemyDeath");
+        FindObjectOfType<AudioManager>().Play("ProjectileEnemyDeath");
         Destroy(gameObject);
     }
 }

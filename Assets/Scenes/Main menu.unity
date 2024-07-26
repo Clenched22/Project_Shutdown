@@ -7206,7 +7206,7 @@ MonoBehaviour:
     Source: {fileID: 0}
     Loop: 0
   - Name: BossDeath
-    Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
+    Clip: {fileID: 8300000, guid: 6b4ae0f90825db048a20c942c83746f7, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
@@ -7226,6 +7226,36 @@ MonoBehaviour:
   - Name: BossBG
     Clip: {fileID: 8300000, guid: ccf2712890a7fcd4d9282e026fcd3d93, type: 3}
     Volume: 0.6
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: ARLaser
+    Clip: {fileID: 8300000, guid: 66ec1376c48a62442bd539c7628e5b5e, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: SniperLaser
+    Clip: {fileID: 8300000, guid: 883697e730837b54e826752253bf6cc9, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: ProjectileEnemyDeath
+    Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: ItemPickup
+    Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: EnemyShoot
+    Clip: {fileID: 8300000, guid: da439890078d7c24f9c38229e3e99c9e, type: 3}
+    Volume: 1
     Pitch: 1
     Source: {fileID: 0}
     Loop: 0
