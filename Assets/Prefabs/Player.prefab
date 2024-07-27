@@ -842,7 +842,7 @@ MonoBehaviour:
   RefRigidbody: {fileID: 8760847476884905074}
   ShootKey: 323
   LevelChangeTag: LevelChanger
-  FlashDelay: 1
+  FlashDelay: 0.5
   EnemyTag: Enemy
   BlockRay:
     serializedVersion: 2
@@ -850,8 +850,8 @@ MonoBehaviour:
   PistolShotDistance: 2
   ARShotDistance: 1
   SniperShotDistance: 10
-  PistolFirerate: 1
-  ARFirerate: 0.5
+  PistolFirerate: 0.5
+  ARFirerate: 0.2
   SniperFirerate: 3
   PistolLaserEndLocation: {fileID: 8467479714296868104}
   ARLaserEndLocation: {fileID: 1426188533971890414}
@@ -873,7 +873,7 @@ MonoBehaviour:
   ARDamage: 0.5
   SniperDamage: 5
   PistolAccquired: 1
-  ARAccquired: 1
+  ARAccquired: 0
   SniperAccquired: 0
   ScrewDriver: 0
   KeyCard: 0

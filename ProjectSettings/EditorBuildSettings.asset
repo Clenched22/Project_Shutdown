@@ -12,14 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Bridge.unity
     guid: 216905297f8c83c498b1e4c453e102e6
   - enabled: 1
+    path: Assets/Scenes/Armory.unity
+    guid: 678acd8919ad8c143bcc664f3a91a818
+  - enabled: 1
     path: Assets/Scenes/Command Center.unity
     guid: def85897ac6abd348a6a3ed4ba8f1bc1
   - enabled: 1
     path: Assets/Scenes/Cargo Hold.unity
     guid: a8dab73a09e9fa64d97dc355235576ce
-  - enabled: 1
-    path: Assets/Scenes/Armory.unity
-    guid: 678acd8919ad8c143bcc664f3a91a818
   - enabled: 1
     path: Assets/Scenes/End screen.unity
     guid: 5dc5ffdb1ca29c743a9fa0393c337479
