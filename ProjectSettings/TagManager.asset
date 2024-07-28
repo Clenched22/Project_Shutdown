@@ -13,6 +13,7 @@ TagManager:
   - WireCutter
   - AR
   - Sniper
+  - Laser
   layers:
   - Default
   - TransparentFX

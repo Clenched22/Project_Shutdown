@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
     public bool PistolAccquired;
     public bool ARAccquired;
     public bool SniperAccquired;
-    public bool ScrewDriver;
+    public bool ScrewDriver = false;
     public bool KeyCard;
     public bool WireCutter;
     private float ShotDistance;
@@ -182,14 +182,18 @@ public class PlayerScript : MonoBehaviour
             RaycastHit2D castResult = Physics2D.Raycast(ray.origin, ray.direction.normalized, ShotDistance);
             FindObjectOfType<AudioManager>().Play(AudioName);
             StartCoroutine(DisableLaser());
-            if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
+
+            if (castResult.transform != null)
+            {
+                if (castResult.transform.CompareTag(EnemyTag) && castResult.distance <= ShotDistance)
                 {
                     castResult.transform.GetComponent<Regular>().HealthDecrease(ActualDamageDealt);
                 }
-            if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
+                if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
                 {
                     FindObjectOfType<Boss>().DecreaseHealth(ActualDamageDealt);
                 }
+            }
         }
     }
 

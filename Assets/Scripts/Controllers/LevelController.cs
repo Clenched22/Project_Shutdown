@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
-using Unity.PlasticSCM.Editor;
+//using Unity.PlasticSCM.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -138,11 +138,18 @@ public class LevelController : MonoBehaviour
 
 
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
-        ScrewDriverAcquired = FindObjectOfType<PlayerScript>().ScrewDriver;
-        KeyCardAcquired = FindObjectOfType<PlayerScript>().KeyCard;
-        WireCutterAcquired = FindObjectOfType<PlayerScript>().WireCutter;
-        ARAcquired = FindObjectOfType<PlayerScript>().ARAccquired;
-        SniperAcquired = FindObjectOfType<PlayerScript>().SniperAccquired;
+
+        var playerScript = FindObjectOfType<PlayerScript>();
+
+        if (playerScript != null)
+        {
+            ScrewDriverAcquired = playerScript.ScrewDriver;
+            KeyCardAcquired = playerScript.KeyCard;
+            WireCutterAcquired = playerScript.WireCutter;
+            ARAcquired = playerScript.ARAccquired;
+            SniperAcquired = playerScript.SniperAccquired;
+        }
+
         //if (SceneIndex == 0 | SceneIndex == 4) { Pauseable = false; }
         // else { Pauseable = true; }
         //if (SceneIndex == 0 | SceneIndex == 4 | Paused == true) { HealthPanel.SetActive(false); }
