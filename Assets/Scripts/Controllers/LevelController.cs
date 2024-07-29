@@ -131,8 +131,6 @@ public class LevelController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && TutorialActive) { WhichStringToShow++; TutorialStringSelector(); }
 
-        if (Input.GetKeyDown(KeyCode.Space)) { SpawnLevel2Enemies(); }
-
         if (TimerActive)
         {
             CurrentTime -= Time.deltaTime;
@@ -148,17 +146,22 @@ public class LevelController : MonoBehaviour
 
         if (playerScript != null)
         {
-            ScrewDriverAcquired = playerScript.ScrewDriver;
-            KeyCardAcquired = playerScript.KeyCard;
-            WireCutterAcquired = playerScript.WireCutter;
-            ARAcquired = playerScript.ARAccquired;
-            SniperAcquired = playerScript.SniperAccquired;
+            if (ScrewDriverAcquired != true)
+            { ScrewDriverAcquired = playerScript.ScrewDriver; }
+            if (KeyCardAcquired != true)
+            { KeyCardAcquired = playerScript.KeyCard; }
+            if (WireCutterAcquired != true)
+            { WireCutterAcquired = playerScript.WireCutter; }
+            if (ARAcquired != true)
+            { ARAcquired = playerScript.ARAccquired; }
+            if (SniperAcquired != true)
+            { SniperAcquired = playerScript.SniperAccquired; }
         }
 
-        //if (SceneIndex == 0 | SceneIndex == 4) { Pauseable = false; }
-        // else { Pauseable = true; }
-        //if (SceneIndex == 0 | SceneIndex == 4 | Paused == true) { HealthPanel.SetActive(false); }
-        //else { HealthPanel.SetActive(true); }
+        if (SceneIndex == 0 | SceneIndex == 5) { Pauseable = false; }
+         else { Pauseable = true; }
+        if (SceneIndex == 0 | SceneIndex == 5 | Paused == true) { HealthPanel.SetActive(false); }
+        else { HealthPanel.SetActive(true); }
         if (Input.GetKeyDown(KeyCode.Escape) && Pauseable == true)
         {
             if (Paused == true)
@@ -519,6 +522,13 @@ public class LevelController : MonoBehaviour
         {
             Level4Enemies[i].Death = false;
         }
+        ScrewDriverAcquired = false;
+        KeyCardAcquired = false;
+        WireCutterAcquired = false;
+        ARAcquired = false;
+        SniperAcquired = false;
+        HealthCarriedBetweenLevels = MaxHealth;
+        CurrentTime = TimerAmount;
     }
 
     public void LevelChangerActive()

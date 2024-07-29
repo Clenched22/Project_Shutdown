@@ -15,6 +15,7 @@ TagManager:
   - Sniper
   - Laser
   - ProjectileEnemy
+  - MedPack
   layers:
   - Default
   - TransparentFX

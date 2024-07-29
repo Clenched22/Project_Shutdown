@@ -863,6 +863,7 @@ MonoBehaviour:
   WireCutterTag: WireCutter
   ARTag: AR
   SniperTag: Sniper
+  MedPackTag: MedPack
   PistolLaserLine: {fileID: 4718024872356456664}
   ARLaserLine: {fileID: 2113806837890178667}
   SniperLaserLine: {fileID: 4021261278999243056}
@@ -935,7 +936,7 @@ MonoBehaviour:
   - {x: 0.2515074, y: -0.43303013, z: 0}
   m_ShapePathHash: -1859900773
   m_Mesh: {fileID: 0}
-  m_InstanceId: 75224
+  m_InstanceId: 74024
   m_LocalBounds:
     m_Center: {x: 0.0034536123, y: 0.0027918816, z: 0}
     m_Extent: {x: 0.5053617, y: 0.44419813, z: 0}

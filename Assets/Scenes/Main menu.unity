@@ -6523,6 +6523,15 @@ MonoBehaviour:
     Health: 0
     DamageDealt: 0
     MaxHealth: 0
+  - LevelIndex: 1
+    SpawnIndex: 6
+    EnemyPrefab: {fileID: 4940796310471264908, guid: 925fbe73646da294490ead4952bd4f9c, type: 3}
+    SpawnPosition: {x: 10.6, y: -16.505495, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 1
+    MaxHealth: 0
   Level2Enemies:
   - LevelIndex: 2
     SpawnIndex: 0
@@ -6677,6 +6686,24 @@ MonoBehaviour:
     Health: 0
     DamageDealt: 0
     MaxHealth: 0
+  - LevelIndex: 2
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 4940796310471264908, guid: 925fbe73646da294490ead4952bd4f9c, type: 3}
+    SpawnPosition: {x: -11.5, y: 67, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 1
+    MaxHealth: 0
+  - LevelIndex: 2
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 4940796310471264908, guid: 925fbe73646da294490ead4952bd4f9c, type: 3}
+    SpawnPosition: {x: 13, y: 48, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 1
+    MaxHealth: 0
   Level3Enemies:
   - LevelIndex: 3
     SpawnIndex: 0
@@ -6813,6 +6840,24 @@ MonoBehaviour:
     Health: 0
     DamageDealt: 0
     MaxHealth: 0
+  - LevelIndex: 3
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 4940796310471264908, guid: 925fbe73646da294490ead4952bd4f9c, type: 3}
+    SpawnPosition: {x: -2.6, y: -11.5, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 1
+    MaxHealth: 0
+  - LevelIndex: 3
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 4940796310471264908, guid: 925fbe73646da294490ead4952bd4f9c, type: 3}
+    SpawnPosition: {x: -20.2, y: 9.2, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 1
+    MaxHealth: 0
   Level4Enemies:
   - LevelIndex: 4
     SpawnIndex: 0
@@ -6841,6 +6886,24 @@ MonoBehaviour:
     Health: 1
     DamageDealt: 1
     MaxHealth: 1
+  - LevelIndex: 4
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 4940796310471264908, guid: 925fbe73646da294490ead4952bd4f9c, type: 3}
+    SpawnPosition: {x: -8.5, y: -2.8, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 1
+    MaxHealth: 0
+  - LevelIndex: 4
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 4940796310471264908, guid: 925fbe73646da294490ead4952bd4f9c, type: 3}
+    SpawnPosition: {x: 8.6, y: -2.8, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 1
+    MaxHealth: 0
   Level1EnemiesRestart: []
   Level2EnemiesRestart: []
   Level3EnemiesRestart: []
@@ -7488,8 +7551,8 @@ MonoBehaviour:
     Pitch: 1
     Source: {fileID: 0}
     Loop: 0
-  - Name: Pickup
-    Clip: {fileID: 8300000, guid: 40e054806379d354682b29c5c9d923f0, type: 3}
+  - Name: EnemyShoot
+    Clip: {fileID: 8300000, guid: da439890078d7c24f9c38229e3e99c9e, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
@@ -7538,12 +7601,6 @@ MonoBehaviour:
     Loop: 0
   - Name: ItemPickup
     Clip: {fileID: 8300000, guid: 40e054806379d354682b29c5c9d923f0, type: 3}
-    Volume: 1
-    Pitch: 1
-    Source: {fileID: 0}
-    Loop: 0
-  - Name: EnemyShoot
-    Clip: {fileID: 8300000, guid: da439890078d7c24f9c38229e3e99c9e, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}

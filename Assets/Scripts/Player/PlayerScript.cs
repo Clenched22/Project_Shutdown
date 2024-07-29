@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -33,6 +35,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] string WireCutterTag;
     [SerializeField] string ARTag;
     [SerializeField] string SniperTag;
+    [SerializeField] string MedPackTag;
     [SerializeField] LineRenderer PistolLaserLine;
     [SerializeField] LineRenderer ARLaserLine;
     [SerializeField] LineRenderer SniperLaserLine;
@@ -255,7 +258,8 @@ public class PlayerScript : MonoBehaviour
         if (collision.CompareTag(KeyCardTag)) { KeyCard = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(WireCutterTag)) { WireCutter = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
-        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
+        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); }
+        if (collision.CompareTag(MedPackTag)) { if (Damageable) { collision.transform.GetComponent<Objects>().Death(); StartCoroutine(HealthIncreaseDelay()); } }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
         if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().Win = true; FindObjectOfType<LevelController>().GameOver(); }
     }
@@ -263,6 +267,12 @@ public class PlayerScript : MonoBehaviour
     {
         FindObjectOfType<LevelController>()?.LevelChangerInActive();
     }
+
+    public void IncreaseHealth(float healthIncrease)
+    {
+        CurrentHealth += healthIncrease;
+        FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
+    }    
 
     public void DecreaseHealth(float healthDecrease)
     {
@@ -284,6 +294,13 @@ public class PlayerScript : MonoBehaviour
         Damageable = true;
         GetComponent<SpriteRenderer>().color = Color.white;
         Time.timeScale = 1;
+    }
+
+    IEnumerator HealthIncreaseDelay()
+    {
+        GetComponent<SpriteRenderer>().color = Color.blue;
+        yield return new WaitForSecondsRealtime(1);
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     IEnumerator DisableLaser()
