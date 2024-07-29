@@ -162,7 +162,7 @@ public class LevelController : MonoBehaviour
          else { Pauseable = true; }
         if (SceneIndex == 0 | SceneIndex == 5 | Paused == true) { HealthPanel.SetActive(false); }
         else { HealthPanel.SetActive(true); }
-        if (Input.GetKeyDown(KeyCode.Escape) && Pauseable == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && Pauseable == true && TutorialActive == false)
         {
             if (Paused == true)
             {
@@ -489,7 +489,6 @@ public class LevelController : MonoBehaviour
         if (Win == true)
         {
             SceneManager.LoadScene("End screen");
-            FindObjectOfType<EndScreen>().Win = true;
         }
         else 
         {
@@ -497,10 +496,6 @@ public class LevelController : MonoBehaviour
             FindObjectOfType<EndScreen>().Win = false;
             FindObjectOfType<EndScreen>().TimeTookText = null;
         }
-        float timeToShow = TimerAmount;
-        timeToShow -= CurrentTime;
-        TimeSpan time = TimeSpan.FromSeconds(timeToShow);
-        FindObjectOfType<EndScreen>().TimeTookText = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
     }
 
     private void ResetEnemyLists()

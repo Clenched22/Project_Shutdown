@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,7 +25,12 @@ public class EndScreen : MonoBehaviour
         {
             WinLoseText.text = LoseText;
         }
-        TimerText.text = TimeTookText;
+        float timeToShow = FindObjectOfType<LevelController>().TimerAmount;
+        timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
+        TimeSpan time = TimeSpan.FromSeconds(timeToShow);
+        Debug.Log(timeToShow.ToString());
+        TimeTookText = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+
     }
 
     void Update()
