@@ -7585,7 +7585,7 @@ MonoBehaviour:
     Loop: 1
   - Name: ARLaser
     Clip: {fileID: 8300000, guid: 66ec1376c48a62442bd539c7628e5b5e, type: 3}
-    Volume: 1
+    Volume: 0.656
     Pitch: 1
     Source: {fileID: 0}
     Loop: 0
@@ -7625,8 +7625,20 @@ MonoBehaviour:
     Pitch: 1
     Source: {fileID: 0}
     Loop: 0
-  - Name: HealthPickup
-    Clip: {fileID: 8300000, guid: 709edd78c5853574d9d50489e79c95a8, type: 3}
+  - Name: ScrewdriverPickup
+    Clip: {fileID: 8300000, guid: 4a9c56c2738f42a45a500fcf8849a169, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: GunPickup
+    Clip: {fileID: 8300000, guid: c53f0c87deb73c2438af7bfa5a3e5e60, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: Reload
+    Clip: {fileID: 8300000, guid: 8712de476a856a347a6692ca1c45ef0e, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}

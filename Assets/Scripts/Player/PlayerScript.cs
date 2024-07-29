@@ -171,7 +171,7 @@ public class PlayerScript : MonoBehaviour
                     FirerateTime = SniperFirerate; 
                     ShotDistance = SniperShotDistance; 
                     ActualDamageDealt = SniperDamage; 
-                    AudioName = "SniperLaser"; 
+                    AudioName = "SniperLaser";
                     break;
             }
 
@@ -250,12 +250,12 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(ScrewDriverTag)) { ScrewDriver = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
-        if (collision.CompareTag(KeyCardTag)) { KeyCard = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
-        if (collision.CompareTag(WireCutterTag)) { WireCutter = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
-        if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
-        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
-        if (collision.CompareTag(MedPackTag)) { if (Damageable) { collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); } }
+        if (collision.CompareTag(ScrewDriverTag)) { ScrewDriver = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ScrewdriverPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(KeyCardTag)) { KeyCard = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("KeyCardPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(WireCutterTag)) { WireCutter = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("WireCutterPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("GunPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("GunPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(MedPackTag)) { if (Damageable) { collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("HealthPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); } }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
         if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().Win = true; FindObjectOfType<LevelController>().GameOver(); }
     }
