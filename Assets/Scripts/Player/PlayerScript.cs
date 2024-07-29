@@ -47,6 +47,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float PistolDamage;
     [SerializeField] float ARDamage;
     [SerializeField] float SniperDamage;
+    [SerializeField] AnimationClip WalkUp;
+    [SerializeField] AnimationClip WalkDown;
+    [SerializeField] AnimationClip WalkRight;
+    [SerializeField] AnimationClip WalkLeft;
     public bool PistolAccquired;
     public bool ARAccquired;
     public bool SniperAccquired;
@@ -236,7 +240,6 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) { inputVector += new Vector2(0, -1); /*AudioManager.instance.PlayWalkSound();*/ }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) { inputVector += new Vector2(-1, 0); /*AudioManager.instance.PlayWalkSound();*/ }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) { inputVector += new Vector2(1, 0); /*AudioManager.instance.PlayWalkSound(); */}
-        
         inputVector.Normalize();
         MoveDirection = inputVector * MoveSpeed;
         MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
