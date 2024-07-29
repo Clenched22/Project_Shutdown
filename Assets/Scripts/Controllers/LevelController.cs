@@ -135,7 +135,14 @@ public class LevelController : MonoBehaviour
         {
             CurrentTime -= Time.deltaTime;
             TimeSpan time = TimeSpan.FromSeconds(CurrentTime);
-            TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+            if (CurrentTime < 60)
+            {
+                TimerText.text = TimerPrefix + "0" + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+            }
+            else
+            {
+                TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+            }
         }
         if (CurrentTime <= 0) { Win = false; GameOver(); }
 

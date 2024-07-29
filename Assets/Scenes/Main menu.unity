@@ -6936,6 +6936,7 @@ MonoBehaviour:
     for the Pistol, \u2018#2\u2019 key for the Assault Rifle, and \u2018#3\u2019
     key for the Sniper Rifle."
   TutorialText8: Good luck out there solider. Make sure to save the ship!
+  TutorialActive: 0
   TimerAmount: 300
   CurrentTime: 0
   ScrewDriverAcquired: 0
@@ -6946,6 +6947,7 @@ MonoBehaviour:
   SniperAcquired: 0
   MaxHealth: 5
   HealthCarriedBetweenLevels: 5
+  Paused: 0
   MainBGPlaying: 0
   Win: 0
 --- !u!4 &1879292175
@@ -7544,7 +7546,7 @@ MonoBehaviour:
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
-    Loop: 0
+    Loop: 1
   - Name: Elevator
     Clip: {fileID: 8300000, guid: dd66066cde9cb0646804b760b140e6a8, type: 3}
     Volume: 1

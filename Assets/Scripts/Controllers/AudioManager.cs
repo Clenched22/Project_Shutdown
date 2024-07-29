@@ -38,7 +38,6 @@ public class AudioManager : MonoBehaviour
         s.Pitch = UnityEngine.Random.Range(s.Pitch - 0.2f, s.Pitch + 0.2f);
         Debug.Log($"Pitch is: {s.Pitch}");
         s.Source.Play();
-        s.Source.loop = s.Loop;
     }
 
     public void Stop(string Name)
