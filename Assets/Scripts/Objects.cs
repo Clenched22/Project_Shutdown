@@ -9,7 +9,6 @@ public class Objects : MonoBehaviour
     {
         FindObjectOfType<PlayerScript>().IncreaseHealth(ESI.DamageDealt);
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
-        FindObjectOfType<AudioManager>().Play("ItemPickup");
         Destroy(gameObject);
     }
 }

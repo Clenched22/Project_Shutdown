@@ -485,7 +485,6 @@ public class LevelController : MonoBehaviour
     public void GameOver()
     {
         TimerActive = false;
-        Debug.Log($"Win = {Win}");
         ResetEnemyLists();
         if (Win == true)
         {

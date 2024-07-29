@@ -35,19 +35,14 @@ public class AudioManager : MonoBehaviour
             Debug.LogError($"AudioSource Null{Name}");
             return;
         }
-        Debug.Log(Name);
         s.Pitch = UnityEngine.Random.Range(s.Pitch - 0.2f, s.Pitch + 0.2f);
+        Debug.Log($"Pitch is: {s.Pitch}");
         s.Source.Play();
     }
 
     public void Stop(string Name)
     {
         Sound s = Array.Find(Sounds, Sound => Sound.Name == Name);
-        if (s == null)
-        {
-            Debug.Log("Null");
-        }
-        Debug.Log(Name);
         s.Pitch = UnityEngine.Random.Range(s.Pitch - 0.2f, s.Pitch + 0.2f);
         s.Source.Stop();
 

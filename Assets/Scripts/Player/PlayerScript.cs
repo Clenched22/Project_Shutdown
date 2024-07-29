@@ -118,9 +118,6 @@ public class PlayerScript : MonoBehaviour
         }
         switch (EquippedWeapon)
         {
-            case 0:
-                Debug.LogError("HELP");
-                break;
             case 1:
                 ARLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = PistolLaserLine; LaserStartPosition = PistolFirepoint.transform.position; LaserEndPosition = PistolLaserEndLocation.transform.position; break;
             case 2:
@@ -155,7 +152,6 @@ public class PlayerScript : MonoBehaviour
             string AudioName = null;
             switch (EquippedWeapon)
             {
-                case 0: Debug.LogError("HELP"); break;
                 case 1:
                     PistolLaserLine.enabled = true; 
                     FirerateTime = PistolFirerate; 
@@ -254,12 +250,12 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(ScrewDriverTag)) { ScrewDriver = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
-        if (collision.CompareTag(KeyCardTag)) { KeyCard = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
-        if (collision.CompareTag(WireCutterTag)) { WireCutter = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
-        if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
-        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); }
-        if (collision.CompareTag(MedPackTag)) { if (Damageable) { collision.transform.GetComponent<Objects>().Death(); StartCoroutine(HealthIncreaseDelay()); } }
+        if (collision.CompareTag(ScrewDriverTag)) { ScrewDriver = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(KeyCardTag)) { KeyCard = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(WireCutterTag)) { WireCutter = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); }
+        if (collision.CompareTag(MedPackTag)) { if (Damageable) { collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ItemPickup"); } }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
         if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().Win = true; FindObjectOfType<LevelController>().GameOver(); }
     }
@@ -272,6 +268,7 @@ public class PlayerScript : MonoBehaviour
     {
         CurrentHealth += healthIncrease;
         FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
+        StartCoroutine(HealthIncreaseDelay());
     }    
 
     public void DecreaseHealth(float healthDecrease)
