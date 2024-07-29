@@ -7570,17 +7570,17 @@ MonoBehaviour:
     Source: {fileID: 0}
     Loop: 0
   - Name: MainBG
-    Clip: {fileID: 8300000, guid: 576ce85bd89aa944e9e8fcdfe9bc6066, type: 3}
+    Clip: {fileID: 8300000, guid: 7fa0e2bf9bc5b3f4f8b2af6f68d7ea63, type: 3}
     Volume: 0.5
     Pitch: 1
     Source: {fileID: 0}
-    Loop: 0
+    Loop: 1
   - Name: BossBG
-    Clip: {fileID: 8300000, guid: ccf2712890a7fcd4d9282e026fcd3d93, type: 3}
+    Clip: {fileID: 8300000, guid: 576ce85bd89aa944e9e8fcdfe9bc6066, type: 3}
     Volume: 0.6
     Pitch: 1
     Source: {fileID: 0}
-    Loop: 0
+    Loop: 1
   - Name: ARLaser
     Clip: {fileID: 8300000, guid: 66ec1376c48a62442bd539c7628e5b5e, type: 3}
     Volume: 1
@@ -7601,6 +7601,30 @@ MonoBehaviour:
     Loop: 0
   - Name: ItemPickup
     Clip: {fileID: 8300000, guid: 40e054806379d354682b29c5c9d923f0, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: HealthPickup
+    Clip: {fileID: 8300000, guid: 709edd78c5853574d9d50489e79c95a8, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: KeyCardPickup
+    Clip: {fileID: 8300000, guid: b2233fe2b06be2b4eadf6a747c4b6e76, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: WireCutterPickup
+    Clip: {fileID: 8300000, guid: dfe796e803d53504badfd586edf1bb93, type: 3}
+    Volume: 1
+    Pitch: 1
+    Source: {fileID: 0}
+    Loop: 0
+  - Name: HealthPickup
+    Clip: {fileID: 8300000, guid: 709edd78c5853574d9d50489e79c95a8, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}

@@ -854,7 +854,7 @@ MonoBehaviour:
   ARShotDistance: 1.5
   SniperShotDistance: 10
   PistolFirerate: 0.5
-  ARFirerate: 0.2
+  ARFirerate: 0.1
   SniperFirerate: 2
   PistolLaserEndLocation: {fileID: 8467479714296868104}
   ARLaserEndLocation: {fileID: 1426188533971890414}
