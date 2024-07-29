@@ -135,6 +135,7 @@ public class Projectile : MonoBehaviour
 
     private void Death()
     {
+        Debug.Log($"Level: {ESI.LevelIndex}, Spawn {ESI.SpawnIndex}");
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
         FindObjectOfType<AudioManager>().Play("ProjectileEnemyDeath");
         Destroy(gameObject);

@@ -14,7 +14,7 @@ public class ProjectileMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 shotForce = RefProjectile.transform.up * ShotForce * Time.deltaTime;
+        Vector2 shotForce = RefProjectile.transform.up * ShotForce;
         GetComponent<Rigidbody2D>().AddForce(shotForce, ForceMode2D.Impulse);
         StartCoroutine(DestroyDelay());
 

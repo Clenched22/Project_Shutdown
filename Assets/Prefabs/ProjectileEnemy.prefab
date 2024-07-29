@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 2639231080302874128}
   m_Layer: 0
   m_Name: ProjectileEnemy
-  m_TagString: Enemy
+  m_TagString: ProjectileEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
   - {x: 0.26, y: -0.44140625, z: 0}
   m_ShapePathHash: 1295385886
   m_Mesh: {fileID: 0}
-  m_InstanceId: 34182
+  m_InstanceId: 44204
   m_LocalBounds:
     m_Center: {x: -0.004999995, y: 0, z: 0}
     m_Extent: {x: 0.505, y: 0.44140625, z: 0}

@@ -16,6 +16,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] string LevelChangeTag;
     [SerializeField] float FlashDelay;
     [SerializeField] string EnemyTag;
+    [SerializeField] string ProjectileEnemyTag;
+    [SerializeField] string BossTag;
     [SerializeField] LayerMask BlockRay;
     [SerializeField] float PistolShotDistance;
     [SerializeField] float ARShotDistance;
@@ -31,7 +33,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] string WireCutterTag;
     [SerializeField] string ARTag;
     [SerializeField] string SniperTag;
-    [SerializeField] string BossTag;
     [SerializeField] LineRenderer PistolLaserLine;
     [SerializeField] LineRenderer ARLaserLine;
     [SerializeField] LineRenderer SniperLaserLine;
@@ -189,6 +190,10 @@ public class PlayerScript : MonoBehaviour
                 {
                     castResult.transform.GetComponent<Regular>().HealthDecrease(ActualDamageDealt);
                 }
+                if (castResult.transform.CompareTag(ProjectileEnemyTag) && castResult.distance <= ShotDistance)
+                {
+                    castResult.transform.GetComponent<Projectile>().HealthDecrease(ActualDamageDealt);
+                }
                 if (castResult.transform.CompareTag(BossTag) && castResult.distance <= ShotDistance)
                 {
                     FindObjectOfType<Boss>().DecreaseHealth(ActualDamageDealt);
@@ -252,7 +257,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("Pickup"); }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
-        if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().GameOver(true); }
+        if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().Win = true; FindObjectOfType<LevelController>().GameOver(); }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -261,23 +266,20 @@ public class PlayerScript : MonoBehaviour
 
     public void DecreaseHealth(float healthDecrease)
     {
-        if (CurrentHealth > 0)
+        if (Damageable)
         {
-            if (Damageable)
-            {
-                Damageable = false;
-                CurrentHealth -= healthDecrease;
-                FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
-                StartCoroutine(HealthDelay());
-            }
+            CurrentHealth -= healthDecrease;
+            Damageable = false;
+            FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
+            StartCoroutine(HealthDelay());
         }
-        else if (CurrentHealth <= 0) { FindObjectOfType<LevelController>().GameOver(false); FindObjectOfType<AudioManager>().Play("PlayerDeath"); }
+    if (CurrentHealth <= 0) {  FindObjectOfType<LevelController>().GameOver(); FindObjectOfType<AudioManager>().Play("PlayerDeath"); }
     }
 
     IEnumerator HealthDelay()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
-        Time.timeScale = 0;
+        Time.timeScale = 0.5f;
         yield return new WaitForSecondsRealtime(1);
         Damageable = true;
         GetComponent<SpriteRenderer>().color = Color.white;

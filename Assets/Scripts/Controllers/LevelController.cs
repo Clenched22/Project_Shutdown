@@ -61,6 +61,7 @@ public class LevelController : MonoBehaviour
     private int SceneIndex;
     private bool Pauseable;
     public bool MainBGPlaying;
+    public bool Win;
 
 
     private void Awake()
@@ -104,6 +105,10 @@ public class LevelController : MonoBehaviour
         SniperAcquired = false;
         FindObjectOfType<AudioManager>().Play("MainBG");
         MainBGPlaying = true;
+        Level1EnemiesRestart = Level1Enemies;
+        Level2EnemiesRestart= Level2Enemies;
+        Level3EnemiesRestart = Level3Enemies;
+        Level4EnemiesRestart = Level4Enemies;
     }
 
     public void ActualStart()
@@ -134,7 +139,7 @@ public class LevelController : MonoBehaviour
             TimeSpan time = TimeSpan.FromSeconds(CurrentTime);
             TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         }
-        if (CurrentTime <= 0) { GameOver(false); }
+        if (CurrentTime <= 0) { Win = false; GameOver(); }
 
 
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -193,6 +198,13 @@ public class LevelController : MonoBehaviour
                     continue;
                 }
 
+                Projectile projectile = enemy.GetComponent<Projectile>();
+                if (projectile != null)
+                {
+                    enemy.GetComponent<Projectile>().ESI = Level1Enemies[i];
+                    continue;
+                }
+
                 Objects objectComp = enemy.GetComponent<Objects>();
                 if ( objectComp != null) 
                 { 
@@ -228,6 +240,13 @@ public class LevelController : MonoBehaviour
                     continue;
                 }
 
+                Projectile projectile = enemy.GetComponent<Projectile>();
+                if (projectile != null)
+                {
+                    enemy.GetComponent<Projectile>().ESI = Level2Enemies[i];
+                    continue;
+                }
+
                 Objects objectComp = enemy.GetComponent<Objects>();
                 if (objectComp != null)
                 {
@@ -246,7 +265,7 @@ public class LevelController : MonoBehaviour
             {
                 GameObject enemy = Instantiate(Level3Enemies[i].EnemyPrefab, Level3Enemies[i].SpawnPosition, Level3Enemies[i].SpawnRotation);
                 Level3Enemies[i].SpawnIndex = i;
-                Level3Enemies[i].LevelIndex = 1;
+                Level3Enemies[i].LevelIndex = 3;
                 Level3Enemies[i].Death = false;
 
                 Regular regularComp = enemy.GetComponent<Regular>();
@@ -263,6 +282,13 @@ public class LevelController : MonoBehaviour
                     continue;
                 }
 
+                Projectile projectile = enemy.GetComponent<Projectile>();
+                if (projectile != null)
+                {
+                    enemy.GetComponent<Projectile>().ESI = Level3Enemies[i];
+                    continue;
+                }
+
                 Objects objectComp = enemy.GetComponent<Objects>();
                 if (objectComp != null)
                 {
@@ -275,13 +301,13 @@ public class LevelController : MonoBehaviour
 
     public void SpawnLevel4Enemies()
     {
-        for (int i = 0; i < Level1Enemies.Count; i++)
+        for (int i = 0; i < Level4Enemies.Count; i++)
         {
-            if (Level1Enemies[i].Death == false)
+            if (Level4Enemies[i].Death == false)
             {
                 GameObject enemy = Instantiate(Level4Enemies[i].EnemyPrefab, Level4Enemies[i].SpawnPosition, Level4Enemies[i].SpawnRotation);
                 Level4Enemies[i].SpawnIndex = i;
-                Level4Enemies[i].LevelIndex = 1;
+                Level4Enemies[i].LevelIndex = 4;
                 Level4Enemies[i].Death = false;
 
                 Regular regularComp = enemy.GetComponent<Regular>();
@@ -295,6 +321,13 @@ public class LevelController : MonoBehaviour
                 if (bossComp != null)
                 {
                     enemy.GetComponent<Boss>().ESI = Level4Enemies[i];
+                    continue;
+                }
+
+                Projectile projectile = enemy.GetComponent<Projectile>();
+                if (projectile != null)
+                {
+                    enemy.GetComponent<Projectile>().ESI = Level4Enemies[i];
                     continue;
                 }
 
@@ -446,10 +479,11 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void GameOver(bool Win)
+    public void GameOver()
     {
         TimerActive = false;
-        Debug.Log(Win);
+        Debug.Log($"Win = {Win}");
+        ResetEnemyLists();
         if (Win == true)
         {
             SceneManager.LoadScene("End screen");
@@ -465,8 +499,6 @@ public class LevelController : MonoBehaviour
         timeToShow -= CurrentTime;
         TimeSpan time = TimeSpan.FromSeconds(timeToShow);
         FindObjectOfType<EndScreen>().TimeTookText = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
-        TimerText.text = "";
-        ResetEnemyLists();
     }
 
     private void ResetEnemyLists()

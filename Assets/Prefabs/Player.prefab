@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1426188533971890414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 5.85, z: 0}
+  m_LocalPosition: {x: 0.4, y: 8.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -402,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 2299493008289755323}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 2.37, z: 0}
+  m_LocalPosition: {x: 0.4, y: 2.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -844,15 +844,17 @@ MonoBehaviour:
   LevelChangeTag: LevelChanger
   FlashDelay: 0.5
   EnemyTag: Enemy
+  ProjectileEnemyTag: ProjectileEnemy
+  BossTag: Boss
   BlockRay:
     serializedVersion: 2
     m_Bits: 8
   PistolShotDistance: 2
-  ARShotDistance: 1
+  ARShotDistance: 1.5
   SniperShotDistance: 10
   PistolFirerate: 0.5
   ARFirerate: 0.2
-  SniperFirerate: 3
+  SniperFirerate: 2
   PistolLaserEndLocation: {fileID: 8467479714296868104}
   ARLaserEndLocation: {fileID: 1426188533971890414}
   SniperLaserEndLocation: {fileID: 7005172211055502160}
@@ -861,7 +863,6 @@ MonoBehaviour:
   WireCutterTag: WireCutter
   ARTag: AR
   SniperTag: Sniper
-  BossTag: Boss
   PistolLaserLine: {fileID: 4718024872356456664}
   ARLaserLine: {fileID: 2113806837890178667}
   SniperLaserLine: {fileID: 4021261278999243056}
@@ -934,7 +935,7 @@ MonoBehaviour:
   - {x: 0.2515074, y: -0.43303013, z: 0}
   m_ShapePathHash: -1859900773
   m_Mesh: {fileID: 0}
-  m_InstanceId: 66142
+  m_InstanceId: 75224
   m_LocalBounds:
     m_Center: {x: 0.0034536123, y: 0.0027918816, z: 0}
     m_Extent: {x: 0.5053617, y: 0.44419813, z: 0}
@@ -1009,7 +1010,7 @@ Transform:
   m_GameObject: {fileID: 7005172211055502160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 41.85, z: 0}
+  m_LocalPosition: {x: 0, y: 42.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -15,6 +15,7 @@ public class EndScreen : MonoBehaviour
 
     private void Start()
     {
+        Win = FindObjectOfType<LevelController>().Win;
         if (Win)
         {
             WinLoseText.text = WinText;
