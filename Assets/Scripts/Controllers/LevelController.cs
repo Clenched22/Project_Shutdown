@@ -43,7 +43,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] string TutorialText7;
     [SerializeField] string TutorialText8;
     private float WhichStringToShow;
-    private bool TutorialActive;
+    public bool TutorialActive;
     private bool TimerActive;
     public float TimerAmount;
     public float CurrentTime;
@@ -56,7 +56,7 @@ public class LevelController : MonoBehaviour
     public bool SniperAcquired;
     public float MaxHealth;
     public float HealthCarriedBetweenLevels;
-    private bool Paused;
+    public bool Paused;
     private bool Tutorial;
     private int SceneIndex;
     private bool Pauseable;

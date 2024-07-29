@@ -147,7 +147,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ShootPistolLaser()
     {
-        if (Input.GetKey(ShootKey) && ReadyToFire == true)
+        if (Input.GetKey(ShootKey) && ReadyToFire == true && FindObjectOfType<LevelController>().Paused == false && FindObjectOfType<LevelController>().TutorialActive == false)
         {
             string AudioName = null;
             switch (EquippedWeapon)
