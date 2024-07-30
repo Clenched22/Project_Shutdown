@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] Slider HealthSlider;
     [SerializeField] GameObject deathPartical;
     [SerializeField] GameObject hitPartical;
+    private bool Damageable;
 
     // Start is called before the first frame update
     void Start()
