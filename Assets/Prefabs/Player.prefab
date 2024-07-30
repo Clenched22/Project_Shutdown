@@ -812,9 +812,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 284431806, guid: 91d2effb8da411746957c163cb88d4e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34dd80321abbf6f4e83d2507cd50d5e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 0.8828125}
@@ -875,6 +875,7 @@ MonoBehaviour:
   PistolDamage: 1
   ARDamage: 0.5
   SniperDamage: 5
+  PlayerAnimator: {fileID: 7308165656190899431}
   PistolAccquired: 1
   ARAccquired: 0
   SniperAccquired: 0
@@ -937,7 +938,7 @@ MonoBehaviour:
   - {x: 0.2515074, y: -0.43303013, z: 0}
   m_ShapePathHash: -1859900773
   m_Mesh: {fileID: 0}
-  m_InstanceId: 38874
+  m_InstanceId: 39872
   m_LocalBounds:
     m_Center: {x: 0.0034536123, y: 0.0027918816, z: 0}
     m_Extent: {x: 0.5053617, y: 0.44419813, z: 0}
@@ -977,7 +978,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.43, y: 1.65}
+    oldSize: {x: 1.08, y: 1.92}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
