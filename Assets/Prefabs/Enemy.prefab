@@ -309,6 +309,8 @@ MonoBehaviour:
   RB: {fileID: 0}
   PushbackForce: 2
   HealthSlider: {fileID: 5818591399688699408}
+  deathPartical: {fileID: 5422858436227743543, guid: 6c89cb4f455f6304d8f0f02601c35cde, type: 3}
+  hitPartical: {fileID: 5422858436227743543, guid: da409e07612332b46a01e19c8dffc17b, type: 3}
 --- !u!114 &171828270426413110
 MonoBehaviour:
   m_ObjectHideFlags: 0

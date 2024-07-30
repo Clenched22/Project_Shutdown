@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
     private bool AbleToShoot;
     private float FireRateTimeCountdown;
     [SerializeField] Slider HealthSlider;
+    [SerializeField] GameObject deathPartical;
+    [SerializeField] GameObject hitPartical;
 
     // Start is called before the first frame update
     void Start()
@@ -131,12 +133,14 @@ public class Projectile : MonoBehaviour
     {
         ESI.Health -= damageTaken;
         if (ESI.Health <= 0) { Death(); }
+        else { Instantiate(hitPartical, transform.position, Quaternion.identity); }
     }
 
     private void Death()
     {
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
         FindObjectOfType<AudioManager>().Play("ProjectileEnemyDeath");
+        Instantiate(deathPartical, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

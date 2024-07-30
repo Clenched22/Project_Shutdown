@@ -13,6 +13,8 @@ public class Regular : MonoBehaviour
     [SerializeField] Rigidbody2D RB;
     [SerializeField] float PushbackForce;
     [SerializeField] Slider HealthSlider;
+    [SerializeField] GameObject deathPartical;
+    [SerializeField] GameObject hitPartical;
 
     void Start()
     {
@@ -77,12 +79,14 @@ public class Regular : MonoBehaviour
     {
         ESI.Health -= damageTaken;
         if (ESI.Health <= 0) { Death(); }
+        else { Instantiate(hitPartical, transform.position, Quaternion.identity);  }
     }
 
     private void Death()
     {
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
         FindObjectOfType<AudioManager>().Play("BasicEnemyDeath");
+        Instantiate(deathPartical, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

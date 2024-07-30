@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RefProjectile: {fileID: 5036699126018304820}
   RefPrefab: {fileID: 5036699126018304820}
-  ShotForce: 5
+  ShotForce: 20
   DestroyTime: 2
   EnemyTag: Player
   Damage: 0
