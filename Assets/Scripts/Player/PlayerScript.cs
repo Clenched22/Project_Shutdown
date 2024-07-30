@@ -240,7 +240,6 @@ public class PlayerScript : MonoBehaviour
         else { PlayerAnimator.SetBool("WalkingLeft", false); }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) { inputVector += new Vector2(1, 0); PlayerAnimator.SetBool("WalkingRight", true); /*AudioManager.instance.PlayWalkSound(); */}
         else { PlayerAnimator.SetBool("WalkingRight", false); }
-        PlayerAnimator.
         inputVector.Normalize();
         MoveDirection = inputVector * MoveSpeed;
         MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
