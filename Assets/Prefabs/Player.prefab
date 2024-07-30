@@ -876,6 +876,7 @@ MonoBehaviour:
   ARDamage: 0.5
   SniperDamage: 5
   PlayerAnimator: {fileID: 7308165656190899431}
+  itemParticle: {fileID: 5401398519420336108, guid: f89c4d91e89b40f408629234f31da124, type: 3}
   PistolAccquired: 1
   ARAccquired: 0
   SniperAccquired: 0
