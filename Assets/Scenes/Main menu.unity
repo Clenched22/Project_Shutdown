@@ -6929,8 +6929,7 @@ MonoBehaviour:
   TutorialTextPanel: {fileID: 1513942353}
   TutorialTextRef: {fileID: 718096141}
   TutorialText1: Your ship has been invaded by aliens!
-  TutorialText2: You must disarm the bomb in the next (TIME) minutes to save the
-    ship.
+  TutorialText2: You must disarm the bomb in the next 5 minutes to save the ship.
   TutorialText3: You need your screwdriver on the Bridge to get the elevator working
     again.
   TutorialText4: Then you need a keycard from the Command Center to access the armory.
