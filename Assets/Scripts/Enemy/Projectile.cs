@@ -38,6 +38,7 @@ public class Projectile : MonoBehaviour
         AbleToShoot = false;
         FireRateTimeCountdown = FirerateTime;
         ESI.Health = ESI.MaxHealth;
+        Damageable = true;
     }
 
     // Update is called once per frame
@@ -92,7 +93,7 @@ public class Projectile : MonoBehaviour
 
     private void Shoot()
     {
-        if (AbleToShoot)
+        if (AbleToShoot && Damageable)
         {
             FindObjectOfType<AudioManager>().Play("EnemyShoot");
             Vector2 spawnPosition = FirePoint.transform.position;
@@ -121,7 +122,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") && Damageable)
         {
             FindObjectOfType<PlayerScript>().DecreaseHealth(ESI.DamageDealt);
             Vector2 difference = (transform.position - collision.transform.position).normalized;
@@ -141,6 +142,14 @@ public class Projectile : MonoBehaviour
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
         FindObjectOfType<AudioManager>().Play("ProjectileEnemyDeath");
         Instantiate(deathPartical, transform.position, Quaternion.identity);
+        Damageable = false;
+        StartCoroutine(BlackDeath());
+    }
+
+    IEnumerator BlackDeath()
+    {
+        GetComponent<SpriteRenderer>().color = Color.black;
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 }

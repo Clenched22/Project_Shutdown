@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 6846342384483873249}
   - component: {fileID: 171828270426413110}
   - component: {fileID: 2487624789302970358}
+  - component: {fileID: 4270595266814832214}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -311,6 +312,7 @@ MonoBehaviour:
   HealthSlider: {fileID: 5818591399688699408}
   deathPartical: {fileID: 5422858436227743543, guid: 6c89cb4f455f6304d8f0f02601c35cde, type: 3}
   hitPartical: {fileID: 5422858436227743543, guid: da409e07612332b46a01e19c8dffc17b, type: 3}
+  BasicEnemyAnimator: {fileID: 4270595266814832214}
 --- !u!114 &171828270426413110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +341,7 @@ MonoBehaviour:
   - {x: 0.26, y: -0.44140625, z: 0}
   m_ShapePathHash: 1295385886
   m_Mesh: {fileID: 0}
-  m_InstanceId: 36848
+  m_InstanceId: 60020
   m_LocalBounds:
     m_Center: {x: -0.004999995, y: 0, z: 0}
     m_Extent: {x: 0.505, y: 0.44140625, z: 0}
@@ -378,6 +380,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.63, y: 1.8}
   m_Direction: 0
+--- !u!95 &4270595266814832214
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036699126018304820}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b9336966ea6be394ca96040325e87b67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5925738019540762081
 GameObject:
   m_ObjectHideFlags: 0

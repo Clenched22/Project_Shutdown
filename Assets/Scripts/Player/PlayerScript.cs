@@ -233,13 +233,17 @@ public class PlayerScript : MonoBehaviour
     {
         Vector2 inputVector = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) { inputVector += new Vector2(0, 1); PlayerAnimator.SetBool("WalkingUp", true); /*AudioManager.instance.PlayWalkSound();*/ }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) { inputVector += new Vector2(0, 1); 
+            PlayerAnimator.SetBool("WalkingUp", true); /*AudioManager.instance.PlayWalkSound();*/ }
         else { PlayerAnimator.SetBool("WalkingUp", false); }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) { inputVector += new Vector2(0, -1); PlayerAnimator.SetBool("WalkingDown", true); /*AudioManager.instance.PlayWalkSound();*/ }
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) { inputVector += new Vector2(0, -1); 
+            PlayerAnimator.SetBool("WalkingDown", true); /*AudioManager.instance.PlayWalkSound();*/ }
         else { PlayerAnimator.SetBool("WalkingDown", false); }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) { inputVector += new Vector2(-1, 0); PlayerAnimator.SetBool("WalkingLeft", true); /*AudioManager.instance.PlayWalkSound();*/ }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) { inputVector += new Vector2(-1, 0); 
+            PlayerAnimator.SetBool("WalkingLeft", true); /*AudioManager.instance.PlayWalkSound();*/ }
         else { PlayerAnimator.SetBool("WalkingLeft", false); }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) { inputVector += new Vector2(1, 0); PlayerAnimator.SetBool("WalkingRight", true); /*AudioManager.instance.PlayWalkSound(); */}
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) { inputVector += new Vector2(1, 0); 
+            PlayerAnimator.SetBool("WalkingRight", true); /*AudioManager.instance.PlayWalkSound(); */}
         else { PlayerAnimator.SetBool("WalkingRight", false); }
         inputVector.Normalize();
         MoveDirection = inputVector * MoveSpeed;

@@ -211,8 +211,9 @@ GameObject:
   - component: {fileID: 387954070575953501}
   - component: {fileID: 7836684648236174400}
   - component: {fileID: 6159786443433692046}
-  - component: {fileID: 215838735638442492}
   - component: {fileID: 3758132892819083589}
+  - component: {fileID: 122668995609207772}
+  - component: {fileID: 6654122067415978125}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -230,7 +231,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5809, y: 3.5809, z: 3.5809}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1534185864093851895}
@@ -277,12 +278,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.29455176, g: 0.51572317, b: 0.25461802, a: 1}
+  m_Sprite: {fileID: 1314596775, guid: 9f59b3ace19ccf940881eeb8f02224d2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 0.87, y: 2.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -315,8 +316,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!58 &215838735638442492
-CircleCollider2D:
+--- !u!114 &3758132892819083589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446919476054326892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819c66f0a2898444d9dd4b902b766b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackingTarget: {fileID: 0}
+  MoveSpeed: 2.5
+  IsChasing: 0
+  ChaseDistance: 7
+  ESI:
+    LevelIndex: 0
+    SpawnIndex: 0
+    EnemyPrefab: {fileID: 0}
+    SpawnPosition: {x: 0, y: 0, z: 0}
+    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
+    Death: 0
+    Health: 0
+    DamageDealt: 0
+    MaxHealth: 0
+  RB: {fileID: 0}
+  PushbackForce: 2
+  HealthSlider: {fileID: 1502353611451059127}
+  BossEnemyAnimator: {fileID: 6654122067415978125}
+--- !u!70 &122668995609207772
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -348,37 +379,29 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.49999997
---- !u!114 &3758132892819083589
-MonoBehaviour:
+  m_Size: {x: 0.87, y: 2.15}
+  m_Direction: 0
+--- !u!95 &6654122067415978125
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6446919476054326892}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 819c66f0a2898444d9dd4b902b766b6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrackingTarget: {fileID: 0}
-  MoveSpeed: 2.5
-  IsChasing: 0
-  ChaseDistance: 7
-  ESI:
-    LevelIndex: 0
-    SpawnIndex: 0
-    EnemyPrefab: {fileID: 0}
-    SpawnPosition: {x: 0, y: 0, z: 0}
-    SpawnRotation: {x: 0, y: 0, z: 0, w: 0}
-    Death: 0
-    Health: 0
-    DamageDealt: 0
-    MaxHealth: 0
-  RB: {fileID: 0}
-  PushbackForce: 2
-  HealthSlider: {fileID: 1502353611451059127}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 031dfdb6eba586141aa599d9d6140d59, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7397264093750577169
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.5}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8055499069422967755

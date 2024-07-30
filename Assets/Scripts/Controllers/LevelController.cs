@@ -83,6 +83,7 @@ public class LevelController : MonoBehaviour
         {
             Level2EnemiesRestart.Add(Level2Enemies[i]);
         }
+        Application.targetFrameRate = 60;
     }
 
 
@@ -128,7 +129,7 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && TutorialActive) { WhichStringToShow++; TutorialStringSelector(); }
+        if (Input.GetKeyDown(KeyCode.Space) && TutorialActive) { WhichStringToShow++; TutorialStringSelector(); }
 
         if (TimerActive)
         {

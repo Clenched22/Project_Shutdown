@@ -14,6 +14,8 @@ public class Boss : MonoBehaviour
     [SerializeField] Rigidbody2D RB;
     [SerializeField] float PushbackForce;
     [SerializeField] Slider HealthSlider;
+    [SerializeField] Animator BossEnemyAnimator;
+    private bool Damageable;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class Boss : MonoBehaviour
             TrackingTarget = FindObjectOfType<PlayerScript>().gameObject.transform;
         }
         ESI.Health = ESI.MaxHealth;
+        Damageable = true;
     }
     void Update()
     {
@@ -31,22 +34,42 @@ public class Boss : MonoBehaviour
             if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
             {
                 IsChasing = false;
+                BossEnemyAnimator.SetBool("BossWalkUp", false);
+                BossEnemyAnimator.SetBool("BossWalkDown", false);
+                BossEnemyAnimator.SetBool("BossWalkLeft", false);
+                BossEnemyAnimator.SetBool("BossWalkRight", false);
             }
             if (transform.position.x > TrackingTarget.position.x)
             {
                 transform.position += Vector3.left * MoveSpeed * Time.deltaTime;
+                BossEnemyAnimator.SetBool("BossWalkUp", false);
+                BossEnemyAnimator.SetBool("BossWalkDown", false);
+                BossEnemyAnimator.SetBool("BossWalkLeft", true);
+                BossEnemyAnimator.SetBool("BossWalkRight", false);
             }
             else if (transform.position.x < TrackingTarget.position.x)
             {
                 transform.position += Vector3.right * MoveSpeed * Time.deltaTime;
+                BossEnemyAnimator.SetBool("BossWalkUp", false);
+                BossEnemyAnimator.SetBool("BossWalkDown", false);
+                BossEnemyAnimator.SetBool("BossWalkLeft", false);
+                BossEnemyAnimator.SetBool("BossWalkRight", true);
             }
             if (transform.position.y > TrackingTarget.position.y)
             {
                 transform.position += Vector3.down * MoveSpeed * Time.deltaTime;
+                BossEnemyAnimator.SetBool("WalkingUp", false);
+                BossEnemyAnimator.SetBool("WalkingDown", true);
+                BossEnemyAnimator.SetBool("WalkingLeft", false);
+                BossEnemyAnimator.SetBool("WalkingRight", false);
             }
             else if (transform.position.y < TrackingTarget.position.y)
             {
                 transform.position += Vector3.up * MoveSpeed * Time.deltaTime;
+                BossEnemyAnimator.SetBool("BossWalkUp", true);
+                BossEnemyAnimator.SetBool("BossWalkDown", false);
+                BossEnemyAnimator.SetBool("BossWalkLeft", false);
+                BossEnemyAnimator.SetBool("BossWalkRight", false);
             }
         }
         else
@@ -69,7 +92,7 @@ public class Boss : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") && Damageable)
         {
             FindObjectOfType<PlayerScript>().DecreaseHealth(2);
             Vector2 difference = (transform.position - collision.transform.position).normalized;
@@ -82,6 +105,14 @@ public class Boss : MonoBehaviour
     {
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
         FindObjectOfType<AudioManager>().Play("BossDeath");
+        Damageable = false;
+        StartCoroutine(BlackDeath());
+    }
+
+    IEnumerator BlackDeath()
+    {
+        GetComponent<SpriteRenderer>().color = Color.black;
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }
