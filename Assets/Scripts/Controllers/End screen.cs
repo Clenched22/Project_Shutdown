@@ -27,15 +27,19 @@ public class EndScreen : MonoBehaviour
         }
         float timeToShow = FindObjectOfType<LevelController>().TimerAmount;
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
+        Debug.Log(timeToShow);
         TimeSpan time = TimeSpan.FromSeconds(timeToShow);
-        Debug.Log(timeToShow.ToString());
-        TimeTookText = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
-
+        TimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+        TimerText.enabled = true;
     }
 
     void Update()
     {
-        TimerText.text = TimeTookText;
+        float timeToShow = FindObjectOfType<LevelController>().TimerAmount;
+        timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
+        Debug.Log(timeToShow);
+        TimeSpan time = TimeSpan.FromSeconds(timeToShow);
+        TimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         if (Win)
         {
             WinLoseText.text = WinText;

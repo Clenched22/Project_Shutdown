@@ -500,8 +500,6 @@ public class LevelController : MonoBehaviour
         else 
         {
             SceneManager.LoadScene("End screen");
-            FindObjectOfType<EndScreen>().Win = false;
-            FindObjectOfType<EndScreen>().TimeTookText = null;
         }
     }
 
@@ -529,7 +527,6 @@ public class LevelController : MonoBehaviour
         ARAcquired = false;
         SniperAcquired = false;
         HealthCarriedBetweenLevels = MaxHealth;
-        CurrentTime = TimerAmount;
     }
 
     public void LevelChangerActive()

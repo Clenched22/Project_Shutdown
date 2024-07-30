@@ -23,6 +23,7 @@ public class Boss : MonoBehaviour
         {
             TrackingTarget = FindObjectOfType<PlayerScript>().gameObject.transform;
         }
+        RB = GetComponent<Rigidbody2D>();
         ESI.Health = ESI.MaxHealth;
         Damageable = true;
     }

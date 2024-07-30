@@ -342,7 +342,7 @@ MonoBehaviour:
     Health: 0
     DamageDealt: 0
     MaxHealth: 0
-  RB: {fileID: 0}
+  RB: {fileID: 6159786443433692046}
   PushbackForce: 2
   HealthSlider: {fileID: 1502353611451059127}
   BossEnemyAnimator: {fileID: 6654122067415978125}
