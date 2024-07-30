@@ -7540,7 +7540,7 @@ MonoBehaviour:
     Source: {fileID: 0}
     Loop: 0
   - Name: BasicEnemyDeath
-    Clip: {fileID: 8300000, guid: 65b2023bd9f0de74690e4f7abc5aa8e9, type: 3}
+    Clip: {fileID: 8300000, guid: 9448eccf30b6aee4cbc30e3cb0081672, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
