@@ -13,6 +13,8 @@ public class EndScreen : MonoBehaviour
     [SerializeField] TMP_Text EndScreenTimerText;
     [SerializeField] string WinText;
     [SerializeField] string LoseText;
+    [SerializeField] GameObject WinImage;
+    [SerializeField] GameObject LoseImage;
 
     private void Start()
     {
@@ -20,10 +22,14 @@ public class EndScreen : MonoBehaviour
         if (Win)
         {
             WinLoseText.text = WinText;
+            WinImage.SetActive(true);
+            LoseImage.SetActive(false);
         }
         else
         {
             WinLoseText.text = LoseText;
+            WinImage.SetActive(false);
+            LoseImage.SetActive(true);
         }
         float timeToShow = FindObjectOfType<LevelController>().TimerAmount;
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
@@ -43,10 +49,14 @@ public class EndScreen : MonoBehaviour
         if (Win)
         {
             WinLoseText.text = WinText;
+            WinImage.SetActive(true);
+            LoseImage.SetActive(false);
         }
         else
         {
             WinLoseText.text = LoseText;
+            WinImage.SetActive(false);
+            LoseImage.SetActive(true);
         }
     }
 

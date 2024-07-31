@@ -61,7 +61,7 @@ public class PlayerScript : MonoBehaviour
     private float CurrentHealth;
     private Vector2 MoveDirection;
     private Vector2 MousePosition;
-    private int EquippedWeapon;
+    public int EquippedWeapon;
     private Vector3 LaserEndPosition;
     private float ActualDamageDealt;
     private Vector3 LaserStartPosition;

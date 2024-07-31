@@ -6,6 +6,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class LevelController : MonoBehaviour
@@ -28,6 +30,9 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject PistolIconPanel;
     [SerializeField] GameObject ARIconPanel;
     [SerializeField] GameObject SRIconPanel;
+    [SerializeField] GameObject EquippedPistolIconPanel;
+    [SerializeField] GameObject EquippedARIconPanel;
+    [SerializeField] GameObject EquippedSRIconPanel;
     [SerializeField] TMP_Text HealthText;
     [SerializeField] GameObject LevelChangerPanel;
     [SerializeField] TMP_Text GetItemText;
@@ -202,7 +207,28 @@ public class LevelController : MonoBehaviour
         PistolIconPanel.SetActive(PistolAcquired);
         ARIconPanel.SetActive(ARAcquired);
         SRIconPanel.SetActive(SniperAcquired);
-
+        PistolIconPanel.SetActive(PistolAcquired);
+        EquippedARIconPanel.SetActive(ARAcquired);
+        EquippedSRIconPanel.SetActive(SniperAcquired);
+        int equippedWeapon = FindObjectOfType<PlayerScript>().EquippedWeapon;
+        switch (equippedWeapon)
+        {
+            case 1:
+                EquippedPistolIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0.71f);
+                EquippedARIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0);
+                EquippedSRIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0);               
+                break;
+            case 2:
+                EquippedPistolIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0);
+                EquippedARIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0.71f);
+                EquippedSRIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0);
+                break;
+            case 3:
+                EquippedPistolIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0);
+                EquippedARIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0);
+                EquippedSRIconPanel.GetComponent<UnityEngine.UI.Image>().color = new Color(0, 0, 0, 0.71f);
+                break;
+        }
     }
 
     public void SpawnLevel1Enemies()
@@ -569,6 +595,14 @@ public class LevelController : MonoBehaviour
         ARAcquired = false;
         SniperAcquired = false;
         HealthCarriedBetweenLevels = MaxHealth;
+        ScrewdriverIconPanel.SetActive(false);
+        KeycardIconPanel.SetActive(false);
+        WirecuttersIconPanel.SetActive(false);
+        PistolIconPanel.SetActive(PistolAcquired);
+        ARIconPanel.SetActive(false);
+        SRIconPanel.SetActive(false);
+        EquippedARIconPanel.SetActive(false);
+        EquippedSRIconPanel.SetActive(false);
     }
 
     public void LevelChangerActive()
