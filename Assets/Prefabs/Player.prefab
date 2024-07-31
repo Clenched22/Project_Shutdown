@@ -851,7 +851,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   PistolShotDistance: 2
-  ARShotDistance: 1.5
+  ARShotDistance: 2
   SniperShotDistance: 20
   PistolFirerate: 0.5
   ARFirerate: 0.25
