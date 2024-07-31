@@ -10,7 +10,7 @@ public class EndScreen : MonoBehaviour
     public bool Win;
     public string TimeTookText;
     [SerializeField] TMP_Text WinLoseText;
-    [SerializeField] TMP_Text TimerText;
+    [SerializeField] TMP_Text EndScreenTimerText;
     [SerializeField] string WinText;
     [SerializeField] string LoseText;
 
@@ -29,8 +29,8 @@ public class EndScreen : MonoBehaviour
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
         Debug.Log(timeToShow);
         TimeSpan time = TimeSpan.FromSeconds(timeToShow);
-        TimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
-        TimerText.enabled = true;
+        EndScreenTimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+        EndScreenTimerText.enabled = true;
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class EndScreen : MonoBehaviour
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
         Debug.Log(timeToShow);
         TimeSpan time = TimeSpan.FromSeconds(timeToShow);
-        TimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+        EndScreenTimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         if (Win)
         {
             WinLoseText.text = WinText;
