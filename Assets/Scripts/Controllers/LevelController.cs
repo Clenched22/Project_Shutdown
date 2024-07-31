@@ -22,6 +22,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject TutorialPanel;
     [SerializeField] GameObject PlayerRef;
     [SerializeField] GameObject HealthPanel;
+    [SerializeField] GameObject PistolIconPanel;
+    //Rest
     [SerializeField] TMP_Text HealthText;
     [SerializeField] GameObject LevelChangerPanel;
     [SerializeField] TMP_Text GetItemText;
@@ -181,6 +183,8 @@ public class LevelController : MonoBehaviour
             }
         }
         HealthText.text = HealthCarriedBetweenLevels.ToString();
+        PistolIconPanel.SetActive(true);
+        //Others.SetActive(ITEMACQUIRED  BOOl);
     }
 
     public void SpawnLevel1Enemies()
