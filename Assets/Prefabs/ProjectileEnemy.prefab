@@ -213,6 +213,38 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &3413183800725547792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2369310734931750299}
+  m_Layer: 0
+  m_Name: RotationPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2369310734931750299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413183800725547792}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2389858387166108106}
+  m_Father: {fileID: 323629502467188920}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5036699126018304820
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +280,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 450736229859206131}
-  - {fileID: 2389858387166108106}
+  - {fileID: 2369310734931750299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4031412797242943381
@@ -358,7 +390,7 @@ MonoBehaviour:
   - {x: 0.26, y: -0.44140625, z: 0}
   m_ShapePathHash: 1295385886
   m_Mesh: {fileID: 0}
-  m_InstanceId: 49942
+  m_InstanceId: 35602
   m_LocalBounds:
     m_Center: {x: -0.004999995, y: 0, z: 0}
     m_Extent: {x: 0.505, y: 0.44140625, z: 0}
@@ -400,6 +432,7 @@ MonoBehaviour:
   HealthSlider: {fileID: 5391845210919127925}
   deathPartical: {fileID: 5422858436227743543, guid: 6c89cb4f455f6304d8f0f02601c35cde, type: 3}
   hitPartical: {fileID: 5422858436227743543, guid: da409e07612332b46a01e19c8dffc17b, type: 3}
+  RotationPoint: {fileID: 3413183800725547792}
 --- !u!60 &-2505466387135401750
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -498,12 +531,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7314693636022506717}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.119, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 323629502467188920}
+  m_Father: {fileID: 2369310734931750299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &897574048956573757
 SpriteRenderer:

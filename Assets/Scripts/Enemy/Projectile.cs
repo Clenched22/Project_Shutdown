@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] Slider HealthSlider;
     [SerializeField] GameObject deathPartical;
     [SerializeField] GameObject hitPartical;
+    [SerializeField] GameObject RotationPoint;
     private bool Damageable;
 
     // Start is called before the first frame update
@@ -47,7 +48,7 @@ public class Projectile : MonoBehaviour
     {
         HealthSlider.value = ESI.Health / ESI.MaxHealth;
         Vector2 directionToTarget = TrackingTarget.position - transform.position;
-        transform.up = directionToTarget;
+        RotationPoint.transform.up = directionToTarget;
         if (IsChasing)
         {
             if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)

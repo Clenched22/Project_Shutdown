@@ -29,7 +29,7 @@ public class EndScreen : MonoBehaviour
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
         Debug.Log(timeToShow);
         TimeSpan time = TimeSpan.FromSeconds(timeToShow);
-        EndScreenTimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+        EndScreenTimerText.text = "It Took " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         EndScreenTimerText.enabled = true;
     }
 
