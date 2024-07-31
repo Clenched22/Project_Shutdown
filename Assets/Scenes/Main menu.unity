@@ -7211,6 +7211,8 @@ MonoBehaviour:
   TutorialText8: "You will find a Sniper Rifle in this Command Center. You must press
     the \u2018#3\u2019 key to equip your Sniper, \u2018#2\u2019 for AR, and \u2018#1\u2019
     for Pistol"
+  TutorialText9: "The bomb is in the Cargo Hold below us. Don\u2019t get killed and
+    rescue our ship."
   TutorialActive: 0
   TimerAmount: 300
   CurrentTime: 0
@@ -7225,6 +7227,7 @@ MonoBehaviour:
   Paused: 0
   MainBGPlaying: 0
   Win: 0
+  Level3TextShown: 0
 --- !u!4 &1879292175
 Transform:
   m_ObjectHideFlags: 0
