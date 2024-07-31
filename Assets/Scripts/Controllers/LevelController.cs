@@ -22,8 +22,12 @@ public class LevelController : MonoBehaviour
     [SerializeField] GameObject TutorialPanel;
     [SerializeField] GameObject PlayerRef;
     [SerializeField] GameObject HealthPanel;
+    [SerializeField] GameObject ScrewdriverIconPanel;
+    [SerializeField] GameObject KeycardIconPanel;
+    [SerializeField] GameObject WirecuttersIconPanel;
     [SerializeField] GameObject PistolIconPanel;
-    //Rest
+    [SerializeField] GameObject ARIconPanel;
+    [SerializeField] GameObject SRIconPanel;
     [SerializeField] TMP_Text HealthText;
     [SerializeField] GameObject LevelChangerPanel;
     [SerializeField] TMP_Text GetItemText;
@@ -192,8 +196,13 @@ public class LevelController : MonoBehaviour
             }
         }
         HealthText.text = HealthCarriedBetweenLevels.ToString();
-        PistolIconPanel.SetActive(true);
-        //Others.SetActive(ITEMACQUIRED  BOOl);
+        ScrewdriverIconPanel.SetActive(ScrewDriverAcquired);
+        KeycardIconPanel.SetActive(KeyCardAcquired);
+        WirecuttersIconPanel.SetActive(WireCutterAcquired);
+        PistolIconPanel.SetActive(PistolAcquired);
+        ARIconPanel.SetActive(ARAcquired);
+        SRIconPanel.SetActive(SniperAcquired);
+
     }
 
     public void SpawnLevel1Enemies()
