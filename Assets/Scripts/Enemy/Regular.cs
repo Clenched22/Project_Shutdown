@@ -34,55 +34,57 @@ public class Regular : MonoBehaviour
     void Update()
     {
         HealthSlider.value = ESI.Health / ESI.MaxHealth;
-
-        if (IsChasing)
+        if (Damageable)
         {
-            if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
+            if (IsChasing)
             {
-                IsChasing = false;
-                BasicEnemyAnimator.SetBool("WalkingUp", false);
-                BasicEnemyAnimator.SetBool("WalkingDown", false);
-                BasicEnemyAnimator.SetBool("WalkingLeft", false);
-                BasicEnemyAnimator.SetBool("WalkingRight", false);
+                if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
+                {
+                    IsChasing = false;
+                    BasicEnemyAnimator.SetBool("WalkingUp", false);
+                    BasicEnemyAnimator.SetBool("WalkingDown", false);
+                    BasicEnemyAnimator.SetBool("WalkingLeft", false);
+                    BasicEnemyAnimator.SetBool("WalkingRight", false);
+                }
+                if (transform.position.x > TrackingTarget.position.x)
+                {
+                    transform.position += Vector3.left * MoveSpeed * Time.deltaTime;
+                    BasicEnemyAnimator.SetBool("WalkingUp", false);
+                    BasicEnemyAnimator.SetBool("WalkingDown", false);
+                    BasicEnemyAnimator.SetBool("WalkingLeft", true);
+                    BasicEnemyAnimator.SetBool("WalkingRight", false);
+                }
+                else if (transform.position.x < TrackingTarget.position.x)
+                {
+                    transform.position += Vector3.right * MoveSpeed * Time.deltaTime;
+                    BasicEnemyAnimator.SetBool("WalkingUp", false);
+                    BasicEnemyAnimator.SetBool("WalkingDown", false);
+                    BasicEnemyAnimator.SetBool("WalkingLeft", false);
+                    BasicEnemyAnimator.SetBool("WalkingRight", true);
+                }
+                if (transform.position.y > TrackingTarget.position.y)
+                {
+                    transform.position += Vector3.down * MoveSpeed * Time.deltaTime;
+                    BasicEnemyAnimator.SetBool("WalkingUp", false);
+                    BasicEnemyAnimator.SetBool("WalkingDown", true);
+                    BasicEnemyAnimator.SetBool("WalkingLeft", false);
+                    BasicEnemyAnimator.SetBool("WalkingRight", false);
+                }
+                else if (transform.position.y < TrackingTarget.position.y)
+                {
+                    transform.position += Vector3.up * MoveSpeed * Time.deltaTime;
+                    BasicEnemyAnimator.SetBool("WalkingUp", true);
+                    BasicEnemyAnimator.SetBool("WalkingDown", false);
+                    BasicEnemyAnimator.SetBool("WalkingLeft", false);
+                    BasicEnemyAnimator.SetBool("WalkingRight", false);
+                }
             }
-            if (transform.position.x > TrackingTarget.position.x)
+            else
             {
-                transform.position += Vector3.left * MoveSpeed * Time.deltaTime;
-                BasicEnemyAnimator.SetBool("WalkingUp", false);
-                BasicEnemyAnimator.SetBool("WalkingDown", false);
-                BasicEnemyAnimator.SetBool("WalkingLeft", true);
-                BasicEnemyAnimator.SetBool("WalkingRight", false);
-            }
-            else if (transform.position.x < TrackingTarget.position.x)
-            {
-                transform.position += Vector3.right * MoveSpeed * Time.deltaTime;
-                BasicEnemyAnimator.SetBool("WalkingUp", false);
-                BasicEnemyAnimator.SetBool("WalkingDown", false);
-                BasicEnemyAnimator.SetBool("WalkingLeft", false);
-                BasicEnemyAnimator.SetBool("WalkingRight", true);
-            }
-            if (transform.position.y > TrackingTarget.position.y)
-            {
-                transform.position += Vector3.down * MoveSpeed * Time.deltaTime;
-                BasicEnemyAnimator.SetBool("WalkingUp", false);
-                BasicEnemyAnimator.SetBool("WalkingDown", true);
-                BasicEnemyAnimator.SetBool("WalkingLeft", false);
-                BasicEnemyAnimator.SetBool("WalkingRight", false);
-            }
-            else if (transform.position.y < TrackingTarget.position.y)
-            {
-                transform.position += Vector3.up * MoveSpeed * Time.deltaTime;
-                BasicEnemyAnimator.SetBool("WalkingUp", true);
-                BasicEnemyAnimator.SetBool("WalkingDown", false);
-                BasicEnemyAnimator.SetBool("WalkingLeft", false);
-                BasicEnemyAnimator.SetBool("WalkingRight", false);
-            }
-        }
-        else
-        {
-            if (Vector2.Distance(transform.position, TrackingTarget.position) < ChaseDistance)
-            {
-                IsChasing = true;
+                if (Vector2.Distance(transform.position, TrackingTarget.position) < ChaseDistance)
+                {
+                    IsChasing = true;
+                }
             }
         }
     }

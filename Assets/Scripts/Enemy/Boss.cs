@@ -30,54 +30,59 @@ public class Boss : MonoBehaviour
     void Update()
     {
         HealthSlider.value = ESI.Health/ESI.MaxHealth;
-        if (IsChasing)
+
+        if (Damageable)
         {
-            if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
+            if (IsChasing)
             {
-                IsChasing = false;
-                BossEnemyAnimator.SetBool("BossWalkUp", false);
-                BossEnemyAnimator.SetBool("BossWalkDown", false);
-                BossEnemyAnimator.SetBool("BossWalkLeft", false);
-                BossEnemyAnimator.SetBool("BossWalkRight", false);
+                if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
+                {
+                    IsChasing = false;
+                    BossEnemyAnimator.SetBool("BossWalkUp", false);
+                    BossEnemyAnimator.SetBool("BossWalkDown", false);
+                    BossEnemyAnimator.SetBool("BossWalkLeft", false);
+                    BossEnemyAnimator.SetBool("BossWalkRight", false);
+                    return;
+                }
+                if (transform.position.x > TrackingTarget.position.x)
+                {
+                    transform.position += Vector3.left * MoveSpeed * Time.deltaTime;
+                    BossEnemyAnimator.SetBool("BossWalkUp", false);
+                    BossEnemyAnimator.SetBool("BossWalkDown", false);
+                    BossEnemyAnimator.SetBool("BossWalkLeft", true);
+                    BossEnemyAnimator.SetBool("BossWalkRight", false);
+                }
+                else if (transform.position.x < TrackingTarget.position.x)
+                {
+                    transform.position += Vector3.right * MoveSpeed * Time.deltaTime;
+                    BossEnemyAnimator.SetBool("BossWalkUp", false);
+                    BossEnemyAnimator.SetBool("BossWalkDown", false);
+                    BossEnemyAnimator.SetBool("BossWalkLeft", false);
+                    BossEnemyAnimator.SetBool("BossWalkRight", true);
+                }
+                if (transform.position.y > TrackingTarget.position.y)
+                {
+                    transform.position += Vector3.down * MoveSpeed * Time.deltaTime;
+                    BossEnemyAnimator.SetBool("WalkingUp", false);
+                    BossEnemyAnimator.SetBool("WalkingDown", true);
+                    BossEnemyAnimator.SetBool("WalkingLeft", false);
+                    BossEnemyAnimator.SetBool("WalkingRight", false);
+                }
+                else if (transform.position.y < TrackingTarget.position.y)
+                {
+                    transform.position += Vector3.up * MoveSpeed * Time.deltaTime;
+                    BossEnemyAnimator.SetBool("BossWalkUp", true);
+                    BossEnemyAnimator.SetBool("BossWalkDown", false);
+                    BossEnemyAnimator.SetBool("BossWalkLeft", false);
+                    BossEnemyAnimator.SetBool("BossWalkRight", false);
+                }
             }
-            if (transform.position.x > TrackingTarget.position.x)
+            else
             {
-                transform.position += Vector3.left * MoveSpeed * Time.deltaTime;
-                BossEnemyAnimator.SetBool("BossWalkUp", false);
-                BossEnemyAnimator.SetBool("BossWalkDown", false);
-                BossEnemyAnimator.SetBool("BossWalkLeft", true);
-                BossEnemyAnimator.SetBool("BossWalkRight", false);
-            }
-            else if (transform.position.x < TrackingTarget.position.x)
-            {
-                transform.position += Vector3.right * MoveSpeed * Time.deltaTime;
-                BossEnemyAnimator.SetBool("BossWalkUp", false);
-                BossEnemyAnimator.SetBool("BossWalkDown", false);
-                BossEnemyAnimator.SetBool("BossWalkLeft", false);
-                BossEnemyAnimator.SetBool("BossWalkRight", true);
-            }
-            if (transform.position.y > TrackingTarget.position.y)
-            {
-                transform.position += Vector3.down * MoveSpeed * Time.deltaTime;
-                BossEnemyAnimator.SetBool("WalkingUp", false);
-                BossEnemyAnimator.SetBool("WalkingDown", true);
-                BossEnemyAnimator.SetBool("WalkingLeft", false);
-                BossEnemyAnimator.SetBool("WalkingRight", false);
-            }
-            else if (transform.position.y < TrackingTarget.position.y)
-            {
-                transform.position += Vector3.up * MoveSpeed * Time.deltaTime;
-                BossEnemyAnimator.SetBool("BossWalkUp", true);
-                BossEnemyAnimator.SetBool("BossWalkDown", false);
-                BossEnemyAnimator.SetBool("BossWalkLeft", false);
-                BossEnemyAnimator.SetBool("BossWalkRight", false);
-            }
-        }
-        else
-        {
-            if (Vector2.Distance(transform.position, TrackingTarget.position) < ChaseDistance)
-            {
-                IsChasing = true;
+                if (Vector2.Distance(transform.position, TrackingTarget.position) < ChaseDistance)
+                {
+                    IsChasing = true;
+                }
             }
         }
     }

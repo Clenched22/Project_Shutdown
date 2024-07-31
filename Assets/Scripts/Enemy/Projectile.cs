@@ -49,7 +49,9 @@ public class Projectile : MonoBehaviour
         HealthSlider.value = ESI.Health / ESI.MaxHealth;
         Vector2 directionToTarget = TrackingTarget.position - transform.position;
         RotationPoint.transform.up = directionToTarget;
-        if (IsChasing)
+        if (Damageable)
+        {
+            if (IsChasing)
         {
             if (Vector2.Distance(transform.position, TrackingTarget.position) > ChaseDistance)
             {
@@ -91,6 +93,8 @@ public class Projectile : MonoBehaviour
             FireRateTimeCountdown = FirerateTime;
         }
         else { AbleToShoot = false; }
+        }
+
     }
 
     private void Shoot()
