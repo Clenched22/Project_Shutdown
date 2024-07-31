@@ -43,6 +43,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] string TutorialText6;
     [SerializeField] string TutorialText7;
     [SerializeField] string TutorialText8;
+    [SerializeField] string TutorialText9;
     private float WhichStringToShow;
     public bool TutorialActive;
     private bool TimerActive;
@@ -63,6 +64,9 @@ public class LevelController : MonoBehaviour
     private bool Pauseable;
     public bool MainBGPlaying;
     public bool Win;
+    private bool Level2TextShown;
+    public bool Level3TextShown;
+
 
 
     private void Awake()
@@ -111,6 +115,8 @@ public class LevelController : MonoBehaviour
         Level2EnemiesRestart= Level2Enemies;
         Level3EnemiesRestart = Level3Enemies;
         Level4EnemiesRestart = Level4Enemies;
+        Level2TextShown = false;
+        Level3TextShown = false;
     }
 
     public void ActualStart()
@@ -120,7 +126,7 @@ public class LevelController : MonoBehaviour
 
     IEnumerator ActualStartDelay()
     {
-        yield return new WaitForSecondsRealtime(0.25f);
+        yield return new WaitForSecondsRealtime(0.5f);
         TutorialTextPanel.SetActive(true);
         TutorialActive = true;
         WhichStringToShow = 1;
@@ -131,7 +137,10 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && TutorialActive) { WhichStringToShow++; TutorialStringSelector(); }
+        if (Input.GetKeyDown(KeyCode.Space) && TutorialActive) 
+        { WhichStringToShow++; 
+          TutorialStringSelector(); 
+        }
 
         if (TimerActive)
         {
@@ -471,18 +480,6 @@ public class LevelController : MonoBehaviour
                 TutorialTextRef.text = TutorialText4;
                 break;
             case 5:
-                TutorialTextRef.text = TutorialText5;
-                break;
-            case 6:
-                TutorialTextRef.text = TutorialText6;
-                break;
-            case 7:
-                TutorialTextRef.text = TutorialText7;
-                break;
-            case 8:
-                TutorialTextRef.text = TutorialText8;
-                break;
-            case 9:
                 Time.timeScale = 1;
                 TutorialActive = false;
                 TutorialTextPanel.SetActive(false);
@@ -490,6 +487,38 @@ public class LevelController : MonoBehaviour
                 HealthPanel.SetActive(true);
                 Pauseable = true;
                 break;
+            case 6:
+                TutorialTextRef.text = TutorialText5;
+                break;
+            case 7:
+                TutorialTextRef.text = TutorialText6;
+                break;
+            case 8:
+                Time.timeScale = 1;
+                TutorialActive = false;
+                TutorialTextPanel.SetActive(false);
+                TimerActive = true;
+                HealthPanel.SetActive(true);
+                Pauseable = true;
+                break;
+            case 9:
+                TutorialTextRef.text = TutorialText7;
+                break;
+            case 10:
+                TutorialTextRef.text = TutorialText8;
+                break;
+            case 11:
+                TutorialTextRef.text = TutorialText9;
+                break;
+            case 12:
+                Time.timeScale = 1;
+                TutorialActive = false;
+                TutorialTextPanel.SetActive(false);
+                TimerActive = true;
+                HealthPanel.SetActive(true);
+                Pauseable = true;
+                break;
+
         }
     }
 
@@ -560,6 +589,45 @@ public class LevelController : MonoBehaviour
         Time.timeScale = 1;
         Paused = false;
     }
+
+    public void RecallCaptain()
+    {
+        Resume();
+        switch (SceneIndex)
+        {
+            case 1:
+                WhichStringToShow = 1;
+                Time.timeScale = 0;
+                TutorialActive = true;
+                TutorialTextPanel.SetActive(true);
+                TimerActive = false;
+                HealthPanel.SetActive(false);
+                Pauseable = false;
+                TutorialStringSelector();
+                break;
+            case 2:
+                WhichStringToShow = 6;
+                Time.timeScale = 0;
+                TutorialActive = true;
+                TutorialTextPanel.SetActive(true);
+                TimerActive = false;
+                HealthPanel.SetActive(false);
+                Pauseable = false;
+                TutorialStringSelector();
+                break;
+            case 3:
+                WhichStringToShow = 9;
+                Time.timeScale = 0;
+                TutorialActive = true;
+                TutorialTextPanel.SetActive(true);
+                TimerActive = false;
+                HealthPanel.SetActive(false);
+                Pauseable = false;
+                TutorialStringSelector();
+                break;
+        }
+    }
+
     public void TutorialTab()
     {
         if (Tutorial) { Tutorial = false; TutorialPanel.SetActive(false); PausePanel.SetActive(true); }
@@ -588,10 +656,34 @@ public class LevelController : MonoBehaviour
                     SpawnLevel1Enemies();
                     break;
                 case 2:
-                    SpawnLevel2Enemies();
-                    break;
+                if (Level2TextShown != true)
+                {
+                    WhichStringToShow = 6;
+                    Time.timeScale = 0;
+                    TutorialActive = true;
+                    TutorialTextPanel.SetActive(true);
+                    TimerActive = false;
+                    HealthPanel.SetActive(false);
+                    Pauseable = false;
+                    TutorialStringSelector();
+                    Level2TextShown = true;
+                }
+                SpawnLevel2Enemies();
+                break;
                 case 3:
-                    SpawnLevel3Enemies();
+                if (Level2TextShown != true)
+                {
+                    WhichStringToShow = 9;
+                    Time.timeScale = 0;
+                    TutorialActive = true;
+                    TutorialTextPanel.SetActive(true);
+                    TimerActive = false;
+                    HealthPanel.SetActive(false);
+                    Pauseable = false;
+                    TutorialStringSelector();
+                    Level3TextShown = true;
+                }
+                SpawnLevel3Enemies();
                     break;
                 case 4:
                     SpawnLevel4Enemies();
