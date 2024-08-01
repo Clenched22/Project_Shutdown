@@ -48,6 +48,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float SniperDamage;
     [SerializeField] Animator PlayerAnimator;
     [SerializeField] GameObject itemParticle;
+    [SerializeField] GameObject hitParticle;
     public bool PistolAccquired;
     public bool ARAccquired;
     public bool SniperAccquired;
@@ -294,6 +295,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator HealthDelay()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
+        Instantiate(hitParticle, transform.position, Quaternion.identity);
         Time.timeScale = 0.5f;
         yield return new WaitForSecondsRealtime(1);
         Damageable = true;

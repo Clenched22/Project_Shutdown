@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 3758132892819083589}
   - component: {fileID: 122668995609207772}
   - component: {fileID: 6654122067415978125}
+  - component: {fileID: 3791148782734977441}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -402,6 +403,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3791148782734977441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446919476054326892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000009155810
+  m_ShapePath:
+  - {x: -0.21736155, y: -0.2878774, z: 0}
+  - {x: -0.3377634, y: -0.31144437, z: 0}
+  - {x: -0.3465366, y: 0.04386539, z: 0}
+  - {x: -0.30386525, y: 0.40107498, z: 0}
+  - {x: -0.13070606, y: 0.44352886, z: 0}
+  - {x: -0.17263846, y: 0.8926384, z: 0}
+  - {x: -0.013159349, y: 1.0308367, z: 0}
+  - {x: 0.15631923, y: 0.89315957, z: 0}
+  - {x: 0.08052114, y: 0.4008904, z: 0}
+  - {x: 0.27, y: 0.41230193, z: 0}
+  - {x: 0.2863195, y: 0, z: 0}
+  - {x: 0.37159643, y: -0.2892942, z: 0}
+  - {x: 0.18, y: -0.27, z: 0}
+  - {x: 0.29159614, y: -1.0381001, z: 0}
+  - {x: 0.013159621, y: -0.8729213, z: 0}
+  - {x: -0.26404974, y: -1.0400327, z: 0}
+  - {x: -0.1579154, y: -0.732552, z: 0}
+  m_ShapePathHash: -72782651
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 49030
+  m_LocalBounds:
+    m_Center: {x: 0.01252991, y: -0.0045980215, z: 0}
+    m_Extent: {x: 0.35906652, y: 1.0354347, z: 0}
 --- !u!1 &7397264093750577169
 GameObject:
   m_ObjectHideFlags: 0

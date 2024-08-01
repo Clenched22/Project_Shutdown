@@ -334,17 +334,23 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 0000000009155810
   m_ShapePath:
   - {x: -0.27, y: -0.44140625, z: 0}
-  - {x: -0.51, y: 0, z: 0}
-  - {x: -0.26, y: 0.44140625, z: 0}
-  - {x: 0.26, y: 0.44140625, z: 0}
-  - {x: 0.5, y: 0, z: 0}
-  - {x: 0.26, y: -0.44140625, z: 0}
-  m_ShapePathHash: 1295385886
+  - {x: -0.26, y: 0.23, z: 0}
+  - {x: -0.1, y: 0.29, z: 0}
+  - {x: -0.12, y: 0.84, z: 0}
+  - {x: 0.13, y: 0.88, z: 0}
+  - {x: 0.12, y: 0.3, z: 0}
+  - {x: 0.27, y: 0.25, z: 0}
+  - {x: 0.26, y: 0, z: 0}
+  - {x: 0.24, y: -0.32, z: 0}
+  - {x: 0.18, y: -0.27, z: 0}
+  - {x: 0.16, y: -0.81, z: 0}
+  - {x: -0.15, y: -0.79, z: 0}
+  m_ShapePathHash: -305295069
   m_Mesh: {fileID: 0}
-  m_InstanceId: 60020
+  m_InstanceId: 42914
   m_LocalBounds:
-    m_Center: {x: -0.004999995, y: 0, z: 0}
-    m_Extent: {x: 0.505, y: 0.44140625, z: 0}
+    m_Center: {x: 0, y: 0.035000026, z: 0}
+    m_Extent: {x: 0.27, y: 0.845, z: 0}
 --- !u!70 &2487624789302970358
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

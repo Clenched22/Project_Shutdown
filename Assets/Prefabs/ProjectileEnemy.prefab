@@ -256,9 +256,9 @@ GameObject:
   - component: {fileID: 323629502467188920}
   - component: {fileID: 4031412797242943381}
   - component: {fileID: 12392440811314958}
-  - component: {fileID: 171828270426413110}
   - component: {fileID: 2639231080302874128}
   - component: {fileID: -2505466387135401750}
+  - component: {fileID: 114750119458831289}
   m_Layer: 0
   m_Name: ProjectileEnemy
   m_TagString: ProjectileEnemy
@@ -362,38 +362,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &171828270426413110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5036699126018304820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 0000000009155810
-  m_ShapePath:
-  - {x: -0.27, y: -0.44140625, z: 0}
-  - {x: -0.51, y: 0, z: 0}
-  - {x: -0.26, y: 0.44140625, z: 0}
-  - {x: 0.26, y: 0.44140625, z: 0}
-  - {x: 0.5, y: 0, z: 0}
-  - {x: 0.26, y: -0.44140625, z: 0}
-  m_ShapePathHash: 1295385886
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 35602
-  m_LocalBounds:
-    m_Center: {x: -0.004999995, y: 0, z: 0}
-    m_Extent: {x: 0.505, y: 0.44140625, z: 0}
 --- !u!114 &2639231080302874128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,6 +474,44 @@ PolygonCollider2D:
       - {x: 0.235, y: -0.78}
       - {x: 0.265, y: -0.35999998}
   m_UseDelaunayMesh: 0
+--- !u!114 &114750119458831289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036699126018304820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000009155810
+  m_ShapePath:
+  - {x: -0.27, y: -0.44140625, z: 0}
+  - {x: -0.26, y: 0.23, z: 0}
+  - {x: -0.1, y: 0.29, z: 0}
+  - {x: -0.12, y: 0.84, z: 0}
+  - {x: 0.13, y: 0.88, z: 0}
+  - {x: 0.12, y: 0.3, z: 0}
+  - {x: 0.27, y: 0.25, z: 0}
+  - {x: 0.26, y: 0, z: 0}
+  - {x: 0.24, y: -0.32, z: 0}
+  - {x: 0.18, y: -0.27, z: 0}
+  - {x: 0.16, y: -0.81, z: 0}
+  - {x: -0.15, y: -0.79, z: 0}
+  m_ShapePathHash: -305295069
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 49030
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0.035000026, z: 0}
+    m_Extent: {x: 0.27, y: 0.845, z: 0}
 --- !u!1 &7314693636022506717
 GameObject:
   m_ObjectHideFlags: 0
