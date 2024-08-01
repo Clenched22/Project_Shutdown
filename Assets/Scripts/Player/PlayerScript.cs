@@ -289,7 +289,7 @@ public class PlayerScript : MonoBehaviour
             FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = CurrentHealth;
             StartCoroutine(HealthDelay());
         }
-    if (CurrentHealth <= 0) {  FindObjectOfType<LevelController>().GameOver(); FindObjectOfType<AudioManager>().Play("PlayerDeath"); }
+    if (CurrentHealth <= 0) { FindObjectOfType<LevelController>().Win = false; FindObjectOfType<LevelController>().GameOver(); FindObjectOfType<AudioManager>().Play("PlayerDeath"); }
     }
 
     IEnumerator HealthDelay()

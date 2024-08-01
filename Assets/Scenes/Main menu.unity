@@ -8661,13 +8661,13 @@ MonoBehaviour:
     Loop: 0
   - Name: BasicEnemyDeath
     Clip: {fileID: 8300000, guid: 9448eccf30b6aee4cbc30e3cb0081672, type: 3}
-    Volume: 1
+    Volume: 0.75
     Pitch: 1
     Source: {fileID: 0}
     Loop: 0
   - Name: Background
     Clip: {fileID: 8300000, guid: 576ce85bd89aa944e9e8fcdfe9bc6066, type: 3}
-    Volume: 1
+    Volume: 0.5
     Pitch: 1
     Source: {fileID: 0}
     Loop: 1
@@ -8685,7 +8685,7 @@ MonoBehaviour:
     Loop: 0
   - Name: BossDeath
     Clip: {fileID: 8300000, guid: 4cc4875753f618f47b3c94c44d40f94e, type: 3}
-    Volume: 1
+    Volume: 0.75
     Pitch: 1
     Source: {fileID: 0}
     Loop: 0
@@ -8721,7 +8721,7 @@ MonoBehaviour:
     Loop: 0
   - Name: ProjectileEnemyDeath
     Clip: {fileID: 8300000, guid: e3cc0dcfa22966d47b08d6e7da8690d9, type: 3}
-    Volume: 1
+    Volume: 0.75
     Pitch: 1
     Source: {fileID: 0}
     Loop: 0

@@ -35,7 +35,6 @@ public class EndScreen : MonoBehaviour
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
         Debug.Log(timeToShow);
         TimeSpan time = TimeSpan.FromSeconds(timeToShow);
-        EndScreenTimerText.text = "It Took " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         EndScreenTimerText.enabled = true;
     }
 
@@ -45,23 +44,26 @@ public class EndScreen : MonoBehaviour
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
         Debug.Log(timeToShow);
         TimeSpan time = TimeSpan.FromSeconds(timeToShow);
-        EndScreenTimerText.text = "You disarmed the bomb in " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+       
         if (Win)
         {
             WinLoseText.text = WinText;
             WinImage.SetActive(true);
             LoseImage.SetActive(false);
+            EndScreenTimerText.text = "You disarmed the bomb in: " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         }
         else
         {
             WinLoseText.text = LoseText;
             WinImage.SetActive(false);
             LoseImage.SetActive(true);
+            EndScreenTimerText.text = "You lost in: " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
         }
     }
 
     public void Mainmenu()
     {
+        FindObjectOfType<LevelController>().ResetEnemyLists();
         FindObjectOfType<LevelController>().HealthCarriedBetweenLevels = FindObjectOfType<LevelController>().MaxHealth;
         FindObjectOfType<LevelController>().CurrentTime = FindObjectOfType<LevelController>().TimerAmount;
         SceneManager.LoadScene(0);

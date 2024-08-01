@@ -164,7 +164,7 @@ public class LevelController : MonoBehaviour
                 TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
             }
         }
-        if (CurrentTime <= 0) { Win = false; GameOver(); }
+        if (CurrentTime <= 0 && TimerActive) { Win = false; GameOver(); TimerActive = false;}
 
 
         SceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -571,7 +571,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void ResetEnemyLists()
+    public void ResetEnemyLists()
     {
         for (int i = 0; i < Level1EnemiesRestart.Count; i++)
         {
