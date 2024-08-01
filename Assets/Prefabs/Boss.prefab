@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -442,7 +442,7 @@ MonoBehaviour:
   - {x: -0.1579154, y: -0.732552, z: 0}
   m_ShapePathHash: -72782651
   m_Mesh: {fileID: 0}
-  m_InstanceId: 49030
+  m_InstanceId: 31754
   m_LocalBounds:
     m_Center: {x: 0.01252991, y: -0.0045980215, z: 0}
     m_Extent: {x: 0.35906652, y: 1.0354347, z: 0}
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -885,6 +885,7 @@ MonoBehaviour:
   KeyCard: 0
   WireCutter: 0
   Damageable: 0
+  EquippedWeapon: 0
 --- !u!50 &8760847476884905074
 Rigidbody2D:
   serializedVersion: 4
@@ -956,7 +957,7 @@ MonoBehaviour:
   - {x: 0.2325991, y: -0.7983025, z: 0}
   m_ShapePathHash: -302853596
   m_Mesh: {fileID: 0}
-  m_InstanceId: 65788
+  m_InstanceId: 30712
   m_LocalBounds:
     m_Center: {x: -0.016099602, y: 0.017833054, z: 0}
     m_Extent: {x: 0.36281624, y: 0.81689656, z: 0}
@@ -1052,7 +1053,7 @@ Transform:
   m_GameObject: {fileID: 7005172211055502160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 80, z: 0}
+  m_LocalPosition: {x: 0, y: 82.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

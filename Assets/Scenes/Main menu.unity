@@ -8714,7 +8714,7 @@ MonoBehaviour:
     Source: {fileID: 0}
     Loop: 0
   - Name: SniperLaser
-    Clip: {fileID: 8300000, guid: 883697e730837b54e826752253bf6cc9, type: 3}
+    Clip: {fileID: 8300000, guid: a999c38796d34b84bbaba94df158d8ef, type: 3}
     Volume: 1
     Pitch: 1
     Source: {fileID: 0}
