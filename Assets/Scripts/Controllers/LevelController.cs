@@ -76,6 +76,7 @@ public class LevelController : MonoBehaviour
     private bool Level2TextShown;
     public bool Level3TextShown;
     public int equippedWeapon = 1;
+    char pad = '0';
 
 
 
@@ -158,11 +159,11 @@ public class LevelController : MonoBehaviour
             TimeSpan time = TimeSpan.FromSeconds(CurrentTime);
             if (CurrentTime < 60)
             {
-                TimerText.text = TimerPrefix + "0" + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+                TimerText.text = TimerPrefix + "0" + ":" + (time.Seconds.ToString()).PadLeft(2, pad) + ":" + (time.Milliseconds.ToString()).PadLeft(3, pad);
             }
             else
             {
-                TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+                TimerText.text = TimerPrefix + time.Minutes.ToString() + ":" + (time.Seconds.ToString()).PadLeft(2, pad) + ":" + (time.Milliseconds.ToString()).PadLeft(3, pad);
             }
         }
         if (CurrentTime <= 0 && TimerActive) { Win = false; GameOver(); TimerActive = false;}
@@ -597,12 +598,12 @@ public class LevelController : MonoBehaviour
         FindObjectOfType<PlayerScript>().SniperAccquired = false;
         FindObjectOfType<PlayerScript>().EquippedWeapon = 1;
         HealthCarriedBetweenLevels = MaxHealth;
+        FindObjectOfType<PlayerScript>().CurrentHealth = MaxHealth;
         ScrewDriverAcquired = false;
         KeyCardAcquired = false;
         WireCutterAcquired = false;
         ARAcquired = false;
         SniperAcquired = false;
-        HealthCarriedBetweenLevels = MaxHealth;
         ScrewdriverIconPanel.SetActive(false);
         KeycardIconPanel.SetActive(false);
         WirecuttersIconPanel.SetActive(false);
@@ -611,6 +612,8 @@ public class LevelController : MonoBehaviour
         SRIconPanel.SetActive(false);
         EquippedARIconPanel.SetActive(false);
         EquippedSRIconPanel.SetActive(false);
+        FindObjectOfType<AudioManager>().Play("MainBG");
+        FindObjectOfType<AudioManager>().Stop("BossBG");
     }
 
     public void LevelChangerActive()

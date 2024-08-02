@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour
     private float FirerateTime;
     private bool ReadyToFire;
     public bool Damageable;
-    private float CurrentHealth;
+    public float CurrentHealth;
     private Vector2 MoveDirection;
     private Vector2 MousePosition;
     public int EquippedWeapon;
@@ -173,6 +173,7 @@ public class PlayerScript : MonoBehaviour
                     ShotDistance = SniperShotDistance; 
                     ActualDamageDealt = SniperDamage; 
                     AudioName = "SniperLaser";
+                    FindObjectOfType<AudioManager>().Play("LongReload");
                     break;
             }
 

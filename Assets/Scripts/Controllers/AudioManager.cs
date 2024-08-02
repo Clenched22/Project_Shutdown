@@ -35,7 +35,10 @@ public class AudioManager : MonoBehaviour
             Debug.LogError($"AudioSource Null{Name}");
             return;
         }
-        s.Source.pitch = UnityEngine.Random.Range(s.Pitch - 0.2f, s.Pitch + 0.2f);
+        if (s.Name != "LongReload" || s.Name!= "MainBG" || s.Name != "BossBG")
+        {
+            s.Source.pitch = UnityEngine.Random.Range(s.Pitch - 0.2f, s.Pitch + 0.2f);
+        }
         Debug.Log($"Pitch is: {s.Source.pitch}");
         s.Source.Play();
     }
