@@ -723,7 +723,7 @@ public class LevelController : MonoBehaviour
                 SpawnLevel2Enemies();
                 break;
                 case 3:
-                if (Level2TextShown != true)
+                if (Level3TextShown != true)
                 {
                     WhichStringToShow = 9;
                     Time.timeScale = 0;

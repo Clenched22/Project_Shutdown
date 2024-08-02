@@ -324,7 +324,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1166170302, guid: ef0dd19d10b5ac94daa9bf3192a93ec8, type: 3}
+  m_Sprite: {fileID: -2146441230, guid: 66bcf5afa2430fa4286ca14a47f73e75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -435,8 +435,7 @@ MonoBehaviour:
   - {x: -0.15, y: -0.79, z: 0}
   m_ShapePathHash: -305295069
   m_Mesh: {fileID: 0}
-  m_InstanceId: 31556
-  m_InstanceId: 107346
+  m_InstanceId: 32980
   m_LocalBounds:
     m_Center: {x: 0, y: 0.035000026, z: 0}
     m_Extent: {x: 0.27, y: 0.845, z: 0}
@@ -669,7 +668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.245}
+  m_AnchoredPosition: {x: -0.008, y: 0.32}
   m_SizeDelta: {x: 50, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5391845210919127925
