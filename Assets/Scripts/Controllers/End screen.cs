@@ -12,9 +12,10 @@ public class EndScreen : MonoBehaviour
     [SerializeField] TMP_Text WinLoseText;
     [SerializeField] TMP_Text EndScreenTimerText;
     [SerializeField] string WinText;
-    [SerializeField] string LoseText;
+    [SerializeField] GameObject LoseText;
     [SerializeField] GameObject WinImage;
     [SerializeField] GameObject LoseImage;
+    [SerializeField] GameObject timeItTookText;
 
     private void Start()
     {
@@ -24,12 +25,14 @@ public class EndScreen : MonoBehaviour
             WinLoseText.text = WinText;
             WinImage.SetActive(true);
             LoseImage.SetActive(false);
+            timeItTookText.SetActive(true);
         }
         else
         {
-            WinLoseText.text = LoseText;
+            //LoseText.SetActive(true);
             WinImage.SetActive(false);
             LoseImage.SetActive(true);
+            timeItTookText.SetActive(false);
         }
         float timeToShow = FindObjectOfType<LevelController>().TimerAmount;
         timeToShow -= FindObjectOfType<LevelController>().CurrentTime;
@@ -54,7 +57,7 @@ public class EndScreen : MonoBehaviour
         }
         else
         {
-            WinLoseText.text = LoseText;
+            //LoseText.SetActive(true);
             WinImage.SetActive(false);
             LoseImage.SetActive(true);
             EndScreenTimerText.text = "You lost in: " + time.Minutes.ToString() + ":" + time.Seconds.ToString() + ":" + time.Milliseconds.ToString();

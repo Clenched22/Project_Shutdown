@@ -240,7 +240,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 25db5f2658a9b244d9e2e1cad9420edc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -850,11 +850,11 @@ MonoBehaviour:
   BlockRay:
     serializedVersion: 2
     m_Bits: 8
-  PistolShotDistance: 2
-  ARShotDistance: 2
+  PistolShotDistance: 2.5
+  ARShotDistance: 2.5
   SniperShotDistance: 20
   PistolFirerate: 0.5
-  ARFirerate: 0.25
+  ARFirerate: 0.125
   SniperFirerate: 2
   PistolLaserEndLocation: {fileID: 8467479714296868104}
   ARLaserEndLocation: {fileID: 1426188533971890414}
@@ -874,7 +874,7 @@ MonoBehaviour:
   SniperSprite: {fileID: 2073662717789719482}
   PistolDamage: 1
   ARDamage: 0.5
-  SniperDamage: 5
+  SniperDamage: 3
   PlayerAnimator: {fileID: 7308165656190899431}
   itemParticle: {fileID: 5401398519420336108, guid: f89c4d91e89b40f408629234f31da124, type: 3}
   hitParticle: {fileID: 8806669266643544969, guid: d0d82e9810ce16349a9cb8f1c818e482, type: 3}
@@ -957,7 +957,7 @@ MonoBehaviour:
   - {x: 0.2325991, y: -0.7983025, z: 0}
   m_ShapePathHash: -302853596
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30712
+  m_InstanceId: 160774
   m_LocalBounds:
     m_Center: {x: -0.016099602, y: 0.017833054, z: 0}
     m_Extent: {x: 0.36281624, y: 0.81689656, z: 0}

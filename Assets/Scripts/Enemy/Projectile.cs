@@ -149,7 +149,8 @@ public class Projectile : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("ProjectileEnemyDeath");
         Instantiate(deathPartical, transform.position, Quaternion.identity);
         Damageable = false;
-        StartCoroutine(BlackDeath());
+        Destroy(gameObject);
+        //StartCoroutine(BlackDeath());
     }
 
     IEnumerator BlackDeath()

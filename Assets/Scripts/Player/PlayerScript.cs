@@ -74,7 +74,7 @@ public class PlayerScript : MonoBehaviour
         CurrentHealth = FindObjectOfType<LevelController>().HealthCarriedBetweenLevels;
         Cursor.lockState = CursorLockMode.Confined;
         ScrewDriver = FindObjectOfType<LevelController>().ScrewDriverAcquired;
-        EquippedWeapon = 1;
+        EquippedWeapon = FindObjectOfType<LevelController>().equippedWeapon;
         PistolAccquired = true;
         ARAccquired = FindObjectOfType<LevelController>().ARAcquired;
         SniperAccquired = FindObjectOfType<LevelController>().SniperAcquired;
@@ -96,36 +96,35 @@ public class PlayerScript : MonoBehaviour
         {
             EquippedWeapon = 1;
             FirerateTime = 0.5f;
-            PistolSprite.SetActive(true);
-            ARSprite.SetActive(false);
-            SniperSprite.SetActive(false);
+
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && ARAccquired && EquippedWeapon != 2)
         {
             EquippedWeapon = 2;
             FirerateTime = 0.5f;
-            PistolSprite.SetActive(false);
-            ARSprite.SetActive(true);
-            SniperSprite.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && SniperAccquired && EquippedWeapon != 3)
         {
             EquippedWeapon = 3;
             FirerateTime = 0.5f;
-            PistolSprite.SetActive(false);
-            ARSprite.SetActive(false);
-            SniperSprite.SetActive(true);
         }
         switch (EquippedWeapon)
         {
             case 1:
-                ARLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = PistolLaserLine; LaserStartPosition = PistolFirepoint.transform.position; LaserEndPosition = PistolLaserEndLocation.transform.position; break;
+                ARLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = PistolLaserLine; LaserStartPosition = PistolFirepoint.transform.position; LaserEndPosition = PistolLaserEndLocation.transform.position; PistolSprite.SetActive(true);
+                ARSprite.SetActive(false);
+                SniperSprite.SetActive(false); break;
             case 2:
-                PistolLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = ARLaserLine; LaserStartPosition = ARFirepoint.transform.position; LaserEndPosition = ARLaserEndLocation.transform.position; break;
+                PistolLaserLine.enabled = false; SniperLaserLine.enabled = false; ActiveLine = ARLaserLine; LaserStartPosition = ARFirepoint.transform.position; LaserEndPosition = ARLaserEndLocation.transform.position; PistolSprite.SetActive(false);
+                ARSprite.SetActive(true);
+                SniperSprite.SetActive(false); break; 
+
             case 3:
-                ARLaserLine.enabled = false; PistolLaserLine.enabled = false; ActiveLine = SniperLaserLine; LaserStartPosition = SniperFirepoint.transform.position; LaserEndPosition = SniperLaserEndLocation.transform.position; break;
+                ARLaserLine.enabled = false; PistolLaserLine.enabled = false; ActiveLine = SniperLaserLine; LaserStartPosition = SniperFirepoint.transform.position; LaserEndPosition = SniperLaserEndLocation.transform.position; PistolSprite.SetActive(false);
+                ARSprite.SetActive(false);
+                SniperSprite.SetActive(true); break;
         }
 
         PistolLaserLine.SetPosition(0, LaserStartPosition);
@@ -262,8 +261,20 @@ public class PlayerScript : MonoBehaviour
         if (collision.CompareTag(ScrewDriverTag)) { ScrewDriver = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("ScrewdriverPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); Instantiate(itemParticle, transform.position, Quaternion.identity); }
         if (collision.CompareTag(KeyCardTag)) { KeyCard = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("KeyCardPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); Instantiate(itemParticle, transform.position, Quaternion.identity); }
         if (collision.CompareTag(WireCutterTag)) { WireCutter = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("WireCutterPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); Instantiate(itemParticle, transform.position, Quaternion.identity); }
-        if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("GunPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); Instantiate(itemParticle, transform.position, Quaternion.identity); }
-        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("GunPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); Instantiate(itemParticle, transform.position, Quaternion.identity); }
+        if (collision.CompareTag(ARTag)) { ARAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("GunPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); Instantiate(itemParticle, transform.position, Quaternion.identity);
+            EquippedWeapon = 2;
+            FirerateTime = 0.5f;
+            PistolSprite.SetActive(false);
+            ARSprite.SetActive(true);
+            SniperSprite.SetActive(false);
+        }
+        if (collision.CompareTag(SniperTag)) { SniperAccquired = true; collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("GunPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); Instantiate(itemParticle, transform.position, Quaternion.identity);
+            EquippedWeapon = 3;
+            FirerateTime = 0.5f;
+            PistolSprite.SetActive(false);
+            ARSprite.SetActive(false);
+            SniperSprite.SetActive(true);
+        }
         if (collision.CompareTag(MedPackTag)) { if (Damageable) { collision.transform.GetComponent<Objects>().Death(); FindObjectOfType<AudioManager>().Play("HealthPickup"); FindObjectOfType<AudioManager>().Play("ItemPickup"); } Instantiate(itemParticle, transform.position, Quaternion.identity); }
         if (collision.CompareTag(LevelChangeTag)) { FindObjectOfType<LevelController>().LevelChangerActive(); }
         if (collision.CompareTag("Bomb")) { FindObjectOfType<LevelController>().Win = true; FindObjectOfType<LevelController>().GameOver(); }

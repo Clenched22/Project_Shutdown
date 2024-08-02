@@ -232,7 +232,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1534185864093851895}
@@ -330,9 +330,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrackingTarget: {fileID: 0}
-  MoveSpeed: 2.5
+  MoveSpeed: 2
   IsChasing: 0
-  ChaseDistance: 7
+  ChaseDistance: 10
   ESI:
     LevelIndex: 0
     SpawnIndex: 0
@@ -347,6 +347,8 @@ MonoBehaviour:
   PushbackForce: 2
   HealthSlider: {fileID: 1502353611451059127}
   BossEnemyAnimator: {fileID: 6654122067415978125}
+  hitParticle: {fileID: 5422858436227743543, guid: da409e07612332b46a01e19c8dffc17b, type: 3}
+  deathParticle: {fileID: 5422858436227743543, guid: 6c89cb4f455f6304d8f0f02601c35cde, type: 3}
 --- !u!70 &122668995609207772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

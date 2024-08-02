@@ -15,6 +15,8 @@ public class Boss : MonoBehaviour
     [SerializeField] float PushbackForce;
     [SerializeField] Slider HealthSlider;
     [SerializeField] Animator BossEnemyAnimator;
+    [SerializeField] GameObject hitParticle;
+    [SerializeField] GameObject deathParticle;
     private bool Damageable;
 
     void Start()
@@ -94,6 +96,7 @@ public class Boss : MonoBehaviour
         {
             Death();
         }
+        else { Instantiate(hitParticle, transform.position, Quaternion.identity); }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -112,7 +115,9 @@ public class Boss : MonoBehaviour
         FindObjectOfType<LevelController>().EnemyDeathIndexReset(ESI.LevelIndex, ESI.SpawnIndex);
         FindObjectOfType<AudioManager>().Play("BossDeath");
         Damageable = false;
-        StartCoroutine(BlackDeath());
+        Instantiate(deathParticle, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        //StartCoroutine(BlackDeath());
     }
 
     IEnumerator BlackDeath()

@@ -75,6 +75,7 @@ public class LevelController : MonoBehaviour
     public bool Win;
     private bool Level2TextShown;
     public bool Level3TextShown;
+    public int equippedWeapon = 1;
 
 
 
@@ -210,7 +211,7 @@ public class LevelController : MonoBehaviour
         PistolIconPanel.SetActive(PistolAcquired);
         EquippedARIconPanel.SetActive(ARAcquired);
         EquippedSRIconPanel.SetActive(SniperAcquired);
-        int equippedWeapon = FindObjectOfType<PlayerScript>().EquippedWeapon;
+        equippedWeapon = FindObjectOfType<PlayerScript>().EquippedWeapon;
         switch (equippedWeapon)
         {
             case 1:
@@ -589,6 +590,13 @@ public class LevelController : MonoBehaviour
         {
             Level4Enemies[i].Death = false;
         }
+        FindObjectOfType<PlayerScript>().ScrewDriver = false;
+        FindObjectOfType<PlayerScript>().KeyCard = false;
+        FindObjectOfType<PlayerScript>().WireCutter = false;
+        FindObjectOfType<PlayerScript>().ARAccquired = false;
+        FindObjectOfType<PlayerScript>().SniperAccquired = false;
+        FindObjectOfType<PlayerScript>().EquippedWeapon = 1;
+        HealthCarriedBetweenLevels = MaxHealth;
         ScrewDriverAcquired = false;
         KeyCardAcquired = false;
         WireCutterAcquired = false;
@@ -680,9 +688,10 @@ public class LevelController : MonoBehaviour
     public void MainMenu()
     {
         Resume();
-        SceneManager.LoadScene("Main menu");
-        ResetEnemyLists();
         HealthCarriedBetweenLevels = MaxHealth;
+        ResetEnemyLists();
+        CurrentTime = TimerAmount;
+        SceneManager.LoadScene("Main menu");
     }
 
     public void QuitGame()

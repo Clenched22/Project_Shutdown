@@ -113,7 +113,8 @@ public class Regular : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("BasicEnemyDeath");
         Instantiate(deathPartical, transform.position, Quaternion.identity);
         Damageable = false;
-        StartCoroutine(BlackDeath());
+        Destroy(gameObject);
+        //StartCoroutine(BlackDeath());
     }
 
     IEnumerator BlackDeath()
